@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="AFPP_Workbook_SOS" version="1.0"
+  xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+  xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
+                       http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd
+                       http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+  </metadata>
+
+  <organizations default="AFPP_ORG">
+    <organization identifier="AFPP_ORG">
+      <title>Air Force Planning Process Workbook</title>
+      <item identifier="AFPP_ITEM_01" identifierref="AFPP_RES_01">
+        <title>AFPP Workbook</title>
+        <adlcp:masteryscore>80</adlcp:masteryscore>
+      </item>
+    </organization>
+  </organizations>
+
+  <resources>
+    <resource identifier="AFPP_RES_01" type="webcontent" adlcp:scormtype="sco" href="index.html">
+      <file href="index.html"/>
+      <file href="css/style.css"/>
+      <file href="js/scorm-api.js"/>
+      <file href="js/app.js"/>
+      <file href="js/workbook.js"/>
+      <file href="js/pdf-export.js"/>
+      <file href="js/lz-string.min.js"/>
+      <file href="js/jspdf.umd.min.js"/>
+      <file href="static/pillar 2 step 2.png"/>
+      <file href="static/pillar 3 step 2.png"/>
+      <file href="static/9 develop COA evaluation criteria.png"/>
+    </resource>
+  </resources>
+
+</manifest>

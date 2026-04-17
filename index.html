@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AFPP Problem-Solving Workbook — Instructor Scoring Guide</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header id="topBar">
+    <div class="top-bar-left">
+      <h1>Air Force Planning Process Problem-Solving Workbook</h1>
+      <span class="subtitle">Squadron Officer School — Instructor Scoring Guide</span>
+    </div>
+    <div class="top-bar-right">
+      <div class="completion-wrapper">
+        <span id="completionText">0% Complete</span>
+        <div class="completion-track">
+          <div id="completionBar" class="completion-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <button id="btnSave" class="btn btn-secondary" title="Save Progress">
+        <span class="save-icon">&#128190;</span> Save
+      </button>
+      <span id="saveIndicator" class="save-indicator hidden">Saved</span>
+    </div>
+  </header>
+
+  <div id="appContainer">
+
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar">
+      <ul id="stepList">
+        <li class="active" data-step="0"><a class="nav-link" href="#" data-step="0"><span class="step-num">1</span><span class="step-label">Purpose</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="1"><a class="nav-link" href="#" data-step="1"><span class="step-num">2</span><span class="step-label">Problem Statement</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="2"><a class="nav-link" href="#" data-step="2"><span class="step-num">3</span><span class="step-label">Organization / Mission</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="3"><a class="nav-link" href="#" data-step="3"><span class="step-num">4</span><span class="step-label">AFPP Step 1: Planning Initiation</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="4"><a class="nav-link" href="#" data-step="4"><span class="step-num">5</span><span class="step-label">AFPP Step 2: Mission Analysis</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="5"><a class="nav-link" href="#" data-step="5"><span class="step-num">6</span><span class="step-label">AFPP Step 3: COA Development</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="6"><a class="nav-link" href="#" data-step="6"><span class="step-num">7</span><span class="step-label">Phases 2–7</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="7"><a class="nav-link" href="#" data-step="7"><span class="step-num">8</span><span class="step-label">Graded Example 1</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="8"><a class="nav-link" href="#" data-step="8"><span class="step-num">9</span><span class="step-label">Graded Example 2</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="9"><a class="nav-link" href="#" data-step="9"><span class="step-num">10</span><span class="step-label">Common Mistakes</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="10"><a class="nav-link" href="#" data-step="10"><span class="step-num">11</span><span class="step-label">Submit &amp; Download</span><span class="step-check hidden">&#10003;</span></a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="mainContent">
+      <article class="content-doc">
+        <section class="step-panel" data-step="0">
+          <h2>Purpose</h2>
+          <p class="step-intro">
+            The purpose of this assignment is to guide the student through solving a complex organizational problem using the applicable
+            steps of the Air Force Planning Process (AFPP). In other words, translate the AFPP into a universal problem-solving framework.
+            While grounded in AFDP 5-0, Planning, this workbook is written so that the process can be applied to organizational, leadership,
+            or operational problem-solving, emphasizing structured thinking and decision-making.
+          </p>
+          <p class="step-intro">
+            In the following pages, you will find the rubric, the guidance given to students in the workbook, two graded examples—one outstanding
+            and one with some errors. In addition, there is a list of common mistakes and some guidance on coaching students to better results in
+            applicable sections of the workbook.
+          </p>
+        </section>
+
+        <section class="step-panel hidden" data-step="1">
+          <h2>Problem Statement (Must be approved by Flight Commander)</h2>
+          <h3>Your Task</h3>
+          <p>Clearly describe the problem in 1–2 sentences. Focus on the gap between current reality and desired outcome.</p>
+          <h3>Guidance</h3>
+          <ul class="doc-list">
+            <li>Frame the problem as a system that needs to change, not just a symptom.</li>
+            <li>Avoid jumping to solutions.</li>
+          </ul>
+          <h3>Helpful prompts</h3>
+          <ul class="doc-list">
+            <li>What is happening that shouldn’t be?</li>
+            <li>What should be happening instead?</li>
+            <li>Why does this matter to the organization?</li>
+          </ul>
+          <div class="form-group">
+            <label for="f_p_stmt">Problem Statement</label>
+            <textarea id="f_p_stmt" data-field="p_stmt" rows="3" placeholder="Write your approved problem statement (1–2 sentences)."></textarea>
+          </div>
+        </section>
+
+        <section class="step-panel hidden" data-step="2">
+          <h2>Organization / Mission / Stakeholders / Constraints</h2>
+          <h3>Your Task</h3>
+          <p>Identify organization and its purpose; key stakeholders (internal/external); constraints (rules, resources, time, culture).</p>
+          <h3>Guidance</h3>
+          <ul class="doc-list">
+            <li>Think in terms of the operational environment: people, systems, processes, culture, resources.</li>
+            <li>Include both formal constraints (policy, budget) and informal ones (culture, resistance).</li>
+          </ul>
+          <div class="form-group">
+            <label for="f_org_desc">Organization and purpose</label>
+            <textarea id="f_org_desc" data-field="org_desc" rows="3" placeholder="Describe the organization and its purpose."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="f_org_stake">Key stakeholders</label>
+            <textarea id="f_org_stake" data-field="org_stake" rows="3" placeholder="List internal and external stakeholders."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="f_org_constraints">Constraints</label>
+            <textarea id="f_org_constraints" data-field="org_constraints" rows="3" placeholder="Identify constraints: rules, resources, time, culture (formal and informal)."></textarea>
+          </div>
+        </section>
+
+        <section class="step-panel hidden" data-step="3">
+          <h2>AFPP Step 1: Planning Initiation</h2>
+          <p class="step-intro"><em>(AFPP: “Understand the environment and frame the problem.”)</em></p>
+          <p>
+            The planning process begins when leaders at any level initiate action, typically in response to guidance from senior leadership
+            or a recognized need. While planning is often led by the unit's leadership and their key staff, any member of the organization
+            can be assigned to the planning team. Direction from above provides the initial framework, including the overall intent and
+            specific instructions. This guidance, combined with an iterative design process, ensures the team fully understands the problem
+            before developing a course of action.
+          </p>
+          <h3>Your Task</h3>
+          <p>Problem framing, gather tools, and review planning guidance.</p>
+          <h3>Guidance</h3>
+          <p>
+            This is where you will select a problem to utilize the AFPP on. The problem can be from the provided list or a real-world problem/process
+            you would like to apply the AFPP to. If you choose your own problem, your Flight Commander must approve before moving forward on this workbook.
+          </p>
+          <h3>1. Conduct an Initial assessment (The first look)</h3>
+          <ul class="doc-list">
+            <li><strong>Define the problem</strong>: What matters most (priorities); what success should achieve; any boundaries (time, resources, authority).</li>
+            <li>How much time do you have to solve this?</li>
+            <li>What level of effort is realistic?</li>
+          </ul>
+          <div class="form-group">
+            <label for="f_s1_assess">Your Initial Assessment</label>
+            <textarea id="f_s1_assess" data-field="s1_assess" rows="5" placeholder="Capture priorities, success, boundaries, time available, and realistic level of effort."></textarea>
+          </div>
+          <h3>2. Gather tools</h3>
+          <p>In simple terms, this step is about collecting and reviewing all existing information before you start making a new plan. It's the preparation phase where you get organized.</p>
+          <ul class="doc-list">
+            <li><strong>Get Your Playbooks</strong>: Find all standard operating procedures and best-practice guides.</li>
+            <li><strong>Gather Project Files</strong>: Collect the official assignment, goals, budget, and timeline for this specific task.</li>
+            <li><strong>Collect Intel</strong>: Find relevant reports, data, and feedback from past projects or other teams.</li>
+            <li><strong>Know Your Team's Habits</strong>: Review your team’s unwritten rules and established routines.</li>
+          </ul>
+          <div class="form-group">
+            <label for="f_s1_tools">Tools gathered</label>
+            <textarea id="f_s1_tools" data-field="s1_tools" rows="5" placeholder="List the tools/information you gathered and what you learned (SOPs, project docs, data, routines)."></textarea>
+          </div>
+          <p><strong>Tip:</strong> Don’t overcomplicate—this phase is about getting oriented, not being perfect.</p>
+        </section>
+
+        <section class="step-panel hidden" data-step="4">
+          <h2>AFPP Step 2: Mission Analysis</h2>
+          <p class="step-intro"><em>(AFPP: Understand the problem deeply before solving it.)</em></p>
+          <p>
+            Mission analysis is a critical process that allows commanders and their staff to develop a thorough understanding of the problem,
+            the overall mission, and the current situation. It involves identifying all specified, implied, and essential tasks, along with any
+            limitations on their actions. This comprehensive analysis helps frame the problem and leads to the development of a viable approach
+            to achieve the desired end state in support of higher headquarters.
+          </p>
+          <h3>Your Task</h3>
+          <p>
+            Develop a thorough understanding of your chosen problem: determine facts, threats to solving the problem, identify assumptions, determine
+            constraints/restraints, COGs and critical factors, identify tasks, develop a risk assessment, success criteria, root causes, develop a
+            commander’s intent statement, present a commander’s MA brief.
+          </p>
+
+          <h3 class="h-with-info substep-heading">
+            1. Determine Facts
+            <span class="tooltip-wrap">
+              <button type="button" class="info-icon" aria-label="Show definition of a fact" aria-describedby="tip-facts">
+                i
+              </button>
+              <span role="tooltip" id="tip-facts" class="tooltip">
+                A fact is a statement of information known to be true and relevant to planning. A fact defines the scope of the problem. If a fact is invalidated, it should result in a new or modified plan.
+              </span>
+            </span>
+          </h3>
+          <p>List out facts that deal directly with your problem, consider the below questions when determine your facts:</p>
+          <ul class="doc-list">
+            <li>What's definitely true here?</li>
+            <li>How does this define the problem's scope?</li>
+            <li>If this fact changes, what's my backup plan?</li>
+            <li>Am I sure this is a fact?</li>
+            <li>Who are my reliable sources?</li>
+            <li>Are there rules or laws to follow?</li>
+            <li>What external forces are at play?</li>
+            <li>What information do I still need?</li>
+          </ul>
+          <div class="form-group">
+            <label for="f_s2_facts">Facts</label>
+            <textarea id="f_s2_facts" data-field="s2_facts" rows="6" placeholder="List facts relevant to your problem and planning."></textarea>
+          </div>
+
+          <h3 class="h-with-info substep-heading">
+            2. Develop Assumptions
+            <span class="tooltip-wrap">
+              <button type="button" class="info-icon" aria-label="Show definition of assumptions" aria-describedby="tip-assumptions">
+                i
+              </button>
+              <span role="tooltip" id="tip-assumptions" class="tooltip">
+                Assumptions are logical, realistic beliefs about current or future situations, crucial for planning where facts are absent, but must be continually reviewed and validated to identify risks. When an assumption proves invalid and significantly impacts the plan, it should lead to substantial changes and inform branches or sequels, rather than “assuming away” potential problems.
+              </span>
+            </span>
+          </h3>
+          <p><strong>Your Task:</strong> Identify assumptions that must be made with your problem set.</p>
+          <p>When identifying assumptions, consider the Five A’s:</p>
+          <ul class="doc-list">
+            <li><strong>Awareness</strong>: Expected warning or notification.</li>
+            <li><strong>Assets</strong>: Available types and numbers (e.g., airlift, allied forces).</li>
+            <li><strong>Access</strong>: Basing rights, overflight, and staging capabilities.</li>
+            <li><strong>Additional/Other Activity</strong>: Involvement from bordering or third-party nations.</li>
+            <li><strong>Authorities</strong>: Commander-specific powers and relationships.</li>
+          </ul>
+          <div class="form-group">
+            <label for="f_s2_assumptions">Assumptions</label>
+            <textarea id="f_s2_assumptions" data-field="s2_assumptions" rows="6" placeholder="Identify assumptions required due to missing facts (use the Five A’s as helpful)."></textarea>
+          </div>
+
+          <h3 class="h-with-info substep-heading">
+            3. Analyze most likely and most dangerous threat to mission success
+            <span class="tooltip-wrap">
+              <button type="button" class="info-icon" aria-label="Show guidance on threats to mission success" aria-describedby="tip-threats">
+                i
+              </button>
+              <span role="tooltip" id="tip-threats" class="tooltip">
+                In AFPP, Airmen should consider the most likely and most dangerous threat that could prevent mission success and reaching the desired system. The threats should relate to the identified problem requiring action to move the observed system to the desired system. Airmen should consider the most likely and most dangerous threat to mission success during tabletop exercises in COA analysis and wargaming. Joint staffs at the operational level may focus on the most likely and most dangerous adversary COAs.
+              </span>
+            </span>
+          </h3>
+          <p><strong>Your Task:</strong> Use critical thinking to answer the below questions:</p>
+          <ol class="doc-list">
+            <li>What is the most likely problem I will face? (The thing that will probably happen).</li>
+            <li>What is the most dangerous problem I could face? (The worst-case scenario, even if it's not likely).</li>
+          </ol>
+          <div class="form-group">
+            <label for="f_s2_threats">Threats to mission success</label>
+            <textarea id="f_s2_threats" data-field="s2_threats" rows="4" placeholder="Describe the most likely and most dangerous threats to success."></textarea>
+          </div>
+
+          <h3 class="h-with-info substep-heading">
+            4. Determine constraints and restraints
+            <span class="tooltip-wrap">
+              <button type="button" class="info-icon" aria-label="Show definition of constraints and restraints" aria-describedby="tip-constraints">
+                i
+              </button>
+              <span role="tooltip" id="tip-constraints" class="tooltip">
+                Determine Operational Limitations (Constraints and Restraints). Constraints and restraints are actions required or prohibited by higher authority that limit the commander’s freedom of action. Additionally, a constraint and/or restraint can be a restriction imposed by conditions and circumstances. Restraints are HHQ requirements placed on the command that prohibit action. An example of a restraint is a prohibition from conducting a movement to a specific location (e.g., a bordering nation). Constraints are HHQ requirements placed on the command that dictates action.
+              </span>
+            </span>
+          </h3>
+          <p><strong>Your Task:</strong> Using your tools gathered in step 1 (i.e. AFIs, regulations, OIs etc) take time to identify any restraints and constraints you will have with your problem that may effect your COAs.</p>
+          <ul class="doc-list">
+            <li><strong>A Restraint</strong> is a “DON'T” rule. It prohibits you from doing something. Example: “Whatever you do, don't contact the client directly.”</li>
+            <li><strong>A Constraint</strong> is a “MUST DO” rule. It requires you to do something. Example: “You must finish this report by Friday.”</li>
+          </ul>
+          <div class="form-group">
+            <label for="f_s2_constraints">Constraints and restraints</label>
+            <textarea id="f_s2_constraints" data-field="s2_constraints" rows="4" placeholder="List constraints (must-do) and restraints (must-not-do) that apply."></textarea>
+          </div>
+
+          <h3 class="substep-heading">5. Analyze friendly/adversary COGs and critical factors</h3>
+          <p>(Add any COGs and critical factors identified for your specific problem set.)</p>
+
+          <h3 class="h-with-info substep-heading">
+            6. Identify Specified, Implied, and Essential Tasks
+            <span class="tooltip-wrap">
+              <button type="button" class="info-icon" aria-label="Show definition of specified, implied, and essential tasks" aria-describedby="tip-tasks">
+                i
+              </button>
+              <span role="tooltip" id="tip-tasks" class="tooltip">
+                Identify Specified, Implied, and Essential Tasks. Specified tasks are assigned to the commander verbally or in writing by the HHQ. Specified tasks often become essential tasks. Implied tasks are tasks that are revealed by mission analysis but not explicitly stated by HHQ guidance. Implied tasks may NOT be essential to mission accomplishment but should be identified to inform further planning. Determining the essential tasks from the specified and implied tasks ensures planners can develop an accurate mission statement and approach.
+              </span>
+            </span>
+          </h3>
+          <p><strong>Your Task:</strong> Unique to your selected problem, identify the Specified, Implied, and Essential tasks you will have to do in order for mission success.</p>
+          <p><strong>Guidance</strong></p>
+          <ul class="doc-list">
+            <li><strong>Specified Tasks (Direct Orders)</strong>: Example: “Deliver 5,000 lbs medical supplies and 10,000 lbs MREs to Drop Zone Phoenix by 0600Z” and “Avoid civilian casualties.”</li>
+            <li><strong>Implied Tasks (Things You Figure Out)</strong>: Example: “Coordinate flight path with aircrew,” “Check weather forecasts,” and “Secure C-17 aircraft and loadmasters.”</li>
+            <li><strong>Essential Tasks (Must-Do's for Success)</strong>: Example: “Loading correct aid onto aircraft” and “Successfully dropping aid over Phoenix without incident.”</li>
+          </ul>
+          <div class="form-group">
+            <label for="f_s2_tasks">Specified / implied / essential tasks</label>
+            <textarea id="f_s2_tasks" data-field="s2_tasks" rows="6" placeholder="List your specified, implied, and essential tasks for this problem."></textarea>
+          </div>
+
+          <h3 class="h-with-info substep-heading">
+            7. Identify Root Causes (Not Symptoms)
+            <span class="tooltip-wrap">
+              <button type="button" class="info-icon" aria-label="Show definition of root cause" aria-describedby="tip-root">
+                i
+              </button>
+              <span role="tooltip" id="tip-root" class="tooltip">
+                Root cause: The fundamental underlying reason or factor that is driving the problem, essentially the most critical aspect that needs to be addressed to solve the issue. Teams discuss lines of effort (subordinate problem sets) to address the root cause utilizing the “5 Why Analysis” method by asking “Why” as many times as needed (minimum 5) to identify the root cause of the initial problem statement.
+              </span>
+            </span>
+          </h3>
+          <p><strong>Your Task:</strong> Find the root cause to your problem asking “why” at least 3 to 5 times.</p>
+          <ul class="doc-list">
+            <li>Ask “why?” repeatedly (at least 3–5 layers deep)</li>
+            <li>Look for:</li>
+            <li>
+              <ul class="doc-list">
+                <li>Process issues</li>
+                <li>Leadership issues</li>
+                <li>Resource mismatches</li>
+                <li>Cultural factors</li>
+              </ul>
+            </li>
+          </ul>
+          <p><em>(AFDP Translation: You are identifying the true problem to solve, not just surface-level effects.)</em></p>
+          <div class="form-group">
+            <label for="f_s2_root">Root causes</label>
+            <textarea id="f_s2_root" data-field="s2_root" rows="5" placeholder="Document your 3–5 why analysis and the root cause(s)."></textarea>
+          </div>
+
+          <h3 class="h-with-info substep-heading">
+            8. Develop Risk Assessment
+            <span class="tooltip-wrap">
+              <button type="button" class="info-icon" aria-label="Show definition of commander’s risk assessment" aria-describedby="tip-risk">
+                i
+              </button>
+              <span role="tooltip" id="tip-risk" class="tooltip">
+                Develop Commander’s Risk Assessment. A risk assessment should be conducted at all levels of command. There are two categories of military risk: risk-to-force (RF) and risk-to-mission (RM). RF is the probability and consequence of current and contingency events causing harm to the provisioning and sustainment of sufficient military resources. RM is the probability and consequence of current and contingency events causing harm to current or future military objectives.
+              </span>
+            </span>
+          </h3>
+          <p><strong>Your Task:</strong> Following the Joint Risk Analysis Methodology (JRAM) create a Risk Assessment Plan for your problem.</p>
+          <p><strong>Objective:</strong> Identify the biggest threats to success and create a clear plan to handle them.</p>
+          <p><strong>Instructions:</strong> Complete the following four pillars for your specific problem.</p>
+          <div class="pillar-block pillar-1">
+            <h3 class="pillar-heading">Pillar 1: Problem Framing (What's at Stake?)</h3>
+            <p>Before you can manage risk, you must be crystal clear about what you're trying to protect.</p>
+            <ul class="doc-list">
+              <li>What is your main goal? (What does success look like?)</li>
+              <li>“Risk to what?” What is the most important thing that could be harmed if you fail?</li>
+              <li>Context: time (short-term vs long-term) and connections (how others affect the problem / how the problem affects others).</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_s2_risk_p1">Pillar 1 response</label>
+              <textarea id="f_s2_risk_p1" data-field="s2_risk_p1" rows="4" placeholder="Answer Pillar 1: goal, what’s at stake, and relevant context."></textarea>
+            </div>
+          </div>
+
+          <div class="pillar-block pillar-2">
+            <h3 class="pillar-heading">Pillar 2: Risk Assessment (What Could Go Wrong and Why?)</h3>
+            <p>Identify the specific “harmful events” that could threaten your goal.</p>
+
+            <h3>1. List Potential Harmful Events</h3>
+            <p>Brainstorm at least 3–5 specific bad things that could happen.</p>
+            <div class="form-group">
+              <label for="f_s2_risk_he1">Harmful Event 1</label>
+              <input type="text" id="f_s2_risk_he1" data-field="s2_risk_he1" placeholder="Enter Harmful Event 1">
+            </div>
+            <div class="form-group">
+              <label for="f_s2_risk_he2">Harmful Event 2</label>
+              <input type="text" id="f_s2_risk_he2" data-field="s2_risk_he2" placeholder="Enter Harmful Event 2">
+            </div>
+            <div class="form-group">
+              <label for="f_s2_risk_he3">Harmful Event 3</label>
+              <input type="text" id="f_s2_risk_he3" data-field="s2_risk_he3" placeholder="Enter Harmful Event 3">
+            </div>
+
+            <h3>2. Analyze Each Harmful Event</h3>
+            <p>For each event you listed, break it down:</p>
+            <ul class="doc-list">
+              <li><strong>Source:</strong> Who or what could cause this harm? (e.g., another person, a technical issue, a scheduling conflict, a simple mistake).</li>
+              <li><strong>Likelihood:</strong> How likely is this event to happen? (Low, Medium, High)</li>
+              <li><strong>Impact:</strong> If it happens, how bad will the consequences be? (Low, Medium, High)</li>
+            </ul>
+
+            <figure class="doc-figure">
+              <img
+                class="doc-image"
+                src="static/pillar%202%20step%202.png"
+                alt="Pillar 2 risk assessment reference: probability scale (very unlikely to very likely)"
+              />
+            </figure>
+
+            <p><strong>Example:</strong></p>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>Harmful Event</th>
+                  <th>Source of Risk</th>
+                  <th>Likelihood (L/M/H)</th>
+                  <th>Impact (L/M/H)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Example: I miss my project deadline.</td>
+                  <td>My own poor time management.</td>
+                  <td>High</td>
+                  <td>High</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="form-group">
+              <label for="f_s2_risk_p2">Pillar 2 response</label>
+              <textarea id="f_s2_risk_p2" data-field="s2_risk_p2" rows="5" placeholder="Answer Pillar 2: harmful events + source/likelihood/impact."></textarea>
+            </div>
+          </div>
+
+          <div class="pillar-block pillar-3">
+            <h3 class="pillar-heading">Pillar 3: Judge the Risk (Is This Acceptable?)</h3>
+            <p>Now, characterize the overall risk level for your top threats.</p>
+            <h3>1. Plot Your Risks</h3>
+            <p>Using your answers from Step 2, place your top 1–3 risks on the chart below.</p>
+            <ul class="doc-list">
+              <li>A High Likelihood / High Impact event is a HIGH risk.</li>
+              <li>A Low Likelihood / Low Impact event is a LOW risk.</li>
+            </ul>
+            <p><em>(Chart will be added later.)</em></p>
+
+            <h3>2. Evaluate</h3>
+            <p>Look at where your risks landed. Are they in the Low, Moderate, Significant, or High zones?</p>
+            <ul class="doc-list">
+              <li><strong>Unacceptable Risk:</strong> Any risk in the “Significant” or “High” zone needs a plan.</li>
+              <li><strong>Acceptable Risk:</strong> Risks in the “Low” zone might not need a special plan.</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_s2_risk_p3">Pillar 3 response</label>
+              <textarea id="f_s2_risk_p3" data-field="s2_risk_p3" rows="4" placeholder="Answer Pillar 3: overall risk level and which risks are unacceptable."></textarea>
+            </div>
+
+            <figure class="doc-figure">
+              <img
+                class="doc-image"
+                src="static/pillar%203%20step%202.png"
+                alt="Pillar 3 risk chart reference: consequence vs probability with low/moderate/significant/high risk zones"
+              />
+            </figure>
+          </div>
+
+          <div class="pillar-block pillar-4">
+            <h3 class="pillar-heading">Pillar 4: Manage the Risk (What Are You Going to Do?)</h3>
+            <p>For each “Unacceptable” risk you identified, choose a specific management strategy. You can't choose “do nothing.”</p>
+            <ul class="doc-list">
+              <li><strong>(1) Accept.</strong> Make an informed decision to act without conducting risk mitigation efforts.</li>
+              <li><strong>(2) Avoid.</strong> Forgo the activity that would produce unacceptable risk or remove the item of value that could be damaged due to unacceptable risk.</li>
+              <li><strong>(3) Mitigate.</strong> Implement measures that decrease the probability or consequence of harm across time horizons.</li>
+              <li><strong>(4) Transfer.</strong> Take action to change when and where the risk is incurred and potentially who or what incurs it.</li>
+            </ul>
+
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>Unacceptable Risk</th>
+                  <th>My Management Plan (Choose one: Avoid, Mitigate, Transfer)</th>
+                  <th>My Specific Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Example: Missing deadline due to poor time management.</td>
+                  <td>Mitigate</td>
+                  <td>I will create a detailed daily schedule and set calendar reminders for each sub-task.</td>
+                </tr>
+                <tr>
+                  <td>Example: My computer might crash.</td>
+                  <td>Mitigate</td>
+                  <td>I will back up all my work to a cloud drive at the end of each day.</td>
+                </tr>
+                <tr>
+                  <td>Example: Group member might not do their part.</td>
+                  <td>Avoid</td>
+                  <td>I will complete the most critical parts of the project myself to ensure they get done right.</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="form-group">
+              <label for="f_s2_risk_p4">Pillar 4 response</label>
+              <textarea id="f_s2_risk_p4" data-field="s2_risk_p4" rows="6" placeholder="Answer Pillar 4: risk decisions and specific management actions."></textarea>
+            </div>
+          </div>
+
+          <h3 class="h-with-info substep-heading">
+            9. Develop COA Evaluation Criteria
+            <span class="tooltip-wrap">
+              <button type="button" class="info-icon" aria-label="Show definition of COA evaluation criteria" aria-describedby="tip-coa-criteria">
+                i
+              </button>
+              <span role="tooltip" id="tip-coa-criteria" class="tooltip">
+                COA evaluation criteria are the measures used for developing and determining an acceptable COA. The commander should include these criteria in initial planning guidance and may be determined from the commander’s intent. Planners should seek to obtain COA evaluation criteria as early in the planning process as possible to inform planning efforts. They help determine supporting objectives, effects, tasks, and if or when to move to the next major operation or phase. These criteria also become the basis for assessment.
+              </span>
+            </span>
+          </h3>
+          <figure class="doc-figure">
+            <img
+              class="doc-image"
+              src="static/9%20develop%20COA%20evaluation%20criteria.png"
+              alt="COA evaluation criteria reference diagram (commander’s evaluation criteria)"
+            />
+          </figure>
+          <p><strong>Your Task:</strong> Decide what COA evaluation criteria you will use to guide your COAs effort, success, and justification for the recommended COA. You will use these criteria later in AFPP Step 5.</p>
+          <p><strong>Guide:</strong></p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>This Defines Your Criterion For...</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1. In one sentence, what is the single most important thing this mission must accomplish?</td>
+                <td>Effectiveness / Mission Accomplishment</td>
+              </tr>
+              <tr>
+                <td>2. If we are 100% successful, what does the situation on the ground look like after we are done?</td>
+                <td>Decisiveness / Desired End State</td>
+              </tr>
+              <tr>
+                <td>3. What is the commander's number one priority? Conversely, what is the one thing that absolutely cannot fail?</td>
+                <td>Criticality / Task Prioritization (and helps with weighting)</td>
+              </tr>
+              <tr>
+                <td>4. What lasting effect must we create in the operating environment?</td>
+                <td>Sustainability / Long-Term Impact</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="form-group">
+            <label for="f_s2_criteria">COA evaluation criteria</label>
+            <textarea id="f_s2_criteria" data-field="s2_criteria" rows="4" placeholder="List your criteria and (optionally) how you will weight them."></textarea>
+          </div>
+
+          <h3 class="h-with-info substep-heading">
+            10. Determine Initial CCIRs
+            <span class="tooltip-wrap">
+              <button type="button" class="info-icon" aria-label="Show definition of CCIRs" aria-describedby="tip-ccirs">
+                i
+              </button>
+              <span role="tooltip" id="tip-ccirs" class="tooltip">
+                Determine Initial Commander’s Critical Information Requirements. CCIRs are elements of information the commander identifies as being critical to facilitate timely decision-making. CCIRs belong exclusively to the commander and are not static. Commanders refine and update both decision points and associated CCIRs throughout the operation. CCIRs are identified when using the JPP, JPPA, and AFPP. When developing CCIRs at subcomponent commands, focus on decision points related to the air component approach. CCIRs should also be coordinated with the commander’s servicing judge.
+              </span>
+            </span>
+          </h3>
+          <p><strong>Your Task:</strong> Determine what critical information requirements (decision points) you may encounter during your planning process. Identifying these early in the planning process can better prepare you to handle them if and when they arise.</p>
+          <p><strong>Example:</strong> Imagine planning a family road trip.</p>
+          <p><strong>Your “Must-Knows” (CCIRs)</strong></p>
+          <p>
+            Your “Commander’s Critical Information Requirements” are simply the most crucial questions you need answered to make timely decisions during your trip.
+            They are your specific needs, and they evolve.
+          </p>
+          <p><strong>Example:</strong> “Do we have enough gas to reach the next town?”</p>
+          <p><strong>Getting the Answers</strong></p>
+          <p>These “Must-Knows” break down into categories:</p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Military Term</th>
+                <th>What You Need to Know</th>
+                <th>Road Trip Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Priority Intelligence Requirements (PIRs)</td>
+                <td>About the outside world (e.g., weather, traffic).</td>
+                <td>“Is there a storm coming on our route?”</td>
+              </tr>
+              <tr>
+                <td>Friendly force information requirements (FIRs)</td>
+                <td>About your own resources (e.g., family well-being, car status).</td>
+                <td>“Are the kids getting restless?”</td>
+              </tr>
+              <tr>
+                <td>Essentials elements of information (EEIs)</td>
+                <td>Specific questions to answer your PIRs/FFIRs.</td>
+                <td>“What’s the exact temperature for tomorrow’s forecast?”</td>
+              </tr>
+              <tr>
+                <td>Requests for Information (RFIs)</td>
+                <td>Actively seeking these answers.</td>
+                <td>Checking the weather app or asking your family.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p><strong>Decision Points</strong></p>
+          <p>
+            These are moments when you know you'll have to make a choice. By thinking about your “Must-Knows” in advance, you'll be ready to make those calls,
+            like deciding whether to take a scenic detour or the fastest route.
+          </p>
+          <div class="form-group">
+            <label for="f_s2_ccirs">Initial CCIRs / decision points</label>
+            <textarea id="f_s2_ccirs" data-field="s2_ccirs" rows="4" placeholder="List decision points and the critical information required to make them."></textarea>
+          </div>
+
+          <h3 class="h-with-info substep-heading">
+            11. Develop Commander’s Intent Statement
+            <span class="tooltip-wrap">
+              <button type="button" class="info-icon" aria-label="Show definition of commander’s intent" aria-describedby="tip-intent">
+                i
+              </button>
+              <span role="tooltip" id="tip-intent" class="tooltip">
+                Develop Commander’s Intent Statement. The commander’s intent statement should articulate their vision of the mission’s purpose, end state, and risks. A well-framed intent statement provides subordinates with the ability to exercise disciplined initiative. Commanders are encouraged to write their own commander’s intent as it is pivotal to mission command. Commander’s intent may change based on the scope of the mission and with the planning process. The final intent statement is published in the order.
+              </span>
+            </span>
+          </h3>
+          <p>Articulate the mission’s purpose, end state, and risks. A well-framed intent enables disciplined initiative.</p>
+          <div class="form-group">
+            <label for="f_s2_intent">Commander’s intent</label>
+            <textarea id="f_s2_intent" data-field="s2_intent" rows="4" placeholder="Write purpose, end state, and key risks."></textarea>
+          </div>
+        </section>
+
+        <section class="step-panel hidden" data-step="5">
+          <h2>AFPP Step 3: COA Development</h2>
+          <p>
+            COAs should take into consideration the time available (time to plan), the most likely impact on the operational environment,
+            and the most dangerous impact on the operational environment. Distinguishability is typically the most challenging facet of developing
+            multiple COAs.
+          </p>
+          <h3>Your Task</h3>
+          <p>For your chosen problem, develop and present at least two distinct COA solutions and/or approaches.</p>
+          <h3 class="h-with-info">
+            1. Brainstorm COAs
+            <span class="tooltip-wrap">
+              <button type="button" class="info-icon" aria-label="Show definition of a COA" aria-describedby="tip-coa-brainstorm">
+                i
+              </button>
+              <span role="tooltip" id="tip-coa-brainstorm" class="tooltip">
+                A COA is a broad potential solution to an identified problem. COA brainstorming generates options for follow-on analysis and comparison that satisfy the commander’s intent and planning guidance. During COA brainstorming, planners use knowledge, skills, experience, creativity, judgment, and products developed during mission analysis to develop broad concepts.
+              </span>
+            </span>
+          </h3>
+          <p><strong>Your Task:</strong> Brainstorm ideas that can aid in solving the problem and record a few distinct options that you can expand on to attack the issue from different perspectives.</p>
+          <p>The goal is to come up with a few solid, distinct options. You don't choose the best one yet—you just want to have several good possibilities on the table that all achieve your main goal.</p>
+          <p>Below are some tips to help you in this process:</p>
+          <ul class="doc-list">
+            <li><strong>Knowledge</strong>: What you already know about the situation?</li>
+            <li><strong>Experience</strong>: “Last time we tried something like this, what happened?”</li>
+            <li><strong>Creativity</strong>: Coming up with new, out-of-the-box ideas. Try to think of some new ways the problem can be fixed or a process can improve.</li>
+            <li><strong>Judgment</strong>: Knowing a bad idea when you see one.</li>
+          </ul>
+          <p><strong>In short:</strong> A COA is a possible plan, and brainstorming them is the creative process of coming up with those different options.</p>
+          <h3 class="h-with-info">
+            2. Chart or Visualize COAs
+            <span class="tooltip-wrap">
+              <button type="button" class="info-icon" aria-label="Show purpose of charting COAs" aria-describedby="tip-coa-chart">
+                i
+              </button>
+              <span role="tooltip" id="tip-coa-chart" class="tooltip">
+                This step organizes and synchronizes COAs. Graphically depicting the COA in space and time allows the commander to visualize the COA and synchronize it with current operations and requirements. In some cases, a sketch or graphic may be useful.
+              </span>
+            </span>
+          </h3>
+          <p><strong>DEVELOPMENT STEP 2:</strong> CHART OR VISUALIZE COA(S)</p>
+          <ul class="doc-list">
+            <li>Analyze mission analysis data and develop an operational timeline.</li>
+            <li>
+              Translate specified and implied tasks into objectives using an effects-based approach by general phases.
+              <ul class="doc-list">
+                <li>
+                  Phases, such as “shaping” or “redeployment operations,” are used to achieve one or more major objectives. Transitioning to the next phase indicates a change in the emphasis, e.g., “stability ops” to “redeployment ops.” A single-minded focus on specific phases can help bind various facets of the problem to focus planners' ideas.
+                </li>
+              </ul>
+            </li>
+            <li>Identify the sequencing of the operation for each COA as appropriate.</li>
+            <li>Identify main and supporting efforts by phase.</li>
+          </ul>
+          <p><strong>Your Task:</strong> Develop and visualize your COAs following the example below.</p>
+          <p><strong>Example:</strong></p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Step</th>
+                <th>Key Actions</th>
+                <th>Example Application</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1. Analyze &amp; Plan</td>
+                <td>
+                  Analyze resources; set timeline.<br>
+                  Break into objectives by phase.
+                </td>
+                <td>
+                  $3k budget, 2 weeks in Oct, Japan.<br>
+                  Objectives: Book flights/hotels, secure documents, cultural immersion.
+                </td>
+              </tr>
+              <tr>
+                <td>2. Sequence &amp; Define</td>
+                <td>
+                  Sequence tasks for each phase.<br>
+                  Identify main/supporting efforts.
+                </td>
+                <td>
+                  Sequence: Research cities, estimate costs, draft itinerary.<br>
+                  Main: Book flights/hotels.<br>
+                  Supporting: Travel insurance, packing.
+                </td>
+              </tr>
+              <tr>
+                <td>3. Visualize &amp; Articulate</td>
+                <td>
+                  Create a visual plan.<br>
+                  Write a clear goal statement.
+                </td>
+                <td>
+                  Example: Use a spreadsheet for budget/itinerary.<br>
+                  Goal: “Japan, 2 weeks in Oct, $3k budget, Tokyo/Kyoto cultural immersion.”
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>3. Prepare COA Concept of Operations Statement and Task Organization</h3>
+          <p>(Use your visualized COAs to draft a clear CONOPS statement and any task organization needed to execute each COA.)</p>
+          <div class="form-group">
+            <label for="f_s3_coa1">COA 1</label>
+            <textarea id="f_s3_coa1" data-field="s3_coa1" rows="8" placeholder="Write your first distinct COA solution/approach."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="f_s3_coa2">COA 2</label>
+            <textarea id="f_s3_coa2" data-field="s3_coa2" rows="8" placeholder="Write your second distinct COA solution/approach."></textarea>
+          </div>
+
+          <h3>3. Validate or Refine Assumptions</h3>
+          <p>Which assumptions are:</p>
+          <ul class="doc-list">
+            <li>Confirmed?</li>
+            <li>False?</li>
+            <li>Still uncertain?</li>
+          </ul>
+        </section>
+
+        <section class="step-panel hidden" data-step="6">
+          <h2>Phases 2–7 (Full guidance)</h2>
+
+          <div class="phase-block phase-2">
+            <h3 class="phase-heading">Phase 2: Mission Analysis (continued)</h3>
+            <h3>4. Identify Constraints &amp; Limitations</h3>
+            <ul class="doc-list">
+              <li>What must you do? (constraints)</li>
+              <li>What must you NOT do? (restraints)</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_p67_p2_constraints">Your answer: Constraints &amp; restraints</label>
+              <textarea id="f_p67_p2_constraints" data-field="p67_p2_constraints" rows="4" placeholder="What must you do (constraints) and what must you NOT do (restraints)?"></textarea>
+            </div>
+
+            <h3>5. Define Success Criteria</h3>
+            <p>What does success look like measurably?</p>
+            <p><strong>Examples:</strong></p>
+            <ul class="doc-list">
+              <li>Reduced turnover by X%</li>
+              <li>Improved process time by X%</li>
+              <li>Increased satisfaction scores</li>
+            </ul>
+            <p><em>(AFDP Translation: This is your desired end state + objectives.)</em></p>
+            <div class="form-group">
+              <label for="f_p67_p2_success">Your answer: Success criteria</label>
+              <textarea id="f_p67_p2_success" data-field="p67_p2_success" rows="4" placeholder="Define measurable success criteria (targets, timelines, thresholds)."></textarea>
+            </div>
+
+            <h3>6. Draft a “Mission Statement”</h3>
+            <p>One sentence: Who + does what + why</p>
+            <p><strong>Example:</strong> “Improve squadron onboarding processes to increase retention and readiness within 6 months.”</p>
+            <div class="form-group">
+              <label for="f_p67_p2_mission">Your answer: Mission statement</label>
+              <textarea id="f_p67_p2_mission" data-field="p67_p2_mission" rows="3" placeholder="One sentence: Who + does what + why."></textarea>
+            </div>
+          </div>
+
+          <div class="phase-block phase-3">
+            <h3 class="phase-heading">Phase 3: Course of Action (COA) Development</h3>
+            <p><em>(AFPP: Create multiple viable solutions.)</em></p>
+            <p><strong>Your Task:</strong> Develop 2–3 distinct, feasible solutions.</p>
+            <h3>1. Develop 2–3 DISTINCT COAs</h3>
+            <ul class="doc-list">
+              <li>Each COA should be clearly different in approach (not minor variations).</li>
+            </ul>
+            <p><strong>Example:</strong></p>
+            <ul class="doc-list">
+              <li>COA 1: Process redesign</li>
+              <li>COA 2: Training-focused solution</li>
+              <li>COA 3: Structural/organizational change</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_p67_p3_coas">Your answer: 2–3 distinct COAs</label>
+              <textarea id="f_p67_p3_coas" data-field="p67_p3_coas" rows="5" placeholder="List your COA options (briefly describe each)."></textarea>
+            </div>
+
+            <h3>2. Ensure Each COA is:</h3>
+            <ul class="doc-list">
+              <li>Feasible (can actually be done)</li>
+              <li>Acceptable (fits constraints and culture)</li>
+              <li>Suitable (solves the root problem)</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_p67_p3_feas_accept_suit">Your answer: Feasible / acceptable / suitable</label>
+              <textarea id="f_p67_p3_feas_accept_suit" data-field="p67_p3_feas_accept_suit" rows="4" placeholder="Explain how each COA is feasible, acceptable, and suitable."></textarea>
+            </div>
+
+            <h3>3. Outline for Each COA:</h3>
+            <ul class="doc-list">
+              <li>What actions will be taken?</li>
+              <li>Who is responsible?</li>
+              <li>Required resources</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_p67_p3_outline">Your answer: COA outline</label>
+              <textarea id="f_p67_p3_outline" data-field="p67_p3_outline" rows="5" placeholder="For each COA: actions, responsibilities, and required resources."></textarea>
+            </div>
+
+            <h3>4. Identify Pros/Cons</h3>
+            <ul class="doc-list">
+              <li>Strengths</li>
+              <li>Weaknesses</li>
+              <li>Tradeoffs</li>
+            </ul>
+            <p><em>(AFDP 5.0 Translation: You are developing options for the commander to decide.)</em></p>
+            <div class="form-group">
+              <label for="f_p67_p3_pros_cons">Your answer: Pros / cons / tradeoffs</label>
+              <textarea id="f_p67_p3_pros_cons" data-field="p67_p3_pros_cons" rows="4" placeholder="Summarize strengths, weaknesses, and tradeoffs for each COA."></textarea>
+            </div>
+          </div>
+
+          <div class="phase-block phase-4">
+            <h3 class="phase-heading">Phase 4: COA Analysis (Wargaming)</h3>
+            <p><em>(AFPP: Test your solutions against reality.)</em></p>
+            <p><strong>Your Task:</strong> Assess risks, second-order effects, scenarios.</p>
+            <h3>1. Walk Through Each COA Step-by-Step</h3>
+            <ul class="doc-list">
+              <li>What happens first?</li>
+              <li>Then what?</li>
+              <li>Then what?</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_p67_p4_walkthrough">Your answer: Walkthrough (step-by-step)</label>
+              <textarea id="f_p67_p4_walkthrough" data-field="p67_p4_walkthrough" rows="5" placeholder="For each COA, walk through what happens first, then next, then next."></textarea>
+            </div>
+            <h3>2. Identify Risks</h3>
+            <ul class="doc-list">
+              <li>What could go wrong?</li>
+              <li>What assumptions might fail?</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_p67_p4_risks">Your answer: Risks &amp; failing assumptions</label>
+              <textarea id="f_p67_p4_risks" data-field="p67_p4_risks" rows="4" placeholder="What could go wrong? Which assumptions might fail?"></textarea>
+            </div>
+            <h3>3. Consider Second-Order Effects</h3>
+            <ul class="doc-list">
+              <li>What unintended consequences might occur?</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_p67_p4_second_order">Your answer: Second-order effects</label>
+              <textarea id="f_p67_p4_second_order" data-field="p67_p4_second_order" rows="4" placeholder="What unintended consequences might occur?"></textarea>
+            </div>
+            <p><strong>Examples:</strong></p>
+            <ul class="doc-list">
+              <li>Fixing one problem creates another</li>
+              <li>Increased workload elsewhere</li>
+              <li>Cultural resistance</li>
+            </ul>
+            <h3>4. Consider “Most Likely” and “Most Challenging” Scenarios</h3>
+            <ul class="doc-list">
+              <li>If everything goes normally → what happens?</li>
+              <li>If things go poorly → what happens?</li>
+            </ul>
+            <p><em>(AFDP 5.0 Translation: This is simplified wargaming—thinking through action-reaction-counteraction.)</em></p>
+            <div class="form-group">
+              <label for="f_p67_p4_scenarios">Your answer: Most likely vs most challenging</label>
+              <textarea id="f_p67_p4_scenarios" data-field="p67_p4_scenarios" rows="4" placeholder="Describe likely scenario outcomes and challenging scenario outcomes."></textarea>
+            </div>
+          </div>
+
+          <div class="phase-block phase-5">
+            <h3 class="phase-heading">Phase 5: COA Comparison</h3>
+            <p><em>(AFPP: Objectively compare your options.)</em></p>
+            <p><strong>Your Task:</strong> Compare using effectiveness, feasibility, risk.</p>
+            <h3>1. Establish Criteria</h3>
+            <p><strong>Common criteria:</strong></p>
+            <ul class="doc-list">
+              <li>Effectiveness (does it solve the problem?)</li>
+              <li>Feasibility (can we do it?)</li>
+              <li>Risk (what could go wrong?)</li>
+              <li>Cost (time, people, money)</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_p67_p5_criteria">Your answer: Criteria</label>
+              <textarea id="f_p67_p5_criteria" data-field="p67_p5_criteria" rows="4" placeholder="List the criteria you'll use (effectiveness, feasibility, risk, cost, etc.)."></textarea>
+            </div>
+            <h3>2. Compare COAs Side-by-Side</h3>
+            <ul class="doc-list">
+              <li>Use a simple table or matrix</li>
+              <li>Be consistent across all COAs</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_p67_p5_comparison">Your answer: Side-by-side comparison</label>
+              <textarea id="f_p67_p5_comparison" data-field="p67_p5_comparison" rows="5" placeholder="Compare COAs using your criteria (brief matrix-style notes are fine)."></textarea>
+            </div>
+            <h3>3. Identify Tradeoffs</h3>
+            <ul class="doc-list">
+              <li>No perfect solution exists</li>
+              <li>Be explicit about what you are sacrificing</li>
+            </ul>
+            <p><em>(AFDP Translation: You are helping a decision-maker choose the best—not perfect—option.)</em></p>
+            <div class="form-group">
+              <label for="f_p67_p5_tradeoffs">Your answer: Tradeoffs</label>
+              <textarea id="f_p67_p5_tradeoffs" data-field="p67_p5_tradeoffs" rows="4" placeholder="What are you gaining and sacrificing with each COA?"></textarea>
+            </div>
+          </div>
+
+          <div class="phase-block phase-6">
+            <h3 class="phase-heading">Phase 6: Recommendation</h3>
+            <p><em>(AFPP: Make a decision and justify it.)</em></p>
+            <p><strong>Student Task:</strong> Select best COA and justify.</p>
+            <h3>1. Select ONE COA</h3>
+            <ul class="doc-list">
+              <li>Don’t hedge—commit to a decision</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_p67_p6_select">Your answer: Select one COA</label>
+              <textarea id="f_p67_p6_select" data-field="p67_p6_select" rows="3" placeholder="State which COA you are selecting and why."></textarea>
+            </div>
+            <h3>2. Justify Your Decision</h3>
+            <ul class="doc-list">
+              <li>Why this COA over others?</li>
+              <li>What tradeoffs are you accepting?</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_p67_p6_justify">Your answer: Justification</label>
+              <textarea id="f_p67_p6_justify" data-field="p67_p6_justify" rows="4" placeholder="Justify your decision; note key tradeoffs accepted."></textarea>
+            </div>
+            <h3>3. Address Risk</h3>
+            <ul class="doc-list">
+              <li>What risks remain?</li>
+              <li>How will you mitigate them?</li>
+            </ul>
+            <p><em>(AFDP 5.0 Translation: This is your commander’s decision point.)</em></p>
+            <div class="form-group">
+              <label for="f_p67_p6_risk">Your answer: Remaining risks &amp; mitigation</label>
+              <textarea id="f_p67_p6_risk" data-field="p67_p6_risk" rows="4" placeholder="What risks remain and how will you mitigate them?"></textarea>
+            </div>
+          </div>
+
+          <div class="phase-block phase-7">
+            <h3 class="phase-heading">Phase 7: Implementation</h3>
+            <p><em>(AFPP: Turn the plan into action.)</em></p>
+            <p><strong>Your Task:</strong> Execution, communication, and assessment.</p>
+            <h3>1. Execution Plan</h3>
+            <ul class="doc-list">
+              <li>Who does what?</li>
+              <li>Timeline (phases, milestones)</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_p67_p7_execution">Your answer: Execution plan</label>
+              <textarea id="f_p67_p7_execution" data-field="p67_p7_execution" rows="4" placeholder="Who does what, and on what timeline (phases/milestones)?"></textarea>
+            </div>
+            <h3>2. Communication Plan</h3>
+            <ul class="doc-list">
+              <li>Who needs to know?</li>
+              <li>What do they need to understand?</li>
+              <li>How will you gain buy-in?</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_p67_p7_comm">Your answer: Communication plan</label>
+              <textarea id="f_p67_p7_comm" data-field="p67_p7_comm" rows="4" placeholder="Who needs to know what, and how will you gain buy-in?"></textarea>
+            </div>
+            <h3>3. Assessment Plan</h3>
+            <ul class="doc-list">
+              <li>How will you measure success?</li>
+              <li>What indicators show progress or failure?</li>
+            </ul>
+            <div class="form-group">
+              <label for="f_p67_p7_assess">Your answer: Assessment plan</label>
+              <textarea id="f_p67_p7_assess" data-field="p67_p7_assess" rows="4" placeholder="How will you measure success? What indicators show progress or failure?"></textarea>
+            </div>
+            <h3>4. Adaptation Plan</h3>
+            <ul class="doc-list">
+              <li>What will you do if the plan isn’t working?</li>
+            </ul>
+            <p><em>(AFDP Translation: This aligns with plans/orders development + transition to execution and assessment.)</em></p>
+            <div class="form-group">
+              <label for="f_p67_p7_adapt">Your answer: Adaptation plan</label>
+              <textarea id="f_p67_p7_adapt" data-field="p67_p7_adapt" rows="4" placeholder="What will you do if the plan isn’t working?"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="step-panel hidden" data-step="7">
+          <h2>Graded Example 1 (The Perfect One)</h2>
+          <p><strong>Problem:</strong> Declining participation and engagement in squadron professional development (PD) sessions</p>
+
+          <div class="phase-block ex-phase-1">
+            <h3 class="phase-heading">Phase 1: Planning Initiation (Outstanding)</h3>
+            <h3>Problem Framing</h3>
+            <ul class="doc-list">
+              <li><strong>Current State</strong>: Average attendance at PD sessions is ~30%, with low participation and minimal engagement</li>
+              <li><strong>Desired State</strong>: ≥80% attendance with active participation and demonstrated learning</li>
+              <li><strong>Gap</strong>: Squadron members do not perceive PD as relevant, valuable, or worth their time</li>
+            </ul>
+            <h3>Stakeholders</h3>
+            <ul class="doc-list">
+              <li>Squadron leadership (Commander, DO)</li>
+              <li>Flight commanders/supervisors</li>
+              <li>Junior officers and enlisted personnel</li>
+              <li>Instructors/facilitators</li>
+            </ul>
+            <h3>Assumptions</h3>
+            <ul class="doc-list">
+              <li>PD content is not aligned with audience needs</li>
+              <li>Supervisors are not reinforcing attendance</li>
+              <li>Competing priorities reduce perceived value</li>
+            </ul>
+          </div>
+
+          <div class="phase-block ex-phase-2">
+            <h3 class="phase-heading">Phase 2: Mission Analysis (Outstanding)</h3>
+            <h3>Root Causes (Validated)</h3>
+            <ol class="doc-list">
+              <li>Content Misalignment → Topics not tied to real problems Airmen face</li>
+              <li>Leadership Reinforcement Gap → Supervisors do not prioritize or model attendance</li>
+              <li>Ineffective Delivery Methods → Lecture-heavy, low interaction formats</li>
+              <li>Competing Priorities → PD seen as lowest priority task</li>
+            </ol>
+            <h3>Constraints</h3>
+            <ul class="doc-list">
+              <li>No additional training days authorized</li>
+              <li>Limited funding</li>
+              <li>Must occur during duty hours</li>
+            </ul>
+            <h3>Success Criteria</h3>
+            <ul class="doc-list">
+              <li>≥80% attendance within 3 months</li>
+              <li>≥20% increase in engagement scores (survey-based)</li>
+              <li>Observable increase in participation (discussion/activity rates)</li>
+            </ul>
+            <h3>Mission Statement</h3>
+            <p>Redesign squadron PD to increase participation and engagement by delivering relevant, interactive sessions aligned with mission and Airmen needs within 90 days.</p>
+          </div>
+
+          <div class="phase-block ex-phase-3">
+            <h3 class="phase-heading">Phase 3: COA Development (Outstanding)</h3>
+            <h3>COA 1: Content Redesign Only</h3>
+            <ul class="doc-list">
+              <li>Survey squadron → tailor topics</li>
+              <li>Align sessions to real-world problems</li>
+              <li>Maintain current delivery format</li>
+            </ul>
+            <h3>COA 2: Delivery Transformation</h3>
+            <ul class="doc-list">
+              <li>Shift to interactive formats (case studies, discussions, scenarios)</li>
+              <li>Train facilitators</li>
+              <li>Keep existing topics</li>
+            </ul>
+            <h3>COA 3: Integrated Approach (Content + Delivery + Leadership)</h3>
+            <ul class="doc-list">
+              <li>Align topics to real issues (bottom-up input)</li>
+              <li>Shift to interactive, problem-based sessions</li>
+              <li>Require supervisor-led follow-ups</li>
+              <li>Commander communicates priority and intent</li>
+            </ul>
+            <p><strong>Why Outstanding:</strong> Clearly distinct approaches (content vs delivery vs system-level change)</p>
+          </div>
+
+          <div class="phase-block ex-phase-4">
+            <h3 class="phase-heading">Phase 4: COA Analysis (Outstanding)</h3>
+            <h3>COA 3 Analysis (Example depth)</h3>
+            <h3>Most Likely Scenario</h3>
+            <ul class="doc-list">
+              <li>Increased attendance due to leadership emphasis</li>
+              <li>Improved engagement due to relevance and format</li>
+            </ul>
+            <h3>Most Challenging Scenario</h3>
+            <ul class="doc-list">
+              <li>Supervisors fail to enforce follow-through</li>
+              <li>Cultural resistance to new format</li>
+            </ul>
+            <h3>Risks</h3>
+            <ul class="doc-list">
+              <li>Time burden on facilitators</li>
+              <li>Inconsistent execution across flights</li>
+            </ul>
+            <h3>Second-Order Effects</h3>
+            <ul class="doc-list">
+              <li><strong>Positive</strong>: Improved unit cohesion and shared understanding</li>
+              <li><strong>Negative</strong>: Potential burnout if not paced correctly</li>
+            </ul>
+            <h3>Mitigation</h3>
+            <ul class="doc-list">
+              <li>Provide facilitator guides/templates</li>
+              <li>Phase implementation (pilot → scale)</li>
+            </ul>
+          </div>
+
+          <div class="phase-block ex-phase-5">
+            <h3 class="phase-heading">Phase 5: COA Comparison (Outstanding)</h3>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>Criteria</th>
+                  <th>COA 1</th>
+                  <th>COA 2</th>
+                  <th>COA 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Effectiveness</td>
+                  <td>Medium</td>
+                  <td>Medium</td>
+                  <td>High</td>
+                </tr>
+                <tr>
+                  <td>Feasibility</td>
+                  <td>High</td>
+                  <td>Medium</td>
+                  <td>Medium</td>
+                </tr>
+                <tr>
+                  <td>Risk</td>
+                  <td>Low</td>
+                  <td>Medium</td>
+                  <td>Medium</td>
+                </tr>
+                <tr>
+                  <td>Sustainability</td>
+                  <td>Low</td>
+                  <td>Medium</td>
+                  <td>High</td>
+                </tr>
+              </tbody>
+            </table>
+            <h3>Insight</h3>
+            <ul class="doc-list">
+              <li>COA 1 is easy but insufficient</li>
+              <li>COA 2 improves engagement but not relevance</li>
+              <li>COA 3 addresses root causes holistically</li>
+            </ul>
+          </div>
+
+          <div class="phase-block ex-phase-6">
+            <h3 class="phase-heading">Phase 6: Recommendation (Outstanding)</h3>
+            <p>Recommend COA 3 (Integrated Approach) because it directly addresses all identified root causes—content relevance, delivery effectiveness, and leadership reinforcement. While it introduces moderate implementation risk, these risks are mitigated through phased rollout and facilitator support. The expected long-term gains in engagement and mission alignment outweigh the short-term complexity.</p>
+          </div>
+
+          <div class="phase-block ex-phase-7">
+            <h3 class="phase-heading">Phase 7: Implementation (Outstanding)</h3>
+            <h3>Execution Plan</h3>
+            <ul class="doc-list">
+              <li>Phase 1 (30 days): Survey + pilot redesigned sessions</li>
+              <li>Phase 2 (60 days): Train facilitators + scale implementation</li>
+              <li>Phase 3 (90 days): Full adoption</li>
+            </ul>
+            <h3>Communication Plan</h3>
+            <ul class="doc-list">
+              <li>Commander kickoff message (intent + importance)</li>
+              <li>Supervisor talking points</li>
+              <li>Feedback loop after each session</li>
+            </ul>
+            <h3>Assessment Plan</h3>
+            <ul class="doc-list">
+              <li>Attendance tracking</li>
+              <li>Engagement surveys</li>
+              <li>Facilitator feedback</li>
+            </ul>
+            <h3>Adaptation Plan</h3>
+            <ul class="doc-list">
+              <li>If attendance &lt;60% after 30 days → adjust scheduling/content</li>
+              <li>If engagement low → revise facilitation methods</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="step-panel hidden" data-step="8">
+          <h2>Graded Example 2 (Some errors)</h2>
+          <p><strong>Problem:</strong> High turnover among junior personnel in a support squadron</p>
+
+          <div class="phase-block ex-phase-1">
+            <h3 class="phase-heading">Phase 1: Planning Initiation (Score: 4)</h3>
+            <h3>Student Response (Excerpt)</h3>
+            <ul class="doc-list">
+              <li><strong>Current State</strong>: 35% annual turnover among E-3 to E-5 personnel</li>
+              <li><strong>Desired State</strong>: Stable workforce with &lt;15% turnover</li>
+              <li><strong>Assumptions</strong>:</li>
+              <li>
+                <ul class="doc-list">
+                  <li>Turnover is influenced by leadership climate and workload</li>
+                  <li>Exit surveys are accurate indicators</li>
+                </ul>
+              </li>
+              <li><strong>Stakeholders</strong>: Airmen, supervisors, commander, MPF, training office</li>
+            </ul>
+            <h3>Why this scored a 4</h3>
+            <ul class="doc-list">
+              <li>Clear problem framing as a gap</li>
+              <li>Identifies system, stakeholders, and assumptions</li>
+            </ul>
+          </div>
+
+          <div class="phase-block ex-phase-2">
+            <h3 class="phase-heading">Phase 2: Mission Analysis (Score: 4)</h3>
+            <h3>Student Response (Excerpt)</h3>
+            <ul class="doc-list">
+              <li><strong>Root Causes</strong>:</li>
+              <li>
+                <ul class="doc-list">
+                  <li>Inconsistent onboarding processes</li>
+                  <li>High workload with unclear priorities</li>
+                  <li>Lack of supervisor training</li>
+                </ul>
+              </li>
+              <li><strong>Constraints</strong>:</li>
+              <li>
+                <ul class="doc-list">
+                  <li>No increase in manpower authorized</li>
+                  <li>Limited budget for training</li>
+                </ul>
+              </li>
+              <li><strong>Success Criteria</strong>:</li>
+              <li>
+                <ul class="doc-list">
+                  <li>Reduce turnover to 20% in 1 year</li>
+                  <li>Increase climate survey satisfaction by 15%</li>
+                </ul>
+              </li>
+            </ul>
+            <h3>Why this scored a 4</h3>
+            <ul class="doc-list">
+              <li>Distinguishes root causes vs. symptoms</li>
+              <li>Defines measurable success</li>
+            </ul>
+          </div>
+
+          <div class="phase-block ex-phase-3">
+            <h3 class="phase-heading">Phase 3: COA Development (Score: 3)</h3>
+            <h3>COAs</h3>
+            <ol class="doc-list">
+              <li>Standardized onboarding program</li>
+              <li>Supervisor training initiative</li>
+              <li>Combined onboarding + training approach</li>
+            </ol>
+            <h3>Why this scored a 3</h3>
+            <ul class="doc-list">
+              <li>Feasible, but COA 3 is just a combination—not fully distinct</li>
+            </ul>
+          </div>
+
+          <div class="phase-block ex-phase-4">
+            <h3 class="phase-heading">Phase 4: COA Analysis (Score: 3)</h3>
+            <h3>Student Response (Excerpt)</h3>
+            <ul class="doc-list">
+              <li><strong>Risks</strong>:</li>
+              <li>
+                <ul class="doc-list">
+                  <li>Resistance from supervisors</li>
+                  <li>Time burden for training</li>
+                </ul>
+              </li>
+              <li><strong>Second-order effects</strong>:</li>
+              <li>
+                <ul class="doc-list">
+                  <li>Improved morale may reduce workload complaints</li>
+                </ul>
+              </li>
+            </ul>
+            <h3>Why this scored a 3</h3>
+            <ul class="doc-list">
+              <li>Good start, but lacks depth and analysis</li>
+            </ul>
+          </div>
+
+          <div class="phase-block ex-phase-5">
+            <h3 class="phase-heading">Phase 5: COA Comparison (Score: 4)</h3>
+            <h3>Student Response</h3>
+            <ul class="doc-list">
+              <li><strong>Compared COAs using</strong>:</li>
+              <li>
+                <ul class="doc-list">
+                  <li>Effectiveness</li>
+                  <li>Feasibility</li>
+                  <li>Risk</li>
+                </ul>
+              </li>
+              <li>Selected COA 3 as most effective despite moderate risk</li>
+            </ul>
+            <h3>Why this scored a 4</h3>
+            <ul class="doc-list">
+              <li>Clear criteria</li>
+              <li>Logical tradeoff discussion</li>
+            </ul>
+          </div>
+
+          <div class="phase-block ex-phase-6">
+            <h3 class="phase-heading">Phase 6: Recommendation (Score: 4)</h3>
+            <h3>Student Response</h3>
+            <p>Recommend COA 3 (combined approach) because it addresses both onboarding and leadership gaps, which are the primary root causes. While it requires more coordination, the long-term impact outweighs the short-term resource strain.</p>
+            <h3>Why this scored a 4</h3>
+            <ul class="doc-list">
+              <li>Strong justification tied to root causes and tradeoffs</li>
+            </ul>
+          </div>
+
+          <div class="phase-block ex-phase-7">
+            <h3 class="phase-heading">Phase 7: Implementation (Score: 3)</h3>
+            <h3>Student Response (Excerpt)</h3>
+            <ul class="doc-list">
+              <li><strong>Timeline</strong>: 90-day rollout</li>
+              <li>Assign training office to lead onboarding redesign</li>
+              <li>Quarterly assessment using retention data</li>
+            </ul>
+            <h3>Why this scored a 3</h3>
+            <ul class="doc-list">
+              <li>Solid, but missing:</li>
+              <li>
+                <ul class="doc-list">
+                  <li>Detailed communication plan</li>
+                  <li>Adaptation triggers</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="phase-block ex-phase-8">
+            <h3 class="phase-heading">Phase 8: Process Integration (Score: 4)</h3>
+            <h3>Why this scored a 4</h3>
+            <ul class="doc-list">
+              <li>Clear logical flow:</li>
+              <li>
+                <ul class="doc-list">
+                  <li>Problem → Causes → Solutions → Decision → Execution</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <p><strong>Final Score:</strong> 29 / 32 (High Proficient / Low Outstanding)</p>
+        </section>
+
+        <section class="step-panel hidden" data-step="9">
+          <h2>Common Mistakes for Coaching / Feedback</h2>
+          <h3>Mistake 1: Jumping to Solutions Too Early</h3>
+          <p><strong>Fix:</strong> “What problem are you solving—and how do you know that’s the problem?”</p>
+          <h3>Mistake 2: Confusing Symptoms with Root Causes</h3>
+          <p><strong>Fix:</strong> Ask “Why is morale low?” (repeat 3–5 times).</p>
+          <h3>Mistake 3: COAs Are Not Distinct</h3>
+          <p><strong>Fix:</strong> Require fundamentally different approaches.</p>
+          <h3>Mistake 4: Weak COA Analysis</h3>
+          <p><strong>Fix:</strong> “What happens next?” “What could go wrong in 60–90 days?”</p>
+          <h3>Mistake 5: No Real Tradeoffs</h3>
+          <p><strong>Fix:</strong> Reinforce: there is no perfect solution.</p>
+          <h3>Mistake 6: Vague Implementation</h3>
+          <p><strong>Fix:</strong> “Who does what, by when?” “How will you know it’s working?”</p>
+          <h3>Mistake 7: Disconnect Between Phases</h3>
+          <p><strong>Fix:</strong> “Which root cause does this solve?”</p>
+        </section>
+
+        <section class="step-panel hidden" data-step="10">
+          <h2>Submit to Gradebook &amp; Download PDF</h2>
+          <p class="step-intro">
+            When you’re ready, submit your workbook to the LMS gradebook and/or download a PDF copy of your answers for your records.
+          </p>
+
+          <div class="final-actions">
+            <h3>Final Actions</h3>
+            <p>
+              Submitting will record your current completion score in the gradebook. You can still download a PDF at any time.
+            </p>
+            <div class="final-actions-btns">
+              <button id="btnSubmitWorkbook" class="btn btn-submit btn-lg">Submit to Gradebook</button>
+              <button id="btnDownloadPdf" class="btn btn-primary btn-lg">Download PDF</button>
+            </div>
+          </div>
+        </section>
+      </article>
+
+    </main>
+  </div>
+
+  <!-- Submit Confirmation Modal -->
+  <div id="submitModal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-icon">&#10003;</div>
+      <h2>Workbook Submitted</h2>
+      <p>Your AFPP Workbook has been submitted to the gradebook.</p>
+      <div class="modal-score">Score: <strong id="modalScore">0%</strong></div>
+      <p class="modal-hint">You may now close this window or download your workbook as a PDF.</p>
+      <button id="btnModalClose" class="btn btn-primary">OK</button>
+    </div>
+  </div>
+
+  <!-- Scripts (order matters) -->
+  <script src="js/lz-string.min.js"></script>
+  <script src="js/jspdf.umd.min.js"></script>
+  <script src="js/scorm-api.js"></script>
+  <script src="js/workbook.js"></script>
+  <script src="js/pdf-export.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,589 @@
+Air Force Planning Process Problem-Solving Workbook
+Squadron Officer School Instructor Scoring Guide
+Purpose:
+The purpose of this assignment is to guide the student through solving a complex organizational problem using the applicable steps of the Air Force Planning Process (AFPP).  In other words, translate the AFPP into a universal problem-solving framework.  While grounded in AFDP 5-0, Planning, this workbook is written so that the process can be applied to organizational, leadership, or operational problem-solving, emphasizing structured thinking and decision-making. 
+In the following pages, you will find the rubric, the guidance given to students in the workbook two graded examples—one outstanding and one with some errors. In addition, there is a list of Common Mistakes and some guidance on coaching  students to better results in applicable sections of the workbook.
+
+
+
+
+
+
+
+
+
+
+
+
+Problem Statement (Must be approved by Flight Commander):
+Your Task: (Clearly describe the problem in 1-2 sentences. Focus on the gap between current reality and desired outcome.) 
+Guidance:
+•	Frame the problem as a system that needs to change, not just a symptom.
+•	Avoid jumping to solutions.
+Helpful prompts:
+o	What is happening that shouldn’t be?
+o	What should be happening instead?
+o	Why does this matter to the organization?
+Organization/Mission/Stakeholders/Constraints
+Your Task: (Identify organization and its purpose; key stakeholders (internal/external); constraints (rules, resources, time, culture)
+Guidance:
+•	Think in terms of the operational environment:
+o	People, systems, processes, culture, resources
+•	Include both formal constraints (policy, budget) and informal ones (culture, resistance) 
+AFPP Step 1: Planning Initiation
+(AFPP: “Understand the environment and frame the problem.”)
+The planning process begins when leaders at any level initiate action, typically in response to guidance from senior leadership or a recognized need. While planning is often led by the unit's leadership and their key staff, any member of the organization can be assigned to the planning team. Direction from above provides the initial framework, including the overall intent and specific instructions. This guidance, combined with an iterative design process, ensures the team fully understands the problem before developing a course of action.
+Your Task:
+Problem framing, gather tools, and review planning guidance
+Guidance:
+This is where you will select a problem to utilize the AFPP on.  The problem can be from the provided list or a real-world problem/process you would like to apply the AFPP to, if you choose your own problem your Flight Commander must approve before moving forward on this workbook.
+1. Conduct an Initial assessment (The first look)
+•	Define the problem: 
+o	What matters most (priorities) 
+o	What success should achieve 
+o	Any boundaries (time, resources, authority) 
+•	How much time do you have to solve this? 
+•	What level of effort is realistic? 
+
+2. Gather tools
+In simple terms, this step is about collecting and reviewing all existing information before you start making a new plan. It's the preparation phase where you get organized.
+Here’s what you should do:
+•	Get Your Playbooks: Find all standard operating procedures and best-practice guides.
+•	Gather Project Files: Collect the official assignment, goals, budget, and timeline for this specific task.
+•	Collect Intel: Find relevant reports, data, and feedback from past projects or other teams.
+•	Know Your Team's Habits: Review your team’s unwritten rules and established routines.
+Tip: Don’t overcomplicate—this phase is about getting oriented, not being perfect.
+
+ 
+AFPP Step 2: Mission Analysis
+(AFPP: Understand the problem deeply before solving it.)
+Mission analysis is a critical process that allows commanders and their staff to develop a thorough understanding of the problem, the overall mission, and the current situation. It involves identifying all specified, implied, and essential tasks, along with any limitations on their actions. This comprehensive analysis helps frame the problem and leads to the development of a viable approach to achieve the desired end state in support of higher headquarters.
+Your Task:
+Develop a thorough understanding of your chosen problem: determine facts, threats to solving the problem, identify assumptions, determine constraints/restraints, COGs and critical factors, identify tasks, develop a risk assessment, success criteria, root causes, develop a commanders intent statement, present a commander’s MA brief.
+Guidance:
+1. Determine Facts
+[A fact is a statement of information known to be true and relevant to planning. A fact defines the scope of the problem. If a fact is invalidated, it should result in a new or modified plan.]
+List out facts that deal directly with your problem, consider the below questions when determine your facts:
+•	What's definitely true here?
+•	How does this define the problem's scope?
+•	If this fact changes, what's my backup plan?
+•	Am I sure this is a fact?
+•	Who are my reliable sources?
+•	Are there rules or laws to follow?
+•	What external forces are at play?
+•	What information do I still need?
+
+2. Develop Assumptions
+[Assumptions are logical, realistic beliefs about current or future situations, crucial for planning where facts are absent, but must be continually reviewed and validated to identify risks. When an assumption proves invalid and significantly impacts the plan, it should lead to substantial changes and inform branches or sequels, rather than "assuming away" potential problems.]
+Your Task: Identify assumptions that must be made with your problem set.
+When identifying assumptions, consider the Five A's:
+•	Awareness: Expected warning or notification.
+•	Assets: Available types and numbers (e.g., airlift, allied forces).
+•	Access: Basing rights, overflight, and staging capabilities.
+•	Additional/Other Activity: Involvement from bordering or third-party nations.
+•	Authorities: Commander-specific powers and relationships.
+
+3. Analyze most likely and most dangerous threat to mission success
+[In AFPP, Airmen should consider the most likely and most dangerous threat that could prevent mission success and reaching the desired system. The threats should relate to the identified problem requiring action to move the observed system to the desired system. Airmen should consider the most likely and most dangerous threat to mission success during tabletop exercises in COA analysis and wargaming. Joint staffs at the operational level may focus on the most likely and most dangerous adversary COAs.]
+Your Task: Use critical thinking to answer the below questions:
+1.	What is the most likely problem I will face? (The thing that will probably happen).
+2.	What is the most dangerous problem I could face? (The worst-case scenario, even if it's not likely).
+4. Determine constraints and restraints 
+[Determine Operational Limitations (Constraints and Restraints). Constraints and restraints are actions required or prohibited by higher authority that limit the commander’s freedom of action. Additionally, a constraint and/or restraint can be a restriction imposed by conditions and circumstances. Restraints are HHQ requirements placed on the command that prohibit action. An example of a restraint is a prohibition from conducting a movement to a specific location (e.g., a bordering nation). Constraints are HHQ requirements placed on the command that dictates action. An example of a constraint is HHQ’s direction to fly a]
+Your Task: Using your tools gathered in step 1 (i.e. AFIs, regulations, OIs etc) take time to identify any restraints and constraints you will have with your problem that may effect your COAs.
+•	A Restraint is a "DON'T" rule. It prohibits you from doing something.
+•	Example: "Whatever you do, don't contact the client directly."
+•	A Constraint is a "MUST DO" rule. It requires you to do something.
+•	Example: "You must finish this report by Friday."
+5. Analyze friendly/adversary COGs and critical factors
+
+6. Identify Specified, Implied, and Essential Tasks
+[Identify Specified, Implied, and Essential Tasks. For planners to accurately develop a mission statement and air component approach, they should be able to identify the three types of tasks that will be used to solve the problem. Specified tasks are assigned to the commander verbally or in writing by the HHQ. Specified tasks often become essential tasks. Implied tasks are tasks that are revealed by mission analysis but not explicitly stated by HHQ guidance. Implied tasks may NOT be essential to mission accomplishment but should be identified to inform further planning. Determining the essential tasks from the specified and implied tasks ensure]
+You Task: Unique to your selected problem, identify the Specified, Implied, and Essential tasks you will have to do in order for mission success.
+Guidance 
+1. Specified Tasks (Direct Orders)
+•	Example: "Deliver 5,000 lbs medical supplies and 10,000 lbs MREs to Drop Zone Phoenix by 0600Z" and "Avoid civilian casualties."
+2. Implied Tasks (Things You Figure Out)
+•	Example: "Coordinate flight path with aircrew," "Check weather forecasts," and "Secure C-17 aircraft and loadmasters."
+3. Essential Tasks (Must-Do's for Success)
+•	Example: "Loading correct aid onto aircraft" and "Successfully dropping aid over Phoenix without incident."
+7. Identify Root Causes (Not Symptoms)
+[Root cause: The fundamental underlying reason or factor that is driving the problem, essentially the most critical aspect that needs to be addressed to solve the issue. Teams discuss lines of effort (subordinate problem sets) to address the root cause utilizing the “5 Why Analysis” method by asking “Why” as many times as needed (minimum 5) to identify the root cause of the initial problem statement.]
+Your Task: Find the root cause to your problem asking “why” at lease 3 to 5 times
+•	Ask “why?” repeatedly (at least 3–5 layers deep) 
+•	Look for: 
+o	Process issues 
+o	Leadership issues 
+o	Resource mismatches 
+o	Cultural factors 
+(AFDP Translation: You are identifying the true problem to solve, not just surface-level effects.) 
+8. Develop Risk Assessment
+[Develop Commander’s Risk Assessment. A risk assessment should be conducted at all levels of command. There are two categories of military risk: risk-to-force (RF) and risk-to-mission (RM). RF is the probability and consequence of current and contingency events causing harm to the provisioning and sustainment of sufficient military resources. RM is the probability and consequence of current and contingency events causing harm to current or future military objectives.]
+Your Task: Following the Joint Risk Analysis Methodology (JRAM) create a Risk Assessment Plan for Your Problem
+Objective: To identify the biggest threats to your success and create a clear plan to handle them.
+Instructions: Complete the following four pillars for your specific problem.
+Pillar 1: Problem Framing (What's at Stake?)
+Before you can manage risk, you must be crystal clear about what you're trying to protect.
+1.	What is your main goal? (What does success look like?)
+•	________________________________________
+2.	"Risk to what?" What is the most important thing that could be harmed if you fail? (e.g., your grade, your relationship with a team member, your timeline, your budget). This is the core thing you must protect.
+•	________________________________________
+3.	Context: Briefly consider these factors:
+•	Time: How might this risk change in the short-term (next week) vs. the long-term (next month)?
+•	Connections: How could your problem affect others, or how could others' actions affect your problem?
+Pillar 2: Risk Assessment (What Could Go Wrong and Why?)
+Identify the specific "harmful events" that could threaten your goal.
+1.	List Potential Harmful Events: Brainstorm at least 3-5 specific bad things that could happen.
+•	Harmful Event 1: _________________________________________________
+•	Harmful Event 2: _________________________________________________
+•	Harmful Event 3: _________________________________________________
+2.	Analyze Each Harmful Event: For each event you listed, break it down:
+•	Source: Who or what could cause this harm? (e.g., another person, a technical issue, a scheduling conflict, a simple mistake).
+•	Likelihood: How likely is this event to happen? (Low, Medium, High)
+•	Impact: If it happens, how bad will the consequences be? (Low, Medium, High)
+  
+Example:
+Harmful Event	Source of Risk	Likelihood (L/M/H)	Impact (L/M/H)
+Example: I miss my project deadline.	My own poor time management.	High	High
+			
+			
+
+Pillar 3: Judge the Risk (Is This Acceptable?)
+Now, characterize the overall risk level for your top threats.
+1.	Plot Your Risks: Using your answers from Step 2, place your top 1-3 risks on the chart below.
+•	A High Likelihood / High Impact event is a HIGH risk.
+•	A Low Likelihood / Low Impact event is a LOW risk.
+2.	Evaluate: Look at where your risks landed. Are they in the Low, Moderate, Significant, or High zones?
+•	Unacceptable Risk: Any risk in the "Significant" or "High" zone need   s a plan.
+•	Acceptable Risk: Risks in the "Low" zone might not need a special plan.
+ 
+Pillar 4: Manage the Risk (What Are You Going to Do?)
+For each "Unacceptable" risk you identified, choose a specific management strategy. You can't choose "do nothing."
+(1) Accept. Make an informed decision to act without conducting risk
+mitigation efforts.
+(2) Avoid. Forgo the activity that would produce unacceptable risk or
+remove the item of value that could be damaged due to unacceptable risk.
+(3) Mitigate. Implement measures that decrease the probability or
+consequence of harm across time horizons.
+(4) Transfer. Take action to change when and where the risk is
+incurred and potentially who or what incurs it.
+Unacceptable Risk	My Management Plan (Choose one: Avoid, Mitigate, Transfer)	My Specific Action
+Example: Missing deadline due to poor time management.	Mitigate	I will create a detailed daily schedule and set calendar reminders for each sub-task.
+Example: My computer might crash.	Mitigate	I will back up all my work to a cloud drive at the end of each day.
+Example: Group member might not do their part.	Avoid	I will complete the most critical parts of the project myself to ensure they get done right.
+
+
+9. Develop COA Evaluation Criteria
+[COA evaluation criteria are the measures used for developing and determining an acceptable COA. The commander should include these criteria in initial planning guidance and may be determined from the commander’s intent. Planners should seek to obtain COA evaluation criteria as early in the planning process as possible to inform planning efforts. They help determine supporting objectives, effects, tasks, and if or when to move to the next major operation or phase. These criteria also Air Force become the basis for assessment.]
+ 
+Your Task: Decide what COA evaluation criteria you will use to guide your COAs effort, success, and justification for the recommended COA. You will use these criteria later in AFPP Step 5.  
+Guide:
+Question	This Defines Your Criterion For...
+1. In one sentence, what is the single most important thing this mission must accomplish?	Effectiveness / Mission Accomplishment
+2. If we are 100% successful, what does the situation on the ground look like after we are done?	Decisiveness / Desired End State
+3. What is the commander's number one priority? Conversely, what is the one thing that absolutely cannot fail?	Criticality / Task Prioritization (and helps with weighting)
+4. What lasting effect must we create in the operating environment?	Sustainability / Long-Term Impact
+ 
+10. Determine Initial CCIRs
+[Determine Initial Commander’s Critical Information Requirements. CCIRs are elements of information the commander identifies as being critical to facilitate timely decision-making. CCIRs belong exclusively to the commander and are not static. Commanders refine and update both decision points and associated CCIRs throughout the operation. CCIRs are identified when using the JPP, JPPA, and AFPP. When developing CCIRs at subcomponent commands, focus on decision points related to the air component approach. CCIRs should also be coordinated with the commander’s servicing judge.]
+Your Task: Determine what critical information requirements (decision points) you may encounter during your planning process.  Identifying these early in the planning process can better prepare you to handle them if and when they arise.
+
+Example:
+Imagine planning a family road trip.
+________________________________________
+Your "Must-Knows" (CCIRs)
+Your "Commander's Critical Information Requirements" are simply the most crucial questions you need answered to make timely decisions during your trip. They are your specific needs, and they evolve.
+Example: "Do we have enough gas to reach the next town?"
+________________________________________
+Getting the Answers
+These "Must-Knows" break down into categories:
+Military Term	What You Need to Know	Road Trip Example
+Priority Intelligence Requirements (PIRs)	About the outside world (e.g., weather, traffic).	"Is there a storm coming on our route?"
+Friendly force information requirements (FIRs)	About your own resources (e.g., family well-being, car status).	"Are the kids getting restless?"
+Essentials elements of information (EEIs)	Specific questions to answer your PIRs/FFIRs.	"What's the exact temperature for tomorrow's forecast?"
+Requests for Information (RFIs)	Actively seeking these answers.	Checking the weather app or asking your family.
+ 
+Decision Points
+These are moments when you know you'll have to make a choice. By thinking about your "Must-Knows" in advance, you'll be ready to make those calls, like deciding whether to take a scenic detour or the fastest route.
+11. Develop Commanders Intent Statement
+[Develop Commander’s Intent Statement. The commander’s intent statement should articulate their vision of the mission’s purpose, end state, and risks. A well-framed intent statement provides subordinates with the ability to exercise disciplined initiative. Commanders are encouraged to write their own commander’s intent as it is pivotal to mission command. Commander’s intent may change based on the scope of the mission and with the planning process. The final intent statement is published in the order.]
+
+
+AFPP Step 3: COA Development
+COAs should take into consideration the time available (time to plan), the most likely impact on the OE, and the most dangerous impact on the OE. Distinguishability is typically the most challenging facet of developing multiple COAs. Airmen typically build COAs in a "divide and conquer" fashion vs sequentially, often creating similar COAs. Staffs should consider the elements of the 5-paragraph order format as they conduct COA development. The figure, “COA Development Activities” provides more information on approaches to solving the problem.
+Your Task: For your chosen problem using the workbook steps develop and present at least two distinct COA solutions and/or approaches.
+Guidance: 
+1. Brainstorm COAs
+[A COA is a broad potential solution to an identified problem. COA brainstorming generates options for follow-on analysis and comparison that satisfy the commander’s intent and planning guidance. During COA brainstorming, planners use knowledge, skills, experience, creativity, judgment, and products developed during mission analysis to develop broad concepts.]
+Your Task: Brainstorm ideas that can aid in solving the problem and record a few distinct options that you can expand on to attack the issue from different perspectives.  
+The goal is to come up with a few solid, distinct options. You don't choose the best one yet—you just want to have several good possibilities on the table that all achieve your main goal.
+Below are some tips to help you in this process:
+•	Knowledge: What you already know about the situation?
+•	Experience: "Last time we tried something like this, what happened?"
+•	Creativity: Coming up with new, out-of-the-box ideas. Try to think of some new ways the problem can be fixed or a process can improve.
+•	Judgment: Knowing a bad idea when you see one.
+In short: A COA is a possible plan, and brainstorming them is the creative process of coming up with those different options.
+
+2. Chart or Visualize COAs
+DEVELOPMENT STEP 2: CHART OR VISUALIZE COA(S) 
+[This step organizes and synchronizes COAs. Graphically depicting the COA in space and time allows the commander to visualize the COA and synchronize it with current operations and requirements. In some cases, a sketch or graphic may be useful. 
+•	Analyze mission analysis data and develop an operational timeline. 
+•	Translate specified and implied tasks into objectives using an effects-based approach by general phases. 
+o	Phases, such as "shaping", or "redeployment operations", are used to achieve one or more major objectives. Transitioning to the next phase indicates a change in the emphasis, e.g., "stability ops" to “redeployment ops.” A single-minded focus on specific phases can help bind various facets of the problem to focus planners' ideas.
+•	Identify the sequencing of the operation for each COA as appropriate. 
+•	Identify main and supporting efforts by phase.]
+Your Task: Develop and visualize your COAs following the example below.
+Example: 
+Step	Key Actions	Example Application
+1. Analyze & Plan	• Analyze resources; set timeline.
+• Break into objectives by phase.	•  $3k budget, 2 weeks in Oct, Japan. 
+•	Objectives: Book flights/hotels, secure documents, cultural immersion.
+2. Sequence & Define	• Sequence tasks for each phase.
+• Identify main/supporting efforts.	•	Sequence: Research cities, estimate costs, draft itinerary. 
+•	Main: Book flights/hotels. 
+•	Supporting: Travel insurance, packing.
+3. Visualize & Articulate	• Create a visual plan.
+• Write a clear goal statement.	•    Example: Use a spreadsheet for budget/itinerary. 
+•	Goal: "Japan, 2 weeks in Oct, $3k budget, Tokyo/Kyoto cultural immersion."
+
+3. Prepare COA Concept of Operations Statement and Task Organization
+
+
+3. Validate or Refine Assumptions
+•	Which assumptions are: 
+o	Confirmed? 
+o	False? 
+o	Still uncertain? 
+
+ 
+Phase 2: Mission Analysis (continued)
+4. Identify Constraints & Limitations
+•	What must you do? (constraints) 
+•	What must you NOT do? (restraints) 
+5. Define Success Criteria
+•	What does success look like measurably? 
+Examples:
+•	Reduced turnover by X% 
+•	Improved process time by X% 
+•	Increased satisfaction scores 
+(AFDP Translation: This is your desired end state + objectives.) 
+6. Draft a “Mission Statement” 
+•	One sentence: 
+o	Who + does what + why 
+Example:
+“Improve squadron onboarding processes to increase retention and readiness within 6 months.”
+ 
+Phase 3: Course of Action (COA) Development
+(AFPP: Create multiple viable solutions.)
+Your Task:
+Develop 2–3 distinct, feasible solutions
+Guidance:
+1. Develop 2–3 DISTINCT COAs
+•	Each COA should be: 
+o	Clearly different in approach (not minor variations) 
+Example:
+•	COA 1: Process redesign 
+•	COA 2: Training-focused solution 
+•	COA 3: Structural/organizational change 
+2. Ensure Each COA is:
+•	Feasible (can actually be done) 
+•	Acceptable (fits constraints and culture) 
+•	Suitable (solves the root problem) 
+3. Outline for Each COA:
+•	What actions will be taken? 
+•	Who is responsible? 
+•	Required resources 
+4. Identify Pros/Cons
+•	Strengths 
+•	Weaknesses 
+•	Tradeoffs 
+(AFDP 5.0 Translation: You are developing options for the commander to decide.)
+ 
+Phase 4: COA Analysis (Wargaming)
+(AFPP: Test your solutions against reality.)
+Your Task:
+Assess risks, second-order effects, scenarios
+Guidance:
+1. Walk Through Each COA Step-by-Step
+•	What happens first? 
+•	Then what? 
+•	Then what? 
+2. Identify Risks
+•	What could go wrong? 
+•	What assumptions might fail? 
+3. Consider Second-Order Effects
+•	What unintended consequences might occur? 
+Examples:
+•	Fixing one problem creates another 
+•	Increased workload elsewhere 
+•	Cultural resistance 
+4. Consider “Most Likely” and “Most Challenging” Scenarios
+•	If everything goes normally → what happens? 
+•	If things go poorly → what happens? 
+(AFDP 5.0 Translation: This is simplified wargaming—thinking through action-reaction-counteraction.)
+ 
+Phase 5: COA Comparison
+(AFPP: Objectively compare your options.)
+ Your Task:
+Compare using effectiveness, feasibility, risk
+Guidance:
+1. Establish Criteria
+Common criteria:
+•	Effectiveness (does it solve the problem?) 
+•	Feasibility (can we do it?) 
+•	Risk (what could go wrong?) 
+•	Cost (time, people, money) 
+2. Compare COAs Side-by-Side
+•	Use a simple table or matrix 
+•	Be consistent across all COAs 
+3. Identify Tradeoffs
+•	No perfect solution exists 
+•	Be explicit about what you are sacrificing 
+(AFDP Translation: You are helping a decision-maker choose the best—not perfect—option.)
+ 
+Phase 6: Recommendation
+(AFPP: Make a decision and justify it.)
+Student Task:
+Select best COA and justify
+Guidance:
+1. Select ONE COA
+•	Don’t hedge—commit to a decision 
+2. Justify Your Decision
+•	Why this COA over others? 
+•	What tradeoffs are you accepting? 
+3. Address Risk
+•	What risks remain? 
+•	How will you mitigate them? 
+(AFDP 5.0 Translation: This is your commander’s decision point.)
+ 
+Phase 7: Implementation 
+(AFPP: Turn the plan into action.)
+Your Task:
+Execution, communication, and assessment
+Guidance:
+1. Execution Plan
+•	Who does what? 
+•	Timeline (phases, milestones) 
+2. Communication Plan
+•	Who needs to know? 
+•	What do they need to understand? 
+•	How will you gain buy-in? 
+3. Assessment Plan
+•	How will you measure success? 
+•	What indicators show progress or failure? 
+4. Adaptation Plan
+•	What will you do if the plan isn’t working? 
+(AFDP Translation: This aligns with plans/orders development + transition to execution and assessment.)
+ 
+Graded Example 1 (The Perfect One):
+Problem: Declining participation and engagement in squadron professional development (PD) sessions
+Phase 1: Planning Initiation (Outstanding)
+Problem Framing
+•	Current State: Average attendance at PD sessions is ~30%, with low participation and minimal engagement 
+•	Desired State: ≥80% attendance with active participation and demonstrated learning 
+•	Gap: Squadron members do not perceive PD as relevant, valuable, or worth their time 
+Stakeholders
+•	Squadron leadership (Commander, DO) 
+•	Flight commanders/supervisors 
+•	Junior officers and enlisted personnel 
+•	Instructors/facilitators 
+Assumptions
+•	PD content is not aligned with audience needs 
+•	Supervisors are not reinforcing attendance 
+•	Competing priorities reduce perceived value 
+Phase 2: Mission Analysis (Outstanding)
+Root Causes (Validated)
+1.	Content Misalignment → Topics not tied to real problems Airmen face 
+2.	Leadership Reinforcement Gap → Supervisors do not prioritize or model attendance 
+3.	Ineffective Delivery Methods → Lecture-heavy, low interaction formats 
+4.	Competing Priorities → PD seen as lowest priority task 
+Constraints
+•	No additional training days authorized 
+•	Limited funding 
+•	Must occur during duty hours 
+Success Criteria
+•	≥80% attendance within 3 months 
+•	≥20% increase in engagement scores (survey-based) 
+•	Observable increase in participation (discussion/activity rates) 
+Mission Statement
+Redesign squadron PD to increase participation and engagement by delivering relevant, interactive sessions aligned with mission and Airmen needs within 90 days.
+Phase 3: COA Development (Outstanding)
+COA 1: Content Redesign Only
+•	Survey squadron → tailor topics 
+•	Align sessions to real-world problems 
+•	Maintain current delivery format 
+COA 2: Delivery Transformation
+•	Shift to interactive formats (case studies, discussions, scenarios) 
+•	Train facilitators 
+•	Keep existing topics 
+COA 3: Integrated Approach (Content + Delivery + Leadership)
+•	Align topics to real issues (bottom-up input) 
+•	Shift to interactive, problem-based sessions 
+•	Require supervisor-led follow-ups 
+•	Commander communicates priority and intent 
+ Why Outstanding: Clearly distinct approaches (content vs delivery vs system-level change)
+Phase 4: COA Analysis (Outstanding)
+COA 3 Analysis (Example depth)
+Most Likely Scenario
+•	Increased attendance due to leadership emphasis 
+•	Improved engagement due to relevance and format 
+Most Challenging Scenario
+•	Supervisors fail to enforce follow-through 
+•	Cultural resistance to new format 
+Risks
+•	Time burden on facilitators 
+•	Inconsistent execution across flights 
+Second-Order Effects
+•	Positive: Improved unit cohesion and shared understanding 
+•	Negative: Potential burnout if not paced correctly 
+Mitigation
+•	Provide facilitator guides/templates 
+•	Phase implementation (pilot → scale) 
+Phase 5: COA Comparison (Outstanding)
+Criteria	COA 1	COA 2	COA 3
+Effectiveness	Medium	Medium	High
+Feasibility	High	Medium	Medium
+Risk	Low	Medium	Medium
+Sustainability	Low	Medium	High
+Insight:
+•	COA 1 is easy but insufficient 
+•	COA 2 improves engagement but not relevance 
+•	COA 3 addresses root causes holistically 
+Phase 6: Recommendation (Outstanding)
+Recommend COA 3 (Integrated Approach) because it directly addresses all identified root causes—content relevance, delivery effectiveness, and leadership reinforcement. While it introduces moderate implementation risk, these risks are mitigated through phased rollout and facilitator support. The expected long-term gains in engagement and mission alignment outweigh the short-term complexity.
+Phase 7: Implementation (Outstanding)
+Execution Plan
+•	Phase 1 (30 days): Survey + pilot redesigned sessions 
+•	Phase 2 (60 days): Train facilitators + scale implementation 
+•	Phase 3 (90 days): Full adoption 
+Communication Plan
+•	Commander kickoff message (intent + importance) 
+•	Supervisor talking points 
+•	Feedback loop after each session 
+Assessment Plan
+•	Attendance tracking 
+•	Engagement surveys 
+•	Facilitator feedback 
+Adaptation Plan
+•	If attendance <60% after 30 days → adjust scheduling/content 
+•	If engagement low → revise facilitation methods 
+ 
+Graded Example 2 (Some errors)
+Problem: High turnover among junior personnel in a support squadron
+Phase 1: Planning Initiation (Score: 4)
+Student Response (Excerpt):
+•	Current State: 35% annual turnover among E-3 to E-5 personnel 
+•	Desired State: Stable workforce with <15% turnover 
+•	Assumptions: 
+o	Turnover is influenced by leadership climate and workload 
+o	Exit surveys are accurate indicators 
+•	Stakeholders: Airmen, supervisors, commander, MPF, training office 
+ Why this scored a 4:
+•	Clear problem framing as a gap 
+•	Identifies system, stakeholders, and assumptions 
+Phase 2: Mission Analysis (Score: 4)
+Student Response (Excerpt):
+•	Root Causes: 
+o	Inconsistent onboarding processes 
+o	High workload with unclear priorities 
+o	Lack of supervisor training 
+•	Constraints: 
+o	No increase in manpower authorized 
+o	Limited budget for training 
+•	Success Criteria: 
+o	Reduce turnover to 20% in 1 year 
+o	Increase climate survey satisfaction by 15% 
+Why this scored a 4:
+•	Distinguishes root causes vs. symptoms 
+•	Defines measurable success 
+Phase 3: COA Development (Score: 3)
+COAs:
+1.	Standardized onboarding program 
+2.	Supervisor training initiative 
+3.	Combined onboarding + training approach 
+Why this scored a 3:
+•	Feasible, but COA 3 is just a combination—not fully distinct 
+Phase 4: COA Analysis (Score: 3)
+Student Response (Excerpt):
+•	Risks: 
+o	Resistance from supervisors 
+o	Time burden for training 
+•	Second-order effects: 
+o	Improved morale may reduce workload complaints 
+Why this scored a 3:
+•	Good start, but lacks depth and analysis 
+Phase 5: COA Comparison (Score: 4)
+Student Response:
+•	Compared COAs using: 
+o	Effectiveness 
+o	Feasibility 
+o	Risk 
+•	Selected COA 3 as most effective despite moderate risk 
+Why this scored a 4:
+•	Clear criteria 
+•	Logical tradeoff discussion 
+Phase 6: Recommendation (Score: 4)
+Student Response:
+Recommend COA 3 (combined approach) because it addresses both onboarding and leadership gaps, which are the primary root causes. While it requires more coordination, the long-term impact outweighs the short-term resource strain.
+Why this scored a 4:
+•	Strong justification tied to root causes and tradeoffs 
+Phase 7: Implementation (Score: 3)
+Student Response (Excerpt):
+•	Timeline: 90-day rollout 
+•	Assign training office to lead onboarding redesign 
+•	Quarterly assessment using retention data 
+Why this scored a 3:
+•	Solid, but missing: 
+o	Detailed communication plan 
+o	Adaptation triggers 
+Phase 8: Process Integration (Score: 4)
+Why this scored a 4:
+•	Clear logical flow: 
+o	Problem → Causes → Solutions → Decision → Execution 
+Final Score: 29 / 32 (High Proficient / Low Outstanding)
+ 
+Common Mistakes for Coaching/Feedback and Scoring:
+Mistake 1: Jumping to Solutions Too Early
+What it looks like:
+•	“We should implement training…” (in Phase 1 or 2) 
+Fix:
+•	Ask: “What problem are you solving—and how do you know that’s the problem?” 
+Mistake 2: Confusing Symptoms with Root Causes
+What it looks like:
+•	“Low morale” as a root cause 
+Fix:
+•	Ask: “Why is morale low?” (repeat 3–5 times) 
+Mistake 3: COAs Are Not Distinct
+What it looks like:
+•	COA 1: Training 
+•	COA 2: More training 
+•	COA 3: Better training 
+Fix:
+•	Require fundamentally different approaches 
+Mistake 4: Weak COA Analysis
+What it looks like:
+•	Only lists obvious risks 
+•	No second-order thinking 
+Fix:
+•	Ask: 
+o	“What happens next?” 
+o	“What could go wrong in 60–90 days?” 
+Mistake 5: No Real Tradeoffs
+What it looks like:
+•	“This COA is best in every way” 
+Fix:
+•	Reinforce: There is no perfect solution 
+Mistake 6: Vague Implementation
+What it looks like:
+•	“We will execute the plan” 
+Fix:
+•	Ask: 
+o	“Who does what, by when?” 
+o	“How will you know it’s working?” 
+Mistake 7: Disconnect Between Phases
+What it looks like:
+•	COAs don’t address root causes 
+Fix:
+•	Ask: “Which root cause does this solve?”
+
+
