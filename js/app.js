@@ -1,7 +1,7 @@
 /**
- * Main Application Controller for the AFPP Instructor Scoring Guide.
+ * Main Application Controller for the AFPP Student Workbook.
  *
- * Provides workbook-like step navigation (1–10), binds form fields to the
+ * Provides workbook-like step navigation, binds form fields to the
  * Workbook data model, and persists progress to SCORM suspend_data.
  */
 (function () {
@@ -27,13 +27,157 @@
   var modalScore = document.getElementById('modalScore');
   var btnModalClose = document.getElementById('btnModalClose');
 
+  var LAYOUT_VERSION = 3;
+
+  /**
+   * Remap saved step indices when the sidebar layout changes.
+   */
+  function migrateSuspendLayout(saved) {
+    if (!saved || typeof saved !== 'object') return;
+    if (saved._layoutVersion === LAYOUT_VERSION) return;
+
+    var v = saved._layoutVersion;
+
+    function mapV2ToV3(o) {
+      if (o <= 3) return o;
+      return Math.min(o + 3, 10);
+    }
+
+    function mapLegacyToV3(o) {
+      if (o <= 2) return 0;
+      if (o <= 5) return o - 2;
+      if (o === 6) return 7;
+      if (o <= 10) return o + 1;
+      return 10;
+    }
+
+    function mapStep(o) {
+      if (typeof o !== 'number' || isNaN(o)) return 0;
+      if (v === 2) return mapV2ToV3(o);
+      if (v === undefined || v === 1) return mapLegacyToV3(o);
+      return o;
+    }
+
+    if (typeof saved._step === 'number') saved._step = mapStep(saved._step);
+
+    if (typeof saved._maxUnlocked === 'number') {
+      saved._maxUnlocked = mapStep(saved._maxUnlocked);
+    }
+
+    if (saved._reviewed && typeof saved._reviewed === 'object') {
+      var nr = {};
+      for (var rk in saved._reviewed) {
+        if (!saved._reviewed.hasOwnProperty(rk)) continue;
+        var nk = String(mapStep(parseInt(rk, 10)));
+        if (saved._reviewed[rk]) nr[nk] = true;
+      }
+      saved._reviewed = nr;
+    }
+
+    saved._layoutVersion = LAYOUT_VERSION;
+  }
+
+  // ---- Auto-Accordion Conversion ----
+
+  function initAccordions() {
+    // Substeps first — they gather pillar/phase blocks inside their bodies
+    convertSubstepsToAccordions();
+    // Then convert any remaining standalone blocks
+    convertBlocksToAccordions('.phase-block', '.phase-heading');
+    convertBlocksToAccordions('.pillar-block', '.pillar-heading');
+  }
+
+  /**
+   * Converts container elements (like .phase-block) into <details> accordions.
+   * The first heading matching headingSel becomes the <summary>.
+   */
+  function convertBlocksToAccordions(blockSel, headingSel) {
+    var blocks = document.querySelectorAll(blockSel);
+    for (var i = 0; i < blocks.length; i++) {
+      var block = blocks[i];
+      if (block.closest('details.accordion')) continue;
+      var heading = block.querySelector(headingSel);
+      if (!heading) continue;
+
+      var details = document.createElement('details');
+      details.className = 'accordion ' + block.className;
+      details.open = false;
+
+      var summary = document.createElement('summary');
+      summary.className = 'accordion-summary';
+      summary.innerHTML = heading.innerHTML;
+
+      heading.parentNode.removeChild(heading);
+
+      block.parentNode.insertBefore(details, block);
+      details.appendChild(summary);
+
+      block.className = 'accordion-body';
+      details.appendChild(block);
+    }
+  }
+
+  /**
+   * Converts .substep-heading h3 elements (numbered subsections in Mission
+   * Analysis) into collapsible accordions by grouping each heading with its
+   * subsequent sibling elements until the next substep-heading.
+   */
+  function convertSubstepsToAccordions() {
+    var headings = document.querySelectorAll('h3.substep-heading');
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      if (h.closest('details.accordion')) continue;
+
+      var details = document.createElement('details');
+      details.className = 'accordion accordion-substep';
+      details.open = false;
+
+      var summary = document.createElement('summary');
+      summary.className = 'accordion-summary accordion-summary-substep';
+      summary.innerHTML = h.innerHTML;
+
+      h.parentNode.insertBefore(details, h);
+      details.appendChild(summary);
+
+      var body = document.createElement('div');
+      body.className = 'accordion-body';
+
+      // Remove the original heading so the sibling walk doesn't stop on it
+      h.parentNode.removeChild(h);
+
+      var next = details.nextSibling;
+      while (next) {
+        if (next.nodeType === 1) {
+          var isStop = false;
+          if (next.matches) {
+            isStop = next.matches('h3.substep-heading') ||
+                     next.matches('details.accordion-substep') ||
+                     next.matches('.continue-bar') ||
+                     next.matches('.final-actions') ||
+                     next.matches('.phase-block') ||
+                     next.matches('.pillar-block') ||
+                     next.matches('details.accordion');
+          }
+          if (isStop || next.tagName === 'H2') break;
+        }
+        var toMove = next;
+        next = next.nextSibling;
+        body.appendChild(toMove);
+      }
+
+      details.appendChild(body);
+    }
+  }
+
   // ---- Initialization ----
 
   function init() {
+    initAccordions();
     Workbook.init();
     ScormAPI.initialize();
 
     var saved = ScormAPI.loadSuspendData();
+    migrateSuspendLayout(saved);
     if (saved && typeof saved === 'object') {
       if (typeof saved._step === 'number') currentStep = clampStep(saved._step);
       if (saved._reviewed && typeof saved._reviewed === 'object') {
@@ -60,6 +204,31 @@
     updateContinueButtons();
   }
 
+  function isOptionalStep(stepIdx) {
+    return Workbook && typeof Workbook.isOptionalStep === 'function' && Workbook.isOptionalStep(stepIdx);
+  }
+
+  function getNextStep(stepIdx) {
+    var totalSteps = stepPanels ? stepPanels.length : 0;
+    if (stepIdx < 0 || stepIdx >= totalSteps - 1) return stepIdx;
+
+    if (isOptionalStep(stepIdx)) return stepIdx + 1;
+
+    var next = stepIdx + 1;
+    while (next < totalSteps && isOptionalStep(next)) {
+      next++;
+    }
+    return next;
+  }
+
+  function applyOptionalSkip(unlocked) {
+    var totalSteps = stepPanels ? stepPanels.length : 0;
+    while (unlocked < totalSteps && isOptionalStep(unlocked)) {
+      unlocked++;
+    }
+    return unlocked;
+  }
+
   function stepHasRequiredFields(stepIdx) {
     if (!Workbook || typeof Workbook.getSteps !== 'function') return false;
     var steps = Workbook.getSteps();
@@ -72,6 +241,7 @@
   }
 
   function isStepDone(stepIdx) {
+    if (isOptionalStep(stepIdx)) return false;
     if (stepHasRequiredFields(stepIdx)) return Workbook.isStepComplete(stepIdx);
     return reviewedSteps && reviewedSteps[String(stepIdx)] === true;
   }
@@ -82,9 +252,10 @@
     var totalSteps = stepPanels ? stepPanels.length : 0;
     var unlocked = 0;
     for (var i = 0; i < totalSteps; i++) {
+      if (isOptionalStep(i)) continue;
       if (isStepDone(i)) unlocked = Math.max(unlocked, i + 1);
     }
-    maxUnlockedStep = Math.max(maxUnlockedStep || 0, unlocked);
+    maxUnlockedStep = Math.max(maxUnlockedStep || 0, applyOptionalSkip(unlocked));
     maxUnlockedStep = clampStep(maxUnlockedStep);
   }
 
@@ -111,6 +282,7 @@
   }
 
   function markReviewedIfEligible() {
+    if (isOptionalStep(currentStep)) return;
     // Steps with required fields are gated by completion, not "reviewed".
     if (stepHasRequiredFields(currentStep)) return;
 
@@ -260,6 +432,7 @@
   function saveProgress() {
     collectCurrentStepData();
     ScormAPI.saveSuspendData({
+      _layoutVersion: LAYOUT_VERSION,
       _step: currentStep,
       _reviewed: reviewedSteps,
       _maxUnlocked: maxUnlockedStep,
@@ -287,7 +460,7 @@
       btn.className = 'btn btn-primary';
       btn.textContent = 'Continue';
       btn.setAttribute('data-continue-from', String(stepIdx));
-      btn.setAttribute('data-continue-to', String(stepIdx + 1));
+      btn.setAttribute('data-continue-to', String(getNextStep(stepIdx)));
 
       bar.appendChild(btn);
       panel.appendChild(bar);
@@ -295,6 +468,7 @@
   }
 
   function isCurrentStepEligibleToContinue() {
+    if (isOptionalStep(currentStep)) return true;
     if (stepHasRequiredFields(currentStep)) return Workbook.isStepComplete(currentStep);
 
     var main = document.getElementById('mainContent');
@@ -319,6 +493,9 @@
   function handleContinue() {
     if (currentStep >= stepPanels.length - 1) return;
 
+    var nextStep = getNextStep(currentStep);
+    if (nextStep === currentStep) return;
+
     // Remove focus from the previous page's Continue button so the browser
     // doesn't try to keep a "Continue" button in view on the next page.
     if (document.activeElement && typeof document.activeElement.blur === 'function') {
@@ -331,19 +508,19 @@
       return;
     }
 
-    // Read-only steps: must meet review criteria.
-    if (!stepHasRequiredFields(currentStep) && !isCurrentStepEligibleToContinue()) {
+    // Read-only steps: must meet review criteria (optional sections are exempt).
+    if (!isOptionalStep(currentStep) && !stepHasRequiredFields(currentStep) && !isCurrentStepEligibleToContinue()) {
       alert('Please review the entire section (open the collapsible items and scroll to the bottom) before continuing.');
       return;
     }
 
-    if (!stepHasRequiredFields(currentStep)) {
+    if (!isOptionalStep(currentStep) && !stepHasRequiredFields(currentStep)) {
       reviewedSteps[String(currentStep)] = true;
     }
 
-    if (currentStep + 1 > maxUnlockedStep) maxUnlockedStep = currentStep + 1;
+    if (nextStep > maxUnlockedStep) maxUnlockedStep = applyOptionalSkip(nextStep);
     saveProgress();
-    showStep(currentStep + 1);
+    showStep(nextStep);
   }
 
   function openSubmitModal(scorePct) {
@@ -388,9 +565,10 @@
         var s = parseInt(this.getAttribute('data-step'), 10);
         if (isNaN(s)) return;
         // Navigation rules:
+        // - Optional sections (graded examples, common mistakes) are always available.
         // - You can always go BACK to any unlocked section.
         // - You can only go FORWARD up to maxUnlockedStep (usually via Continue).
-        if (s > maxUnlockedStep) {
+        if (!isOptionalStep(s) && s > maxUnlockedStep) {
           alert('Please use Continue to move forward after completing/reviewing the current section.');
           return;
         }

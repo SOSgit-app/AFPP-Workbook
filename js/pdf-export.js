@@ -109,7 +109,7 @@ var PdfExport = (function () {
     yPos = MARGIN_TOP;
 
     // ---- Cover / Header ----
-    addTitle('Air Force Planning Process Workbook');
+    addTitle('Air Force Planning Process Student Workbook');
     addSubtitle('Squadron Officer School');
     yPos += 4;
 
@@ -144,14 +144,14 @@ var PdfExport = (function () {
       doc.setFont('helvetica', 'normal');
       doc.setTextColor(150, 150, 150);
       doc.text(
-        'AFPP Workbook — Squadron Officer School — Page ' + p + ' of ' + totalPages,
+        'AFPP Student Workbook — Squadron Officer School — Page ' + p + ' of ' + totalPages,
         PAGE_WIDTH / 2, 290,
         { align: 'center' }
       );
     }
 
     // ---- Download ----
-    doc.save('AFPP_Workbook_Answers.pdf');
+    doc.save('AFPP_Student_Workbook_Answers.pdf');
   }
 
   return { generate: generate };

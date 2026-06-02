@@ -1,0 +1,113 @@
+AFPP Step 4: COA Analysis and Wargaming
+(AFPP: Test your solutions against reality.)
+
+Wargaming for non-operational problems. Wargaming is a recorded “what if” session of actions and reactions designed to visualize the flow of the conflict and evaluate each COA in light of the challenges posed by the problem and OE. The plan may not involve adversary forces per se, but all plans entail other factors, interdependencies, and threats or challenges to mission accomplishment. COA analysis and wargaming should be tailored to methodically evaluate these various considerations and their outcomes. 
+Your Task: Assess risks, second-order effects, scenarios
+
+1.  Conduct Analysis/Wargaming and record results
+[There are many different methods to conduct wargaming. It is rare below the air component level to have access to computer-assisted wargaming. Most wargames can be accomplished or modified to a simple tabletop format. Key to this step is the accurate recording of the wargame results for COA refinement. 
+Wargaming does not have to be time intensive. When facing time or personnel constraints, focusing on specific elements of the plan or operation can greatly reduce the wargame’s duration. A focused key leader discussion may also suffice for wargaming.]
+Your Task: Walk through each COA step-by-step asking the below questions.  Record your results and make any necessary updates to your COAs.
+Tip: Team up with a classmate and have them review your COAs to poke holes in your proposed plan (acting as the red team).
+1. Walk Through Each COA Step-by-Step
+•	What happens first? 
+•	Then what? 
+•	Then what? 
+2. Identify Risks
+•	What could go wrong? 
+•	What assumptions might fail? 
+3. Consider Second-Order Effects
+•	What unintended consequences might occur? 
+Examples:
+•	Fixing one problem creates another 
+•	Increased workload elsewhere 
+•	Cultural resistance 
+4. Consider “Most Likely” and “Most Challenging” Scenarios
+•	If everything goes normally → what happens? 
+•	If things go poorly → what happens? 
+(AFDP 5.0 Translation: This is simplified wargaming—thinking through action-reaction-counteraction.)
+
+Example: Wargaming Methodologies
+There are several ways to conduct wargaming. You can use a full "Action-Reaction-Counteraction" drill or focus on specific parts of the operation/plan.
+Method	Description[JS11.1]
+Action-Reaction-Counteraction	A structured drill where a Blue Team (friendly forces) presents an action, a Red Team (adversary) describes their reaction, and the Blue Team then details their counteraction. This cycle helps identify consequences and second/third-order effects.
+Focused Wargaming	When time is limited, focus the wargame on specific areas such as critical events, key decision points, specific lines of effort (LOE), a geographic area (box method), or a discrete block of time.
+Key Leader Discussion	A focused discussion among key leaders can also serve as an effective, condensed wargame.
+
+Key Data to Record
+During any wargame, it is essential to record the following information for later analysis and COA refinement:
+•	Timing for objectives
+•	Additional resources required
+•	Potential risks and mitigation strategies
+•	COA strengths and weaknesses
+•	Requirements for branches and sequels
+•	Commander’s Decision Points (DPs) and Critical Information Requirements (CCIRs)
+
+2. Refine/Modify each COA and Report Results (As necessary)
+[In this step, the results of the wargame are utilized to modify and refine each COA. Airmen are encouraged to review wargame outputs utilizing the seven joint functions as a framework to ensure alignment with the joint force.20 Planners should recognize the possibility that a wargame result could invalidate a potential COA. In these cases, it is the responsibility of the planning team to be transparent about the result and consider removing the COA from further consideration.]
+Your Task: Use your recorded results from your wargaming/analysis to refine and/or update your COAs. Use the text box below to show the changes made.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+AFPP Step 5: COA Comparison 
+(AFDP Translation: You are helping a decision-maker choose the best—not perfect—option.)
+The COA comparison step of the AFPP provides the commanders and staff an opportunity to see how the developed COAs rate against previously approved evaluation criteria. COAs are not initially evaluated against other COAs. Rather, each COA is assessed independently against COA evaluation criteria, and selection criteria related to the commander’s intent, and then compared to other COAs after independent assessments are complete. COA comparison facilitates the commander’s decision-making process by considering the ends, ways, means, and risks associated with each COA.
+Your Task: Systematically evaluate each Course of Action (COA) against your chosen criteria and then compare them to determine which plan best achieves the mission goals.
+Examples of Comparison Matrix’s:
+
+(Step5graphic1.png)
+ 
+•	Weigh Your Criteria: First, decide which evaluation criteria are most important and give them a higher number (weight).
+•	Score Each Plan: Score every plan against their specific criteria.
+•	Calculate the Value: Multiply the plan's score by the criterion's weight to get its value. You can add these up for a total score.
+ 
+ 
+(Step5graphic2.png)
+(Step5graphic3.png)
+ 
+
+•	Summarize comparison of all COAs by analyzing strengths and weaknesses or
+advantages and disadvantages for each criterion.
+
+(Step5graphic4.png)
+ 
+•	Base this comparison on the broad degree to which selected criteria support or reflect in the COA. This organizes as a table showing (+) for a positive influence, (0) for a neutral influence, and (–) for a negative influence.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+AFPP Step 6: Course of Action Approval/Recommendation
+(AFPP: Make a decision and justify it.)
+During the AFPP COA approval step, the planning staff work together to develop and present COAs and a recommendation to the commander for approval. The COA decision briefing summarizes the work completed to develop, analyze, and compare COAs. Afterward, the commander may brief HHQ and receive their approval if the COA is part of a larger operation or campaign. The key to COA approval is the commander and planning staff combining their experience, knowledge, skill, and creativity to analyze the data and recommendations. The commander selects a COA from the confluence of adaptive thinking and air component design.[JS12.1]
+Your Task: You will write a position paper to analyze each one of your COAs. You will also make a recommendation for the COA you believe will be most effective in achieving the objective of your chosen problem and justify your selection.   
+Length: The paper must be no shorter than one full page and no longer than two pages.
+Writing Guide: You will adhere to the principles and standards outlined in AFH 33-337, The Tongue and Quill. Your writing should be clear, direct, and professional. Pay close attention to active voice, formatting, and the "BLUF" principle.[JS1
+
+
+

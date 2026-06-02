@@ -15,27 +15,16 @@ var Workbook = (function () {
   var STEPS = [
     {
       id: 0,
-      title: 'Purpose',
-      fields: []
-    },
-    {
-      id: 1,
-      title: 'Problem Statement',
+      title: 'Introduction',
       fields: [
-        { key: 'p_stmt', label: 'Problem Statement (1–2 sentences)', required: true }
-      ]
-    },
-    {
-      id: 2,
-      title: 'Organization / Mission',
-      fields: [
+        { key: 'p_stmt', label: 'Problem Statement (1–2 sentences)', required: true },
         { key: 'org_desc', label: 'Organization and purpose', required: true },
         { key: 'org_stake', label: 'Key stakeholders (internal/external)', required: true },
         { key: 'org_constraints', label: 'Constraints (rules, resources, time, culture)', required: true }
       ]
     },
     {
-      id: 3,
+      id: 1,
       title: 'AFPP Step 1: Planning Initiation',
       fields: [
         { key: 's1_assess', label: 'Initial assessment (priorities, success, boundaries, time, effort)', required: true },
@@ -43,7 +32,7 @@ var Workbook = (function () {
       ]
     },
     {
-      id: 4,
+      id: 2,
       title: 'AFPP Step 2: Mission Analysis',
       fields: [
         { key: 's2_facts', label: 'Facts', required: true },
@@ -65,7 +54,7 @@ var Workbook = (function () {
       ]
     },
     {
-      id: 5,
+      id: 3,
       title: 'AFPP Step 3: COA Development',
       fields: [
         { key: 's3_coa1', label: 'COA 1 (solution/approach)', required: true },
@@ -73,50 +62,44 @@ var Workbook = (function () {
       ]
     },
     {
-      id: 6,
-      title: 'Phases 2–7',
+      id: 4,
+      title: 'AFPP Step 4: COA Analysis and Wargaming',
       fields: [
-        { key: 'p67_p2_constraints', label: 'Phase 2: Constraints & restraints', required: false },
-        { key: 'p67_p2_success', label: 'Phase 2: Success criteria', required: false },
-        { key: 'p67_p2_mission', label: 'Phase 2: Mission statement', required: false },
-
-        { key: 'p67_p3_coas', label: 'Phase 3: Distinct COAs', required: false },
-        { key: 'p67_p3_feas_accept_suit', label: 'Phase 3: Feasible/acceptable/suitable', required: false },
-        { key: 'p67_p3_outline', label: 'Phase 3: COA outline', required: false },
-        { key: 'p67_p3_pros_cons', label: 'Phase 3: Pros/cons/tradeoffs', required: false },
-
-        { key: 'p67_p4_walkthrough', label: 'Phase 4: Walkthrough', required: false },
-        { key: 'p67_p4_risks', label: 'Phase 4: Risks & assumptions', required: false },
-        { key: 'p67_p4_second_order', label: 'Phase 4: Second-order effects', required: false },
-        { key: 'p67_p4_scenarios', label: 'Phase 4: Likely vs challenging scenarios', required: false },
-
-        { key: 'p67_p5_criteria', label: 'Phase 5: Criteria', required: false },
-        { key: 'p67_p5_comparison', label: 'Phase 5: COA comparison', required: false },
-        { key: 'p67_p5_tradeoffs', label: 'Phase 5: Tradeoffs', required: false },
-
-        { key: 'p67_p6_select', label: 'Phase 6: Selected COA', required: false },
-        { key: 'p67_p6_justify', label: 'Phase 6: Justification', required: false },
-        { key: 'p67_p6_risk', label: 'Phase 6: Remaining risks & mitigation', required: false },
-
-        { key: 'p67_p7_execution', label: 'Phase 7: Execution plan', required: false },
-        { key: 'p67_p7_comm', label: 'Phase 7: Communication plan', required: false },
-        { key: 'p67_p7_assess', label: 'Phase 7: Assessment plan', required: false },
-        { key: 'p67_p7_adapt', label: 'Phase 7: Adaptation plan', required: false }
+        { key: 's4_wargame', label: 'Wargaming / analysis results', required: true },
+        { key: 's4_refine', label: 'Refined / updated COAs', required: true }
+      ]
+    },
+    {
+      id: 5,
+      title: 'AFPP Step 5: COA Comparison',
+      fields: [
+        { key: 's5_matrix', label: 'Weighted matrix / scored comparison', required: true },
+        { key: 's5_summary', label: 'Strengths / weaknesses summary (+ / 0 / –)', required: true }
+      ]
+    },
+    {
+      id: 6,
+      title: 'AFPP Step 6: COA Approval/Recommendation',
+      fields: [
+        { key: 's6_position', label: 'Position paper (recommended COA and justification)', required: true }
       ]
     },
     {
       id: 7,
       title: 'Graded Example 1',
+      optional: true,
       fields: []
     },
     {
       id: 8,
       title: 'Graded Example 2',
+      optional: true,
       fields: []
     },
     {
       id: 9,
       title: 'Common Mistakes',
+      optional: true,
       fields: []
     },
     {
@@ -216,6 +199,11 @@ var Workbook = (function () {
     return hasRequired;
   }
 
+  function isOptionalStep(stepIndex) {
+    if (stepIndex < 0 || stepIndex >= STEPS.length) return false;
+    return STEPS[stepIndex].optional === true;
+  }
+
   function getSteps() {
     return STEPS;
   }
@@ -232,6 +220,7 @@ var Workbook = (function () {
     loadData: loadData,
     completionPercent: completionPercent,
     isStepComplete: isStepComplete,
+    isOptionalStep: isOptionalStep,
     getSteps: getSteps,
     getStepCount: getStepCount
   };

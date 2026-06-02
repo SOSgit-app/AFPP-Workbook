@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<manifest identifier="AFPP_Workbook_SOS" version="1.0"
+<manifest identifier="AFPP_Workbook_SOS" version="1.2"
   xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
   xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -14,9 +14,9 @@
 
   <organizations default="AFPP_ORG">
     <organization identifier="AFPP_ORG">
-      <title>Air Force Planning Process Workbook</title>
+      <title>Air Force Planning Process Student Workbook</title>
       <item identifier="AFPP_ITEM_01" identifierref="AFPP_RES_01">
-        <title>AFPP Workbook</title>
+        <title>AFPP Student Workbook</title>
         <adlcp:masteryscore>80</adlcp:masteryscore>
       </item>
     </organization>
@@ -35,6 +35,11 @@
       <file href="static/pillar 2 step 2.png"/>
       <file href="static/pillar 3 step 2.png"/>
       <file href="static/9 develop COA evaluation criteria.png"/>
+      <file href="static/Step4graphic.png"/>
+      <file href="static/Step5graphic1.png"/>
+      <file href="static/Step5graphic2.png"/>
+      <file href="static/Step5graphic3.png"/>
+      <file href="static/Step5graphic4.png"/>
     </resource>
   </resources>
 
