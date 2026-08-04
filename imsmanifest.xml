@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<manifest identifier="AFPP_Workbook_SOS" version="1.2"
-  xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
-  xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
+<manifest identifier="AFPP_Workbook_SOS" version="1.4"
+  xmlns="http://www.imsglobal.org/xsd/imscp_v1p1"
+  xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3"
+  xmlns:adlseq="http://www.adlnet.org/xsd/adlseq_v1p3"
+  xmlns:adlnav="http://www.adlnet.org/xsd/adlnav_v1p3"
+  xmlns:imsss="http://www.imsglobal.org/xsd/imsss"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
-                       http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd
-                       http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  xsi:schemaLocation="http://www.imsglobal.org/xsd/imscp_v1p1 imscp_v1p1.xsd
+                       http://www.adlnet.org/xsd/adlcp_v1p3 adlcp_v1p3.xsd
+                       http://www.adlnet.org/xsd/adlseq_v1p3 adlseq_v1p3.xsd
+                       http://www.adlnet.org/xsd/adlnav_v1p3 adlnav_v1p3.xsd
+                       http://www.imsglobal.org/xsd/imsss imsss_v1p0.xsd">
 
   <metadata>
     <schema>ADL SCORM</schema>
-    <schemaversion>1.2</schemaversion>
+    <schemaversion>2004 4th Edition</schemaversion>
   </metadata>
 
   <organizations default="AFPP_ORG">
-    <organization identifier="AFPP_ORG">
+    <organization identifier="AFPP_ORG" adlseq:objectivesGlobalToSystem="false">
       <title>Air Force Planning Process Student Workbook</title>
       <item identifier="AFPP_ITEM_01" identifierref="AFPP_RES_01">
         <title>AFPP Student Workbook</title>
-        <adlcp:masteryscore>80</adlcp:masteryscore>
+        <imsss:sequencing>
+          <imsss:controlMode choice="true" flow="true"/>
+          <imsss:deliveryControls tracked="true" completionSetByContent="true" objectiveSetByContent="true"/>
+        </imsss:sequencing>
       </item>
+      <imsss:sequencing>
+        <imsss:controlMode choice="true" flow="true"/>
+      </imsss:sequencing>
     </organization>
   </organizations>
 
   <resources>
-    <resource identifier="AFPP_RES_01" type="webcontent" adlcp:scormtype="sco" href="index.html">
+    <resource identifier="AFPP_RES_01" type="webcontent" adlcp:scormType="sco" href="index.html">
       <file href="index.html"/>
       <file href="css/style.css"/>
       <file href="js/scorm-api.js"/>
@@ -40,6 +51,7 @@
       <file href="static/Step5graphic2.png"/>
       <file href="static/Step5graphic3.png"/>
       <file href="static/Step5graphic4.png"/>
+      <file href="static/joint-cog-model.png"/>
     </resource>
   </resources>
 

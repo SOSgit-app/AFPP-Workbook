@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Air Force Planning Process Student Workbook</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20260804a">
 </head>
 <body>
 
@@ -21,32 +21,46 @@
           <div id="completionBar" class="completion-fill" style="width:0%"></div>
         </div>
       </div>
-      <button id="btnSave" class="btn btn-secondary" title="Save Progress">
-        <span class="save-icon">&#128190;</span> Save
+      <button id="btnRestoreBackup" class="btn btn-secondary" type="button" title="Restore a backup file downloaded from YOUR Canvas account only">
+        Restore Backup
+      </button>
+      <input id="backupFileInput" type="file" accept=".json,application/json" hidden>
+      <button id="btnSaveExit" class="btn btn-secondary" title="Save progress, download a backup file, and exit">
+        Save &amp; Exit
       </button>
       <span id="saveIndicator" class="save-indicator hidden">Saved</span>
+      <span id="lmsSaveStatus" class="lms-save-status" title="Shows whether Canvas confirmed your save">Connecting…</span>
     </div>
   </header>
+
+  <div id="floatingSave">
+    <span id="floatingSaveIndicator" class="floating-save-indicator hidden" aria-live="polite">Saved</span>
+    <button id="btnFloatingSave" class="btn btn-primary" type="button" title="Save progress to Canvas">
+      <span class="save-icon" aria-hidden="true">&#128190;</span> Save
+    </button>
+  </div>
 
   <div id="appContainer">
 
     <!-- Sidebar Navigation -->
     <nav id="sidebar">
       <ul id="stepList">
-        <li class="active" data-step="0"><a class="nav-link" href="#" data-step="0"><span class="step-label">Introduction</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li class="active" data-step="0"><a class="nav-link" href="#" data-step="0"><span class="step-label">Saving Your Work</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="1"><a class="nav-link" href="#" data-step="1"><span class="step-label">Introduction</span><span class="step-check hidden">&#10003;</span></a></li>
         <li class="step-nav-separator" aria-hidden="true"></li>
-        <li data-step="1"><a class="nav-link" href="#" data-step="1"><span class="step-label">AFPP Step 1: Planning Initiation</span><span class="step-check hidden">&#10003;</span></a></li>
-        <li data-step="2"><a class="nav-link" href="#" data-step="2"><span class="step-label">AFPP Step 2: Mission Analysis</span><span class="step-check hidden">&#10003;</span></a></li>
-        <li data-step="3"><a class="nav-link" href="#" data-step="3"><span class="step-label">AFPP Step 3: COA Development</span><span class="step-check hidden">&#10003;</span></a></li>
-        <li data-step="4"><a class="nav-link" href="#" data-step="4"><span class="step-label">AFPP Step 4: COA Analysis &amp; Wargaming</span><span class="step-check hidden">&#10003;</span></a></li>
-        <li data-step="5"><a class="nav-link" href="#" data-step="5"><span class="step-label">AFPP Step 5: COA Comparison</span><span class="step-check hidden">&#10003;</span></a></li>
-        <li data-step="6"><a class="nav-link" href="#" data-step="6"><span class="step-label">AFPP Step 6: COA Approval</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="2"><a class="nav-link" href="#" data-step="2"><span class="step-label">AFPP Step 1: Planning Initiation</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="3"><a class="nav-link" href="#" data-step="3"><span class="step-label">AFPP Step 2: Mission Analysis</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="4"><a class="nav-link" href="#" data-step="4"><span class="step-label">AFPP Step 3: COA Development</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="5"><a class="nav-link" href="#" data-step="5"><span class="step-label">AFPP Step 4: COA Analysis &amp; Wargaming</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="6"><a class="nav-link" href="#" data-step="6"><span class="step-label">AFPP Step 5: COA Comparison</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="7"><a class="nav-link" href="#" data-step="7"><span class="step-label">AFPP Step 6: COA Approval</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="8"><a class="nav-link" href="#" data-step="8"><span class="step-label">AFPP Step 7: Plans and Order Generation</span><span class="step-check hidden">&#10003;</span></a></li>
         <li class="step-nav-separator" aria-hidden="true"></li>
-        <li data-step="7"><a class="nav-link" href="#" data-step="7"><span class="step-label">Graded Example 1 <span class="step-optional">(optional)</span></span><span class="step-check hidden">&#10003;</span></a></li>
-        <li data-step="8"><a class="nav-link" href="#" data-step="8"><span class="step-label">Graded Example 2 <span class="step-optional">(optional)</span></span><span class="step-check hidden">&#10003;</span></a></li>
-        <li data-step="9"><a class="nav-link" href="#" data-step="9"><span class="step-label">Common Mistakes <span class="step-optional">(optional)</span></span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="9"><a class="nav-link" href="#" data-step="9"><span class="step-label">Download &amp; Submit</span><span class="step-check hidden">&#10003;</span></a></li>
         <li class="step-nav-separator" aria-hidden="true"></li>
-        <li data-step="10"><a class="nav-link" href="#" data-step="10"><span class="step-label">Submit &amp; Download</span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="10"><a class="nav-link" href="#" data-step="10"><span class="step-label">Graded Example 1 <span class="step-optional">(optional)</span></span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="11"><a class="nav-link" href="#" data-step="11"><span class="step-label">Graded Example 2 <span class="step-optional">(optional)</span></span><span class="step-check hidden">&#10003;</span></a></li>
+        <li data-step="12"><a class="nav-link" href="#" data-step="12"><span class="step-label">Common Mistakes <span class="step-optional">(optional)</span></span><span class="step-check hidden">&#10003;</span></a></li>
       </ul>
     </nav>
 
@@ -54,7 +68,57 @@
     <main id="mainContent">
       <article class="content-doc">
         <section class="step-panel" data-step="0">
+          <h2>Saving Your Work</h2>
+          <p class="step-intro">
+            Read this page before you begin. Progress is stored in Canvas, and a personal backup file is created when you use
+            <strong>Save &amp; Exit</strong>.
+          </p>
+
+          <div class="save-guide">
+            <div class="save-guide-grid">
+              <section class="save-guide-card save-guide-do">
+                <h3>Do</h3>
+                <ul>
+                  <li>Keep only <strong>one</strong> Canvas window or tab open for this assignment.</li>
+                  <li>Click <strong>Save</strong> (bottom right) while you work.</li>
+                  <li>Confirm the top bar says <strong>Canvas save OK</strong>.</li>
+                  <li>When leaving, click <strong>Save &amp; Exit</strong> (top right, dark blue header).</li>
+                </ul>
+                <p class="save-guide-note">
+                  <strong>Save &amp; Exit</strong> saves to Canvas and downloads your backup file
+                  (<code>AFPP-backup-….json</code> to your Downloads folder.
+                </p>
+              </section>
+
+              <section class="save-guide-card save-guide-dont">
+                <h3>Don’t</h3>
+                <ul>
+                  <li>Don’t open multiple Canvas windows or tabs for this assignment.</li>
+                  <li>Don’t switch between browsers (for example Edge and Chrome) or computers mid-work.</li>
+                  <li>Don’t close the browser or leave Canvas without using <strong>Save &amp; Exit</strong>.</li>
+                </ul>
+              </section>
+            </div>
+
+            <section class="save-guide-restore">
+              <h3>If your progress resets</h3>
+              <ol>
+                <li>Re-open this assignment in Canvas with the same student account.</li>
+                <li>In the <strong>top-right dark blue header</strong>, click <strong>Restore Backup</strong> (next to <strong>Save &amp; Exit</strong>).</li>
+                <li>Choose your <code>.json</code> backup file and confirm.</li>
+                <li>Click <strong>Save</strong> (bottom right) until the top bar says <strong>Canvas save OK</strong>.</li>
+                <li>Click <strong>Save &amp; Exit</strong> before leaving to download a fresh backup.</li>
+              </ol>
+              <p class="save-guide-note">
+                Backups only work for the Canvas account that downloaded them. Another student’s file cannot be restored on your account.
+              </p>
+            </section>
+          </div>
+        </section>
+
+        <section class="step-panel hidden" data-step="1">
           <h2>Introduction</h2>
+          <p class="canvas-submit-note">This section contains a required Canvas <span class="canvas-submit-word">submission</span> that is separate from this workbook.</p>
 
           <h3>Purpose</h3>
           <p class="step-intro">
@@ -69,48 +133,28 @@
             applicable sections of the workbook.
           </p>
 
-          <h3 class="intro-major">Problem Statement (Must be approved by Flight Commander)</h3>
-          <h3>Your Task</h3>
-          <p>Clearly describe the problem in 1–2 sentences. Focus on the gap between current reality and desired outcome.</p>
-          <h3>Guidance</h3>
-          <ul class="doc-list">
-            <li>Frame the problem as a system that needs to change, not just a symptom.</li>
-            <li>Avoid jumping to solutions.</li>
-          </ul>
-          <h3>Helpful prompts</h3>
-          <ul class="doc-list">
-            <li>What is happening that shouldn’t be?</li>
-            <li>What should be happening instead?</li>
-            <li>Why does this matter to the organization?</li>
-          </ul>
-          <div class="form-group">
-            <label for="f_p_stmt">Problem Statement</label>
-            <textarea id="f_p_stmt" data-field="p_stmt" rows="3" placeholder="Write your approved problem statement (1–2 sentences)."></textarea>
-          </div>
-
-          <h3 class="intro-major">Organization / Mission / Stakeholders / Constraints</h3>
-          <h3>Your Task</h3>
-          <p>Identify organization and its purpose; key stakeholders (internal/external); constraints (rules, resources, time, culture).</p>
-          <h3>Guidance</h3>
-          <ul class="doc-list">
-            <li>Think in terms of the operational environment: people, systems, processes, culture, resources.</li>
-            <li>Include both formal constraints (policy, budget) and informal ones (culture, resistance).</li>
-          </ul>
-          <div class="form-group">
-            <label for="f_org_desc">Organization and purpose</label>
-            <textarea id="f_org_desc" data-field="org_desc" rows="3" placeholder="Describe the organization and its purpose."></textarea>
-          </div>
-          <div class="form-group">
-            <label for="f_org_stake">Key stakeholders</label>
-            <textarea id="f_org_stake" data-field="org_stake" rows="3" placeholder="List internal and external stakeholders."></textarea>
-          </div>
-          <div class="form-group">
-            <label for="f_org_constraints">Constraints</label>
-            <textarea id="f_org_constraints" data-field="org_constraints" rows="3" placeholder="Identify constraints: rules, resources, time, culture (formal and informal)."></textarea>
+          <div class="submission-callout" role="note">
+            <h3><span class="canvas-submit-word">Submission</span></h3>
+            <p>
+              Write and submit your <strong>Problem Statement</strong> in Canvas under the separate assignment:
+            </p>
+            <p class="submission-assignment-name">AFPP Workbook Assignment #1 – Problem Statement</p>
+            <p>
+              Your Flight Commander must approve/verify it there. This workbook does not collect the Problem Statement text.
+            </p>
+            <label class="submission-verify">
+              <input
+                type="checkbox"
+                id="f_a1_verified"
+                data-field="a1_verified"
+                value="1"
+              >
+              <span>Click here if you have submitted the Problem Statement and it has been verified.</span>
+            </label>
           </div>
         </section>
 
-        <section class="step-panel hidden" data-step="1">
+        <section class="step-panel hidden" data-step="2">
           <h2>AFPP Step 1: Planning Initiation</h2>
           <p class="step-intro"><em>(AFPP: “Understand the environment and frame the problem.”)</em></p>
           <p>
@@ -152,7 +196,7 @@
           <p><strong>Tip:</strong> Don’t overcomplicate—this phase is about getting oriented, not being perfect.</p>
         </section>
 
-        <section class="step-panel hidden" data-step="2">
+        <section class="step-panel hidden" data-step="3">
           <h2>AFPP Step 2: Mission Analysis</h2>
           <p class="step-intro"><em>(AFPP: Understand the problem deeply before solving it.)</em></p>
           <p>
@@ -262,8 +306,75 @@
             <textarea id="f_s2_constraints" data-field="s2_constraints" rows="4" placeholder="List constraints (must-do) and restraints (must-not-do) that apply."></textarea>
           </div>
 
-          <h3 class="substep-heading">5. Analyze friendly/adversary COGs and critical factors</h3>
-          <p>(Add any COGs and critical factors identified for your specific problem set.)</p>
+          <h3 class="h-with-info substep-heading">
+            5. Analyze friendly/adversary COGs and critical factors
+            <span class="tooltip-wrap">
+              <button type="button" class="info-icon" aria-label="Show definition of COG" aria-describedby="tip-cog">
+                i
+              </button>
+              <span role="tooltip" id="tip-cog" class="tooltip">
+                A COG is the “source of power that provides moral or physical strength, freedom of action, or a will to act.” COG analysis should reveal what is critical and relate what is critical to what is vulnerable. Critical vulnerabilities may be attacked, exploited, or protected to decisively affect the enemy and enable friendly action. Analysis of a COG’s critical factors generally yields decision points, which are key terrain, key events, critical factors, or functions that, when acted upon, enable a commander to gain a marked advantage over an enemy. A COG analysis may reveal vulnerabilities for countering an enemy kill chain.
+              </span>
+            </span>
+          </h3>
+          <p>
+            <strong>Your Task:</strong> Analyze your problem and identify some potential COGs that will need to be considered during your planning process.
+          </p>
+          <p><strong>Guidance:</strong> Types of COGs</p>
+          <ul class="doc-list">
+            <li>
+              <strong>Critical capabilities (CCs):</strong> those means that are considered crucial enablers for a COG to function as such
+              (and are essential to the accomplishment of the specified or implied objectives).
+            </li>
+            <li>
+              <strong>Critical requirements (CRs):</strong> essential conditions, resources, or means for a CC to be fully operational.
+            </li>
+            <li>
+              <strong>Critical vulnerabilities (CVs),</strong> or components thereof, are deficient or vulnerable to attack
+              (or other effects) that create decisive or significant effects on the COG.
+            </li>
+          </ul>
+          <p>
+            <strong>Example:</strong> The Center of Gravity for a Level 1 Trauma Center is its Specialized Surgical and Intensive Care Capacity,
+            which ensures it can handle the most critical life-saving missions.
+          </p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>COG Type</th>
+                <th>Description</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Critical Capability (CC)</strong></td>
+                <td>The essential functions of the hospital.</td>
+                <td>24/7 emergency surgical intervention and advanced life support.</td>
+              </tr>
+              <tr>
+                <td><strong>Critical Requirement (CR)</strong></td>
+                <td>Essential inputs for the CCs.</td>
+                <td>Board-certified trauma surgeons, specialized medical equipment (ventilators, MRI), and a reliable power grid.</td>
+              </tr>
+              <tr>
+                <td><strong>Critical Vulnerability (CV)</strong></td>
+                <td>Vulnerable components of the requirements.</td>
+                <td>Backup generator failure during a natural disaster or a shortage of specialized medical supplies (e.g., blood products).</td>
+              </tr>
+            </tbody>
+          </table>
+          <figure class="doc-figure doc-figure-sm">
+            <img
+              class="doc-image"
+              src="static/joint-cog-model.png"
+              alt="Joint COG Model: Center of Gravity supported by Critical Capabilities and Critical Requirements, with Critical Vulnerabilities as most effective points of attack"
+            />
+          </figure>
+          <div class="form-group">
+            <label for="f_s2_cogs">Friendly/adversary COGs and critical factors (CC / CR / CV)</label>
+            <textarea id="f_s2_cogs" data-field="s2_cogs" rows="6" placeholder="Identify potential COGs for your problem and list critical capabilities, requirements, and vulnerabilities."></textarea>
+          </div>
 
           <h3 class="h-with-info substep-heading">
             6. Identify Specified, Implied, and Essential Tasks
@@ -351,19 +462,7 @@
             <p>Identify the specific “harmful events” that could threaten your goal.</p>
 
             <h3>1. List Potential Harmful Events</h3>
-            <p>Brainstorm at least 3–5 specific bad things that could happen.</p>
-            <div class="form-group">
-              <label for="f_s2_risk_he1">Harmful Event 1</label>
-              <input type="text" id="f_s2_risk_he1" data-field="s2_risk_he1" placeholder="Enter Harmful Event 1">
-            </div>
-            <div class="form-group">
-              <label for="f_s2_risk_he2">Harmful Event 2</label>
-              <input type="text" id="f_s2_risk_he2" data-field="s2_risk_he2" placeholder="Enter Harmful Event 2">
-            </div>
-            <div class="form-group">
-              <label for="f_s2_risk_he3">Harmful Event 3</label>
-              <input type="text" id="f_s2_risk_he3" data-field="s2_risk_he3" placeholder="Enter Harmful Event 3">
-            </div>
+            <p>Brainstorm at least 3 specific bad things that could happen.</p>
 
             <h3>2. Analyze Each Harmful Event</h3>
             <p>For each event you listed, break it down:</p>
@@ -400,9 +499,111 @@
                 </tr>
               </tbody>
             </table>
-            <div class="form-group">
-              <label for="f_s2_risk_p2">Pillar 2 response</label>
-              <textarea id="f_s2_risk_p2" data-field="s2_risk_p2" rows="5" placeholder="Answer Pillar 2: harmful events + source/likelihood/impact."></textarea>
+
+            <p><strong>Your response:</strong> Complete at least one row. Additional rows are optional.</p>
+            <table class="doc-table risk-entry-table" data-risk-table="pillar2">
+              <thead>
+                <tr>
+                  <th>Harmful Event</th>
+                  <th>Source of Risk</th>
+                  <th>Likelihood (L/M/H)</th>
+                  <th>Impact (L/M/H)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-risk-row="1">
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_he1">Harmful Event 1</label>
+                    <textarea id="f_s2_risk_he1" data-field="s2_risk_he1" rows="2" placeholder="Harmful event 1"></textarea>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_src1">Source of Risk 1</label>
+                    <textarea id="f_s2_risk_src1" data-field="s2_risk_src1" rows="2" placeholder="Source of risk"></textarea>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_lik1">Likelihood 1</label>
+                    <select id="f_s2_risk_lik1" data-field="s2_risk_lik1">
+                      <option value="">—</option>
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_imp1">Impact 1</label>
+                    <select id="f_s2_risk_imp1" data-field="s2_risk_imp1">
+                      <option value="">—</option>
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="risk-row-optional hidden" data-risk-row="2">
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_he2">Harmful Event 2</label>
+                    <textarea id="f_s2_risk_he2" data-field="s2_risk_he2" rows="2" placeholder="Harmful event 2 (optional)"></textarea>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_src2">Source of Risk 2</label>
+                    <textarea id="f_s2_risk_src2" data-field="s2_risk_src2" rows="2" placeholder="Source of risk (optional)"></textarea>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_lik2">Likelihood 2</label>
+                    <select id="f_s2_risk_lik2" data-field="s2_risk_lik2">
+                      <option value="">—</option>
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_imp2">Impact 2</label>
+                    <select id="f_s2_risk_imp2" data-field="s2_risk_imp2">
+                      <option value="">—</option>
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="risk-row-optional hidden" data-risk-row="3">
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_he3">Harmful Event 3</label>
+                    <textarea id="f_s2_risk_he3" data-field="s2_risk_he3" rows="2" placeholder="Harmful event 3 (optional)"></textarea>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_src3">Source of Risk 3</label>
+                    <textarea id="f_s2_risk_src3" data-field="s2_risk_src3" rows="2" placeholder="Source of risk (optional)"></textarea>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_lik3">Likelihood 3</label>
+                    <select id="f_s2_risk_lik3" data-field="s2_risk_lik3">
+                      <option value="">—</option>
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_imp3">Impact 3</label>
+                    <select id="f_s2_risk_imp3" data-field="s2_risk_imp3">
+                      <option value="">—</option>
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="risk-row-actions" data-risk-actions="pillar2">
+              <button type="button" class="btn btn-secondary btn-add-risk-row" data-add-risk-row="pillar2">
+                Add another optional row
+              </button>
+              <button type="button" class="btn btn-secondary btn-remove-risk-row hidden" data-remove-risk-row="pillar2">
+                Remove last optional row
+              </button>
             </div>
           </div>
 
@@ -423,9 +624,129 @@
               <li><strong>Unacceptable Risk:</strong> Any risk in the “Significant” or “High” zone needs a plan.</li>
               <li><strong>Acceptable Risk:</strong> Risks in the “Low” zone might not need a special plan.</li>
             </ul>
-            <div class="form-group">
-              <label for="f_s2_risk_p3">Pillar 3 response</label>
-              <textarea id="f_s2_risk_p3" data-field="s2_risk_p3" rows="4" placeholder="Answer Pillar 3: overall risk level and which risks are unacceptable."></textarea>
+
+            <p><strong>Your response:</strong> Complete at least one row. Additional rows are optional.</p>
+            <table class="doc-table risk-entry-table" data-risk-table="pillar3">
+              <thead>
+                <tr>
+                  <th>Event</th>
+                  <th>Probability</th>
+                  <th>Consequence</th>
+                  <th>Initial Risk Assessment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-risk-row="1">
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p3_ev1">Event 1</label>
+                    <textarea id="f_s2_risk_p3_ev1" data-field="s2_risk_p3_ev1" rows="2" placeholder="Event 1"></textarea>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p3_prob1">Probability 1</label>
+                    <select id="f_s2_risk_p3_prob1" data-field="s2_risk_p3_prob1">
+                      <option value="">—</option>
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p3_con1">Consequence 1</label>
+                    <select id="f_s2_risk_p3_con1" data-field="s2_risk_p3_con1">
+                      <option value="">—</option>
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p3_risk1">Initial Risk Assessment 1</label>
+                    <select id="f_s2_risk_p3_risk1" data-field="s2_risk_p3_risk1">
+                      <option value="">—</option>
+                      <option value="Low">Low</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Significant">Significant</option>
+                      <option value="High">High</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="risk-row-optional hidden" data-risk-row="2">
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p3_ev2">Event 2</label>
+                    <textarea id="f_s2_risk_p3_ev2" data-field="s2_risk_p3_ev2" rows="2" placeholder="Event 2 (optional)"></textarea>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p3_prob2">Probability 2</label>
+                    <select id="f_s2_risk_p3_prob2" data-field="s2_risk_p3_prob2">
+                      <option value="">—</option>
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p3_con2">Consequence 2</label>
+                    <select id="f_s2_risk_p3_con2" data-field="s2_risk_p3_con2">
+                      <option value="">—</option>
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p3_risk2">Initial Risk Assessment 2</label>
+                    <select id="f_s2_risk_p3_risk2" data-field="s2_risk_p3_risk2">
+                      <option value="">—</option>
+                      <option value="Low">Low</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Significant">Significant</option>
+                      <option value="High">High</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="risk-row-optional hidden" data-risk-row="3">
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p3_ev3">Event 3</label>
+                    <textarea id="f_s2_risk_p3_ev3" data-field="s2_risk_p3_ev3" rows="2" placeholder="Event 3 (optional)"></textarea>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p3_prob3">Probability 3</label>
+                    <select id="f_s2_risk_p3_prob3" data-field="s2_risk_p3_prob3">
+                      <option value="">—</option>
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p3_con3">Consequence 3</label>
+                    <select id="f_s2_risk_p3_con3" data-field="s2_risk_p3_con3">
+                      <option value="">—</option>
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p3_risk3">Initial Risk Assessment 3</label>
+                    <select id="f_s2_risk_p3_risk3" data-field="s2_risk_p3_risk3">
+                      <option value="">—</option>
+                      <option value="Low">Low</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Significant">Significant</option>
+                      <option value="High">High</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="risk-row-actions" data-risk-actions="pillar3">
+              <button type="button" class="btn btn-secondary btn-add-risk-row" data-add-risk-row="pillar3">
+                Add another optional row
+              </button>
+              <button type="button" class="btn btn-secondary btn-remove-risk-row hidden" data-remove-risk-row="pillar3">
+                Remove last optional row
+              </button>
             </div>
 
             <figure class="doc-figure">
@@ -473,9 +794,83 @@
                 </tr>
               </tbody>
             </table>
-            <div class="form-group">
-              <label for="f_s2_risk_p4">Pillar 4 response</label>
-              <textarea id="f_s2_risk_p4" data-field="s2_risk_p4" rows="6" placeholder="Answer Pillar 4: risk decisions and specific management actions."></textarea>
+
+            <p><strong>Your response:</strong> Complete at least one row. Additional rows are optional.</p>
+            <table class="doc-table risk-entry-table" data-risk-table="pillar4">
+              <thead>
+                <tr>
+                  <th>Unacceptable Risk</th>
+                  <th>My Management Plan (Choose one: Avoid, Mitigate, Transfer)</th>
+                  <th>My Specific Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-risk-row="1">
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p4_risk1">Unacceptable Risk 1</label>
+                    <textarea id="f_s2_risk_p4_risk1" data-field="s2_risk_p4_risk1" rows="2" placeholder="Unacceptable risk 1"></textarea>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p4_plan1">Management Plan 1</label>
+                    <select id="f_s2_risk_p4_plan1" data-field="s2_risk_p4_plan1">
+                      <option value="">—</option>
+                      <option value="Avoid">Avoid</option>
+                      <option value="Mitigate">Mitigate</option>
+                      <option value="Transfer">Transfer</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p4_act1">Specific Action 1</label>
+                    <textarea id="f_s2_risk_p4_act1" data-field="s2_risk_p4_act1" rows="2" placeholder="Specific action"></textarea>
+                  </td>
+                </tr>
+                <tr class="risk-row-optional hidden" data-risk-row="2">
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p4_risk2">Unacceptable Risk 2</label>
+                    <textarea id="f_s2_risk_p4_risk2" data-field="s2_risk_p4_risk2" rows="2" placeholder="Unacceptable risk 2 (optional)"></textarea>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p4_plan2">Management Plan 2</label>
+                    <select id="f_s2_risk_p4_plan2" data-field="s2_risk_p4_plan2">
+                      <option value="">—</option>
+                      <option value="Avoid">Avoid</option>
+                      <option value="Mitigate">Mitigate</option>
+                      <option value="Transfer">Transfer</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p4_act2">Specific Action 2</label>
+                    <textarea id="f_s2_risk_p4_act2" data-field="s2_risk_p4_act2" rows="2" placeholder="Specific action (optional)"></textarea>
+                  </td>
+                </tr>
+                <tr class="risk-row-optional hidden" data-risk-row="3">
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p4_risk3">Unacceptable Risk 3</label>
+                    <textarea id="f_s2_risk_p4_risk3" data-field="s2_risk_p4_risk3" rows="2" placeholder="Unacceptable risk 3 (optional)"></textarea>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p4_plan3">Management Plan 3</label>
+                    <select id="f_s2_risk_p4_plan3" data-field="s2_risk_p4_plan3">
+                      <option value="">—</option>
+                      <option value="Avoid">Avoid</option>
+                      <option value="Mitigate">Mitigate</option>
+                      <option value="Transfer">Transfer</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s2_risk_p4_act3">Specific Action 3</label>
+                    <textarea id="f_s2_risk_p4_act3" data-field="s2_risk_p4_act3" rows="2" placeholder="Specific action (optional)"></textarea>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="risk-row-actions" data-risk-actions="pillar4">
+              <button type="button" class="btn btn-secondary btn-add-risk-row" data-add-risk-row="pillar4">
+                Add another optional row
+              </button>
+              <button type="button" class="btn btn-secondary btn-remove-risk-row hidden" data-remove-risk-row="pillar4">
+                Remove last optional row
+              </button>
             </div>
           </div>
 
@@ -497,7 +892,7 @@
               alt="COA evaluation criteria reference diagram (commander’s evaluation criteria)"
             />
           </figure>
-          <p><strong>Your Task:</strong> Decide what COA evaluation criteria you will use to guide your COAs effort, success, and justification for the recommended COA. You will use these criteria later in AFPP Step 5.</p>
+          <p><strong>Your Task:</strong> Write at least four COA evaluation criteria and assign a weight to each. Criteria and weights autofill into the AFPP Step 5 weighted matrix.</p>
           <p><strong>Guide:</strong></p>
           <table class="doc-table">
             <thead>
@@ -525,9 +920,161 @@
               </tr>
             </tbody>
           </table>
-          <div class="form-group">
-            <label for="f_s2_criteria">COA evaluation criteria</label>
-            <textarea id="f_s2_criteria" data-field="s2_criteria" rows="4" placeholder="List your criteria and (optionally) how you will weight them."></textarea>
+          <div class="criteria-weight-example" role="note">
+            <p><strong>How weights work:</strong> Weight = relative importance. A higher weight means that criterion counts more when you score COAs in Step 5. Use any consistent scale you choose (for example <strong>1–5</strong>, or percentages that add up to <strong>100</strong>).</p>
+            <p><strong>In Step 5:</strong> Weighted score = Weight × Score. Totals decide which COA better meets your priorities.</p>
+            <p><strong>Example</strong> (not required — write criteria for <em>your</em> problem):</p>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>Evaluation Criterion</th>
+                  <th style="width:7rem">Weight</th>
+                  <th>Why this weight?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mission accomplishment / effectiveness</td>
+                  <td>5</td>
+                  <td>Most important — if the mission fails, nothing else matters</td>
+                </tr>
+                <tr>
+                  <td>Risk to force / acceptable casualties</td>
+                  <td>4</td>
+                  <td>High priority, but secondary to accomplishing the mission</td>
+                </tr>
+                <tr>
+                  <td>Speed / time to desired end state</td>
+                  <td>3</td>
+                  <td>Important, but can trade some speed for lower risk</td>
+                </tr>
+                <tr>
+                  <td>Sustainability / lasting effect</td>
+                  <td>2</td>
+                  <td>Still matters; less decisive for this problem than the others</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="criteria-weight-math"><strong>Quick math check:</strong> If COA 1 scores <strong>4</strong> on mission accomplishment (weight <strong>5</strong>), that row’s weighted score is <strong>5 × 4 = 20</strong>. Do the same for every criterion, then compare COA totals.</p>
+          </div>
+          <p><strong>Your criteria:</strong> Complete at least four rows (criterion + weight). Additional rows are optional. Higher weights = more important criteria.</p>
+          <table class="doc-table risk-entry-table" data-risk-table="criteria" id="criteriaEntryTable">
+            <thead>
+              <tr>
+                <th style="width:3rem">#</th>
+                <th>Evaluation Criterion</th>
+                <th style="width:7rem">Weight</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-risk-row="1">
+                <td>1</td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_1">Criterion 1</label>
+                  <textarea id="f_s2_crit_1" data-field="s2_crit_1" rows="2" placeholder="e.g., Effectiveness / Mission Accomplishment"></textarea>
+                </td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_wt_1">Weight 1</label>
+                  <input type="number" id="f_s2_crit_wt_1" data-field="s2_crit_wt_1" min="0" step="any" placeholder="e.g. 5">
+                </td>
+              </tr>
+              <tr data-risk-row="2">
+                <td>2</td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_2">Criterion 2</label>
+                  <textarea id="f_s2_crit_2" data-field="s2_crit_2" rows="2" placeholder="e.g., Decisiveness / Desired End State"></textarea>
+                </td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_wt_2">Weight 2</label>
+                  <input type="number" id="f_s2_crit_wt_2" data-field="s2_crit_wt_2" min="0" step="any" placeholder="e.g. 4">
+                </td>
+              </tr>
+              <tr data-risk-row="3">
+                <td>3</td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_3">Criterion 3</label>
+                  <textarea id="f_s2_crit_3" data-field="s2_crit_3" rows="2" placeholder="e.g., Criticality / Task Prioritization"></textarea>
+                </td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_wt_3">Weight 3</label>
+                  <input type="number" id="f_s2_crit_wt_3" data-field="s2_crit_wt_3" min="0" step="any" placeholder="e.g. 3">
+                </td>
+              </tr>
+              <tr data-risk-row="4">
+                <td>4</td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_4">Criterion 4</label>
+                  <textarea id="f_s2_crit_4" data-field="s2_crit_4" rows="2" placeholder="e.g., Sustainability / Long-Term Impact"></textarea>
+                </td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_wt_4">Weight 4</label>
+                  <input type="number" id="f_s2_crit_wt_4" data-field="s2_crit_wt_4" min="0" step="any" placeholder="e.g. 2">
+                </td>
+              </tr>
+              <tr class="risk-row-optional hidden" data-risk-row="5">
+                <td>5</td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_5">Criterion 5</label>
+                  <textarea id="f_s2_crit_5" data-field="s2_crit_5" rows="2" placeholder="Optional criterion 5"></textarea>
+                </td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_wt_5">Weight 5</label>
+                  <input type="number" id="f_s2_crit_wt_5" data-field="s2_crit_wt_5" min="0" step="any" placeholder="1">
+                </td>
+              </tr>
+              <tr class="risk-row-optional hidden" data-risk-row="6">
+                <td>6</td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_6">Criterion 6</label>
+                  <textarea id="f_s2_crit_6" data-field="s2_crit_6" rows="2" placeholder="Optional criterion 6"></textarea>
+                </td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_wt_6">Weight 6</label>
+                  <input type="number" id="f_s2_crit_wt_6" data-field="s2_crit_wt_6" min="0" step="any" placeholder="1">
+                </td>
+              </tr>
+              <tr class="risk-row-optional hidden" data-risk-row="7">
+                <td>7</td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_7">Criterion 7</label>
+                  <textarea id="f_s2_crit_7" data-field="s2_crit_7" rows="2" placeholder="Optional criterion 7"></textarea>
+                </td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_wt_7">Weight 7</label>
+                  <input type="number" id="f_s2_crit_wt_7" data-field="s2_crit_wt_7" min="0" step="any" placeholder="1">
+                </td>
+              </tr>
+              <tr class="risk-row-optional hidden" data-risk-row="8">
+                <td>8</td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_8">Criterion 8</label>
+                  <textarea id="f_s2_crit_8" data-field="s2_crit_8" rows="2" placeholder="Optional criterion 8"></textarea>
+                </td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_wt_8">Weight 8</label>
+                  <input type="number" id="f_s2_crit_wt_8" data-field="s2_crit_wt_8" min="0" step="any" placeholder="1">
+                </td>
+              </tr>
+              <tr class="risk-row-optional hidden" data-risk-row="9">
+                <td>9</td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_9">Criterion 9</label>
+                  <textarea id="f_s2_crit_9" data-field="s2_crit_9" rows="2" placeholder="Optional criterion 9"></textarea>
+                </td>
+                <td>
+                  <label class="sr-only" for="f_s2_crit_wt_9">Weight 9</label>
+                  <input type="number" id="f_s2_crit_wt_9" data-field="s2_crit_wt_9" min="0" step="any" placeholder="1">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="risk-row-actions" data-risk-actions="criteria">
+            <button type="button" class="btn btn-secondary btn-add-risk-row" data-add-risk-row="criteria">
+              Add another optional criterion
+            </button>
+            <button type="button" class="btn btn-secondary btn-remove-risk-row hidden" data-remove-risk-row="criteria">
+              Remove last optional criterion
+            </button>
           </div>
 
           <h3 class="h-with-info substep-heading">
@@ -610,7 +1157,7 @@
           </div>
         </section>
 
-        <section class="step-panel hidden" data-step="3">
+        <section class="step-panel hidden" data-step="4">
           <h2>AFPP Step 3: COA Development</h2>
           <p>
             COAs should take into consideration the time available (time to plan), the most likely impact on the operational environment,
@@ -732,7 +1279,7 @@
           </ul>
         </section>
 
-        <section class="step-panel hidden" data-step="4">
+        <section class="step-panel hidden" data-step="5">
           <h2>AFPP Step 4: COA Analysis and Wargaming</h2>
           <p class="step-intro"><em>(AFPP: Test your solutions against reality.)</em></p>
           <p>
@@ -743,6 +1290,7 @@
           </p>
           <h3>Your Task</h3>
           <p>Assess risks, second-order effects, and scenarios.</p>
+          <p><strong>Tips:</strong> For the Analysis and Wargaming phases, you may leverage approved AI tools, collaborate with peers, or consult trusted contacts to help evaluate your Courses of Action (COAs); when wargaming, ensure you systematically work through the action, reaction, and counteraction process.</p>
 
           <h3 class="substep-heading">1. Conduct Analysis/Wargaming and record results</h3>
           <p class="step-intro">
@@ -753,7 +1301,6 @@
             also suffice for wargaming.
           </p>
           <p><strong>Your Task:</strong> Walk through each COA step-by-step using the questions below. Record your results and make any necessary updates to your COAs.</p>
-          <p><strong>Tip:</strong> Team up with a classmate and have them review your COAs to poke holes in your proposed plan (acting as the red team).</p>
 
           <h3>Walk Through Each COA Step-by-Step</h3>
           <ul class="doc-list">
@@ -831,7 +1378,7 @@
 
         </section>
 
-        <section class="step-panel hidden" data-step="5">
+        <section class="step-panel hidden" data-step="6">
           <h2>AFPP Step 5: COA Comparison</h2>
           <p class="step-intro"><em>(AFDP Translation: You are helping a decision-maker choose the best—not perfect—option.)</em></p>
           <p>
@@ -842,7 +1389,14 @@
             ways, means, and risks associated with each COA.
           </p>
           <h3>Your Task</h3>
-          <p>Systematically evaluate each Course of Action (COA) against your chosen criteria and then compare them to determine which plan best achieves the mission goals.</p>
+          <p>
+            Systematically evaluate each Course of Action (COA) against your chosen criteria and then compare them to determine which
+            plan best achieves the mission goals.
+          </p>
+          <p>
+            Below are several examples of different ways to score each COA and for your convenience there are two COA comparison charts
+            for your use. For further questions on scoring each COA refer to AFDP 5-0, Ch 7.
+          </p>
           <p><strong>Examples of Comparison Matrices:</strong></p>
           <figure class="doc-figure">
             <img class="doc-image" src="static/Step5graphic1.png" alt="Weighted criteria comparison matrix example">
@@ -863,38 +1417,809 @@
             <img class="doc-image" src="static/Step5graphic4.png" alt="Plus/minus/neutral comparison matrix example">
           </figure>
           <p>Base comparison on the broad degree to which selected criteria support or reflect in the COA. Organize as a table showing (+) for positive, (0) for neutral, and (–) for negative influence.</p>
-          <div class="form-group">
-            <label for="f_s5_matrix">Weighted matrix / scored comparison</label>
-            <textarea id="f_s5_matrix" data-field="s5_matrix" rows="8" placeholder="Document criteria weights, scores, and totals for each COA."></textarea>
-          </div>
-          <div class="form-group">
-            <label for="f_s5_summary">Strengths / weaknesses summary (+ / 0 / –)</label>
-            <textarea id="f_s5_summary" data-field="s5_summary" rows="6" placeholder="Summarize how each COA rates on each criterion."></textarea>
-          </div>
-        </section>
-
-        <section class="step-panel hidden" data-step="6">
-          <h2>AFPP Step 6: Course of Action Approval/Recommendation</h2>
-          <p class="step-intro"><em>(AFPP: Make a decision and justify it.)</em></p>
-          <p>
-            During the AFPP COA approval step, the planning staff work together to develop and present COAs and a recommendation to the commander
-            for approval. The COA decision briefing summarizes the work completed to develop, analyze, and compare COAs. The key to COA approval is
-            the commander and planning staff combining their experience, knowledge, skill, and creativity to analyze the data and recommendations.
+          <p class="coa-compare-choice">
+            <strong>Choose at least one comparison method below.</strong> Complete either the weighted matrix <em>or</em> the plus/minus/neutral table (or both). You must finish at least one to continue.
           </p>
-          <h3>Your Task</h3>
+          <h3>Option A — Your weighted matrix / scored comparison</h3>
+          <p>Criteria and weights autofill from Step 2 §9. Score COA 1 and COA 2. Weighted scores and totals calculate automatically. The higher total is highlighted in green.</p>
+          <div class="coa-matrix-wrap">
+            <table class="doc-table coa-matrix-table" id="coaComparisonMatrix">
+              <caption class="sr-only">Course of Action Comparison Matrix</caption>
+              <colgroup>
+                <col class="coa-col-criterion">
+                <col class="coa-col-weight">
+                <col class="coa-col-score">
+                <col class="coa-col-weighted">
+                <col class="coa-col-score">
+                <col class="coa-col-weighted">
+              </colgroup>
+              <thead>
+                <tr class="coa-matrix-head-main">
+                  <th scope="col" rowspan="2">Evaluation Criterion</th>
+                  <th scope="col" rowspan="2">Weight</th>
+                  <th scope="colgroup" colspan="2">COA 1</th>
+                  <th scope="colgroup" colspan="2">COA 2</th>
+                </tr>
+                <tr class="coa-matrix-head-sub">
+                  <th scope="col">Score</th>
+                  <th scope="col">Weighted</th>
+                  <th scope="col">Score</th>
+                  <th scope="col">Weighted</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-coa-row="1">
+                  <th scope="row"><span class="coa-criterion-label" data-crit-sync="1">Criterion 1</span></th>
+                  <td class="coa-weight-cell">
+                    <label class="sr-only" for="f_s5_wt_1">Weight row 1</label>
+                    <input type="number" id="f_s5_wt_1" data-field="s5_wt_1" min="0" step="any" readonly placeholder="1">
+                  </td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c1s_1">COA 1 score row 1</label>
+                    <input type="number" id="f_s5_c1s_1" data-field="s5_c1s_1" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="1" data-row="1">—</span></td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c2s_1">COA 2 score row 1</label>
+                    <input type="number" id="f_s5_c2s_1" data-field="s5_c2s_1" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="2" data-row="1">—</span></td>
+                </tr>
+                <tr data-coa-row="2">
+                  <th scope="row"><span class="coa-criterion-label" data-crit-sync="2">Criterion 2</span></th>
+                  <td class="coa-weight-cell">
+                    <label class="sr-only" for="f_s5_wt_2">Weight row 2</label>
+                    <input type="number" id="f_s5_wt_2" data-field="s5_wt_2" min="0" step="any" readonly placeholder="1">
+                  </td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c1s_2">COA 1 score row 2</label>
+                    <input type="number" id="f_s5_c1s_2" data-field="s5_c1s_2" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="1" data-row="2">—</span></td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c2s_2">COA 2 score row 2</label>
+                    <input type="number" id="f_s5_c2s_2" data-field="s5_c2s_2" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="2" data-row="2">—</span></td>
+                </tr>
+                <tr data-coa-row="3">
+                  <th scope="row"><span class="coa-criterion-label" data-crit-sync="3">Criterion 3</span></th>
+                  <td class="coa-weight-cell">
+                    <label class="sr-only" for="f_s5_wt_3">Weight row 3</label>
+                    <input type="number" id="f_s5_wt_3" data-field="s5_wt_3" min="0" step="any" readonly placeholder="1">
+                  </td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c1s_3">COA 1 score row 3</label>
+                    <input type="number" id="f_s5_c1s_3" data-field="s5_c1s_3" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="1" data-row="3">—</span></td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c2s_3">COA 2 score row 3</label>
+                    <input type="number" id="f_s5_c2s_3" data-field="s5_c2s_3" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="2" data-row="3">—</span></td>
+                </tr>
+                <tr data-coa-row="4">
+                  <th scope="row"><span class="coa-criterion-label" data-crit-sync="4">Criterion 4</span></th>
+                  <td class="coa-weight-cell">
+                    <label class="sr-only" for="f_s5_wt_4">Weight row 4</label>
+                    <input type="number" id="f_s5_wt_4" data-field="s5_wt_4" min="0" step="any" readonly placeholder="1">
+                  </td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c1s_4">COA 1 score row 4</label>
+                    <input type="number" id="f_s5_c1s_4" data-field="s5_c1s_4" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="1" data-row="4">—</span></td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c2s_4">COA 2 score row 4</label>
+                    <input type="number" id="f_s5_c2s_4" data-field="s5_c2s_4" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="2" data-row="4">—</span></td>
+                </tr>
+                <tr class="coa-matrix-optional hidden" data-coa-row="5">
+                  <th scope="row"><span class="coa-criterion-label" data-crit-sync="5">Criterion 5</span></th>
+                  <td class="coa-weight-cell">
+                    <label class="sr-only" for="f_s5_wt_5">Weight row 5</label>
+                    <input type="number" id="f_s5_wt_5" data-field="s5_wt_5" min="0" step="any" readonly placeholder="1">
+                  </td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c1s_5">COA 1 score row 5</label>
+                    <input type="number" id="f_s5_c1s_5" data-field="s5_c1s_5" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="1" data-row="5">—</span></td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c2s_5">COA 2 score row 5</label>
+                    <input type="number" id="f_s5_c2s_5" data-field="s5_c2s_5" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="2" data-row="5">—</span></td>
+                </tr>
+                <tr class="coa-matrix-optional hidden" data-coa-row="6">
+                  <th scope="row"><span class="coa-criterion-label" data-crit-sync="6">Criterion 6</span></th>
+                  <td class="coa-weight-cell">
+                    <label class="sr-only" for="f_s5_wt_6">Weight row 6</label>
+                    <input type="number" id="f_s5_wt_6" data-field="s5_wt_6" min="0" step="any" readonly placeholder="1">
+                  </td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c1s_6">COA 1 score row 6</label>
+                    <input type="number" id="f_s5_c1s_6" data-field="s5_c1s_6" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="1" data-row="6">—</span></td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c2s_6">COA 2 score row 6</label>
+                    <input type="number" id="f_s5_c2s_6" data-field="s5_c2s_6" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="2" data-row="6">—</span></td>
+                </tr>
+                <tr class="coa-matrix-optional hidden" data-coa-row="7">
+                  <th scope="row"><span class="coa-criterion-label" data-crit-sync="7">Criterion 7</span></th>
+                  <td class="coa-weight-cell">
+                    <label class="sr-only" for="f_s5_wt_7">Weight row 7</label>
+                    <input type="number" id="f_s5_wt_7" data-field="s5_wt_7" min="0" step="any" readonly placeholder="1">
+                  </td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c1s_7">COA 1 score row 7</label>
+                    <input type="number" id="f_s5_c1s_7" data-field="s5_c1s_7" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="1" data-row="7">—</span></td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c2s_7">COA 2 score row 7</label>
+                    <input type="number" id="f_s5_c2s_7" data-field="s5_c2s_7" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="2" data-row="7">—</span></td>
+                </tr>
+                <tr class="coa-matrix-optional hidden" data-coa-row="8">
+                  <th scope="row"><span class="coa-criterion-label" data-crit-sync="8">Criterion 8</span></th>
+                  <td class="coa-weight-cell">
+                    <label class="sr-only" for="f_s5_wt_8">Weight row 8</label>
+                    <input type="number" id="f_s5_wt_8" data-field="s5_wt_8" min="0" step="any" readonly placeholder="1">
+                  </td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c1s_8">COA 1 score row 8</label>
+                    <input type="number" id="f_s5_c1s_8" data-field="s5_c1s_8" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="1" data-row="8">—</span></td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c2s_8">COA 2 score row 8</label>
+                    <input type="number" id="f_s5_c2s_8" data-field="s5_c2s_8" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="2" data-row="8">—</span></td>
+                </tr>
+                <tr class="coa-matrix-optional hidden" data-coa-row="9">
+                  <th scope="row"><span class="coa-criterion-label" data-crit-sync="9">Criterion 9</span></th>
+                  <td class="coa-weight-cell">
+                    <label class="sr-only" for="f_s5_wt_9">Weight row 9</label>
+                    <input type="number" id="f_s5_wt_9" data-field="s5_wt_9" min="0" step="any" readonly placeholder="1">
+                  </td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c1s_9">COA 1 score row 9</label>
+                    <input type="number" id="f_s5_c1s_9" data-field="s5_c1s_9" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="1" data-row="9">—</span></td>
+                  <td class="coa-num-cell">
+                    <label class="sr-only" for="f_s5_c2s_9">COA 2 score row 9</label>
+                    <input type="number" id="f_s5_c2s_9" data-field="s5_c2s_9" min="0" step="any" placeholder="0">
+                  </td>
+                  <td class="coa-weighted-cell" aria-live="polite"><span class="coa-weighted-val" data-coa="2" data-row="9">—</span></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr class="coa-matrix-total">
+                  <th scope="row">Total</th>
+                  <td class="coa-total-empty"></td>
+                  <td class="coa-total-empty"></td>
+                  <td class="coa-weighted-total coa-total-c1" data-coa-total="1"><span>—</span></td>
+                  <td class="coa-total-empty"></td>
+                  <td class="coa-weighted-total coa-total-c2" data-coa-total="2"><span>—</span></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <p class="coa-matrix-note"><strong>NOTE:</strong> The higher the number, the better.</p>
+          <div class="coa-matrix-legend">
+            <p><strong>Legend</strong></p>
+            <ul class="doc-list coa-matrix-legend-list">
+              <li>COA: course of action</li>
+              <li>OPSEC: operations security</li>
+            </ul>
+          </div>
+          <h3>Option B — Plus / Minus / Neutral comparison</h3>
           <p>
-            Write a position paper to analyze each one of your COAs. Make a recommendation for the COA you believe will be most effective in
-            achieving the objective of your chosen problem and justify your selection.
+            Criteria autofill from Step 2 §9 (same as the weighted matrix). Rate each COA using
+            <strong>+</strong> (positive), <strong>0</strong> (neutral), or <strong>–</strong> (negative).
           </p>
-          <p><strong>Length:</strong> The paper must be no shorter than one full page and no longer than two pages.</p>
-          <p><strong>Writing Guide:</strong> Adhere to the principles and standards outlined in AFH 33-337, <em>The Tongue and Quill</em>. Your writing should be clear, direct, and professional. Pay close attention to active voice, formatting, and the BLUF principle.</p>
-          <div class="form-group">
-            <label for="f_s6_position">Position paper (recommended COA and justification)</label>
-            <textarea id="f_s6_position" data-field="s6_position" rows="16" placeholder="Write your 1–2 page position paper (BLUF, analysis of each COA, recommendation, and justification)."></textarea>
+          <div class="table-scroll">
+            <table class="doc-table coa-pm-table" id="coaPlusMinusTable">
+              <caption class="sr-only">Plus Minus Neutral Comparison Matrix</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Evaluation Criterion</th>
+                  <th scope="col">COA 1</th>
+                  <th scope="col">COA 2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-pm-row="1">
+                  <th scope="row"><span class="coa-pm-criterion-label" data-pm-crit-sync="1">Criterion 1</span></th>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r1_c1">Criterion 1 — COA 1</label>
+                    <select id="f_s5_pm_r1_c1" class="coa-pm-select" data-field="s5_pm_r1_c1">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r1_c2">Criterion 1 — COA 2</label>
+                    <select id="f_s5_pm_r1_c2" class="coa-pm-select" data-field="s5_pm_r1_c2">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr data-pm-row="2">
+                  <th scope="row"><span class="coa-pm-criterion-label" data-pm-crit-sync="2">Criterion 2</span></th>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r2_c1">Criterion 2 — COA 1</label>
+                    <select id="f_s5_pm_r2_c1" class="coa-pm-select" data-field="s5_pm_r2_c1">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r2_c2">Criterion 2 — COA 2</label>
+                    <select id="f_s5_pm_r2_c2" class="coa-pm-select" data-field="s5_pm_r2_c2">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr data-pm-row="3">
+                  <th scope="row"><span class="coa-pm-criterion-label" data-pm-crit-sync="3">Criterion 3</span></th>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r3_c1">Criterion 3 — COA 1</label>
+                    <select id="f_s5_pm_r3_c1" class="coa-pm-select" data-field="s5_pm_r3_c1">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r3_c2">Criterion 3 — COA 2</label>
+                    <select id="f_s5_pm_r3_c2" class="coa-pm-select" data-field="s5_pm_r3_c2">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr data-pm-row="4">
+                  <th scope="row"><span class="coa-pm-criterion-label" data-pm-crit-sync="4">Criterion 4</span></th>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r4_c1">Criterion 4 — COA 1</label>
+                    <select id="f_s5_pm_r4_c1" class="coa-pm-select" data-field="s5_pm_r4_c1">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r4_c2">Criterion 4 — COA 2</label>
+                    <select id="f_s5_pm_r4_c2" class="coa-pm-select" data-field="s5_pm_r4_c2">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="coa-pm-optional hidden" data-pm-row="5">
+                  <th scope="row"><span class="coa-pm-criterion-label" data-pm-crit-sync="5">Criterion 5</span></th>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r5_c1">Criterion 5 — COA 1</label>
+                    <select id="f_s5_pm_r5_c1" class="coa-pm-select" data-field="s5_pm_r5_c1">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r5_c2">Criterion 5 — COA 2</label>
+                    <select id="f_s5_pm_r5_c2" class="coa-pm-select" data-field="s5_pm_r5_c2">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="coa-pm-optional hidden" data-pm-row="6">
+                  <th scope="row"><span class="coa-pm-criterion-label" data-pm-crit-sync="6">Criterion 6</span></th>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r6_c1">Criterion 6 — COA 1</label>
+                    <select id="f_s5_pm_r6_c1" class="coa-pm-select" data-field="s5_pm_r6_c1">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r6_c2">Criterion 6 — COA 2</label>
+                    <select id="f_s5_pm_r6_c2" class="coa-pm-select" data-field="s5_pm_r6_c2">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="coa-pm-optional hidden" data-pm-row="7">
+                  <th scope="row"><span class="coa-pm-criterion-label" data-pm-crit-sync="7">Criterion 7</span></th>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r7_c1">Criterion 7 — COA 1</label>
+                    <select id="f_s5_pm_r7_c1" class="coa-pm-select" data-field="s5_pm_r7_c1">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r7_c2">Criterion 7 — COA 2</label>
+                    <select id="f_s5_pm_r7_c2" class="coa-pm-select" data-field="s5_pm_r7_c2">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="coa-pm-optional hidden" data-pm-row="8">
+                  <th scope="row"><span class="coa-pm-criterion-label" data-pm-crit-sync="8">Criterion 8</span></th>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r8_c1">Criterion 8 — COA 1</label>
+                    <select id="f_s5_pm_r8_c1" class="coa-pm-select" data-field="s5_pm_r8_c1">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r8_c2">Criterion 8 — COA 2</label>
+                    <select id="f_s5_pm_r8_c2" class="coa-pm-select" data-field="s5_pm_r8_c2">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="coa-pm-optional hidden" data-pm-row="9">
+                  <th scope="row"><span class="coa-pm-criterion-label" data-pm-crit-sync="9">Criterion 9</span></th>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r9_c1">Criterion 9 — COA 1</label>
+                    <select id="f_s5_pm_r9_c1" class="coa-pm-select" data-field="s5_pm_r9_c1">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label class="sr-only" for="f_s5_pm_r9_c2">Criterion 9 — COA 2</label>
+                    <select id="f_s5_pm_r9_c2" class="coa-pm-select" data-field="s5_pm_r9_c2">
+                      <option value="">—</option>
+                      <option value="+">+</option>
+                      <option value="0">0</option>
+                      <option value="-">–</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="coa-matrix-legend">
+            <p><strong>Legend</strong></p>
+            <ul class="doc-list coa-matrix-legend-list">
+              <li>COA: course of action</li>
+              <li><span class="coa-pm-swatch coa-pm-plus">+</span> positive influence</li>
+              <li><span class="coa-pm-swatch coa-pm-zero">0</span> neutral</li>
+              <li><span class="coa-pm-swatch coa-pm-minus">–</span> negative influence</li>
+            </ul>
           </div>
         </section>
 
         <section class="step-panel hidden" data-step="7">
+          <h2>AFPP Step 6: Course of Action Approval/Recommendation</h2>
+          <p class="canvas-submit-note">This section contains a required Canvas <span class="canvas-submit-word">submission</span> that is separate from this workbook.</p>
+          <p class="step-intro"><em>(AFPP: Make a decision and justify it.)</em></p>
+
+          <h3>COA Decision Position Paper</h3>
+          <p>
+            In an operational environment, the planning staff works together to present their developed COAs and a final
+            recommendation to the commander, typically through a detailed COA decision briefing. This brief summarizes all the
+            rigorous work done to develop, analyze, and compare the available options.
+          </p>
+          <p>
+            For this assignment, write a <strong>1 to 2 page position paper</strong> (IAW AFH 33-337,
+            <em>The Tongue and Quill</em>) in <strong>Microsoft Word or Google Docs</strong>. Do not write the paper inside this workbook.
+            The paper will serve as the COA Decision brief to the commander. The key to securing COA approval is your ability to take the
+            raw data from your completed AFPP workbook and combine it with your analytical skill, knowledge, and creativity. Your objective
+            is to synthesize your workbook’s analysis into a concise, compelling written recommendation. You must provide the commander with
+            the clear, logically sound insights they need to make a final COA selection rooted in adaptive thinking and air component design.
+          </p>
+          <p>
+            <strong>Your Task:</strong> Use the rubric and memorandum template below as your guide. Draft and finalize your position paper
+            outside this workbook (Word or Google Docs).
+          </p>
+
+          <h3>Rubric Criteria</h3>
+          <p>Your position paper will be evaluated on the following criteria:</p>
+          <div class="table-scroll">
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>Criteria</th>
+                  <th>Exemplary</th>
+                  <th>Effective</th>
+                  <th>Developing</th>
+                  <th>Needs Improvement</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>COA Presentation &amp; Comparison</strong></td>
+                  <td>Presents multiple, distinguishable COAs that are feasible, acceptable, and suitable. The comparison is insightful and clearly articulates strengths and weaknesses of each COA against established evaluation criteria, leading to a clear recommendation.</td>
+                  <td>Presents multiple valid COAs. The comparison effectively uses evaluation criteria to show the pros and cons of each COA, leading to a logical recommendation.</td>
+                  <td>Presents COAs that may not be clearly distinguishable or fully valid. The comparison against evaluation criteria is superficial, and the connection to the recommendation is unclear.</td>
+                  <td>Fails to present valid or distinguishable COAs. The comparison is absent or illogical, providing no basis for a recommendation.</td>
+                </tr>
+                <tr>
+                  <td><strong>Analysis &amp; Recommendation</strong></td>
+                  <td>Provides a comprehensive analysis of each COA, including wargaming results, and offers a clear, well-supported recommendation. Demonstrates a deep understanding of the operational environment and the problem; the recommendation is compelling and decisive.</td>
+                  <td>Provides a solid analysis of each COA with a clear recommendation. The analysis is logical and the recommendation is well-justified based on the presented evidence.</td>
+                  <td>Provides a basic analysis of the COAs with a recommendation, but the analysis is incomplete or the recommendation is not well-supported by the analysis.</td>
+                  <td>Provides a weak or no analysis of the COAs. The recommendation is either missing or not supported by any analysis.</td>
+                </tr>
+                <tr>
+                  <td><strong>Risk Assessment</strong></td>
+                  <td>Presents a thorough and insightful risk assessment for each COA, identifying and analyzing significant risks to both the mission and the force. The recommended COA’s residual risk is clearly articulated and acceptable.</td>
+                  <td>Presents a solid risk assessment for each COA, identifying key risks. The recommended COA’s residual risk is articulated and appears acceptable.</td>
+                  <td>Presents a basic or incomplete risk assessment. The discussion of risk for the recommended COA is superficial or missing.</td>
+                  <td>The risk assessment is insufficient or absent.</td>
+                </tr>
+                <tr>
+                  <td><strong>Communication &amp; Position Paper Format</strong></td>
+                  <td>Exceptionally well-organized and articulate position paper that uses precise, professional language and correct doctrinal terminology. The paper is persuasive and flawlessly adheres to the Tongue and Quill format.</td>
+                  <td>Well-organized and clear position paper. Language and terminology are appropriate with few errors. The paper effectively follows the Tongue and Quill format.</td>
+                  <td>The position paper is somewhat disorganized, limiting clarity. It contains some inappropriate language or jargon, and it does not consistently follow the Tongue and Quill format.</td>
+                  <td>The position paper is disorganized and fails to communicate the COAs and recommendation effectively. The language is unprofessional, and it does not follow the Tongue and Quill format.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Position Paper Template</h3>
+          <p>Use the following Tongue and Quill position paper structure:</p>
+          <div class="phase-block">
+            <h3 class="phase-heading">Position Paper Format</h3>
+            <div class="position-paper-title" aria-label="Position paper title block">
+              <p>POSITION PAPER</p>
+              <p>ON</p>
+              <p>COURSE OF ACTION DECISION RECOMMENDATION<br>FOR [OPERATION/MISSION NAME]</p>
+            </div>
+            <ol class="doc-list">
+              <li>
+                <strong>Problem:</strong> Briefly and clearly state the problem that the Courses of Action (COAs) are intended to solve.
+                This should be a concise summary of the problem statement developed during mission analysis.
+              </li>
+              <li>
+                <strong>Background:</strong> Provide a brief overview of the situation and any relevant background information the
+                commander needs to understand the context of the decision (operational environment, HHQ mission, commander’s intent).
+              </li>
+              <li>
+                <strong>Courses of Action:</strong> Briefly introduce the COAs that were developed and analyzed. For each COA, provide
+                a concise summary, including its key features and a summary of the wargaming results, strengths, and weaknesses.
+                <ul class="doc-list">
+                  <li>
+                    <strong>COA 1: [Name]</strong> — (1) Summary (2) Strengths (3) Weaknesses (4) Risk
+                  </li>
+                  <li>
+                    <strong>COA 2: [Name]</strong> — (1) Summary (2) Strengths (3) Weaknesses (4) Risk
+                  </li>
+                  <li>
+                    <strong>COA 3: [Name]</strong> <em>(if applicable)</em> — (1) Summary (2) Strengths (3) Weaknesses (4) Risk
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>Recommendation:</strong> State your recommendation for the best COA to approve. Justify it by comparing the
+                COAs against the evaluation criteria and explaining why the recommended COA is the best option to accomplish the
+                mission within the commander’s acceptable level of risk.
+              </li>
+              <li>
+                <strong>Coordination:</strong> List the other offices or agencies that have reviewed and coordinated on this position paper.
+              </li>
+              <li>
+                <strong>Contact:</strong> Provide your name, rank, office symbol, phone number, and email address.
+              </li>
+            </ol>
+            <p><em>[SIGNATURE BLOCK of the appropriate official, e.g., planning team chief or senior planner]</em></p>
+          </div>
+
+          <div class="submission-callout" role="note">
+            <h3>Ready to <span class="canvas-submit-word">submit</span> Assignment #2?</h3>
+            <p>
+              When your <strong>COA Decision Position Paper</strong> is finished (Word or Google Docs), submit it in Canvas under:
+            </p>
+            <p class="submission-assignment-name">AFPP Workbook Assignment #2 – COA Decision Position Paper</p>
+            <p>
+              This workbook section is guidance only — the position paper itself is not written or downloaded here.
+              Return to Canvas and upload your finished paper in that assignment.
+            </p>
+            <label class="submission-verify">
+              <input
+                type="checkbox"
+                id="f_a2_verified"
+                data-field="a2_verified"
+                value="1"
+              >
+              <span>Click here if you have submitted the Position Paper.</span>
+            </label>
+            <p>
+              You can also download a PDF of everything you entered in <strong>Steps 1–6</strong> to use in Step 7 when directing your AI Staff Assistant.
+            </p>
+            <div class="step-download-actions step-download-actions--inline">
+              <button id="btnDownloadSteps1to6" type="button" class="btn btn-primary">
+                Download Answers (Steps 1–6)
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="step-panel hidden" data-step="8">
+          <h2>AFPP Step 7: Plans and Order Generation</h2>
+          <p class="canvas-submit-note">This section contains a required Canvas <span class="canvas-submit-word">submission</span> that is separate from this workbook.</p>
+          <p class="step-intro"><em>(Draft a doctrinal Five-Paragraph Order (SMEAC) with an AI staff assistant.)</em></p>
+
+          <div class="phase-block">
+            <h3 class="phase-heading">Key Takeaway</h3>
+            <p>
+              You must extract data from your Air Force Planning (AFPP) Workbook, feed it to the AI sequentially, and then force the AI to critique its own work before you manually correct it. You are the Lead Planner. The AI is your Staff Assistant. Your job is to direct the AI, audit its output against AFDP 5-0 doctrine, and correct its mistakes.
+            </p>
+          </div>
+
+          <h3>Part 1: Student Instructions &amp; Prompt Log</h3>
+          <p>
+            <strong>Objective:</strong> Extract the finalized data from your AFPP Workbook (Step 1 through 6) to direct your AI Staff Assistant in drafting a doctrinal Five-Paragraph Order (SMEAC), and utilize an AI feedback loop to identify structural weaknesses.
+          </p>
+          <p>
+            <strong>Instructions:</strong> Open your authorized AI interface. Follow the sequence below. You must extract the specific data from your workbook, paste it into the brackets [ ], and save your chat transcript.
+          </p>
+          <p>
+            <strong>How to use the table columns:</strong>
+          </p>
+          <ul class="doc-list">
+            <li>
+              <strong>Input Response:</strong> Paste the AI’s raw output for that prompt (unedited).
+            </li>
+            <li>
+              <strong>Final Revision:</strong> Enter your corrected version of that output. This is where you act as Lead Planner—fix doctrinal/structural errors, rewrite weak or generic Commander’s Intent, and remove hallucinated details. Your Final Revision work supports
+              <strong>Deliverable 2 (The “Red-Inked” OPORD)</strong> below.
+            </li>
+          </ul>
+
+          <div class="table-scroll">
+            <table class="doc-table prompt-log-table">
+              <thead>
+                <tr>
+                  <th scope="col">Step</th>
+                  <th scope="col">AI Prompt &amp; Instructions</th>
+                  <th scope="col">AFPP Source</th>
+                  <th scope="col">Input Response</th>
+                  <th scope="col">Final Revision</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="prompt-step-title">Step 1</div>
+                    <div class="prompt-step-sub">Set Boundaries</div>
+                  </td>
+                  <td>
+                    <div class="prompt-head">
+                      <strong>Prompt AI:</strong>
+                      <button type="button" class="btn-copy-prompt" data-copy-prompt aria-label="Copy Step 1 prompt">Copy</button>
+                    </div>
+                    <p class="prompt-quote" data-prompt-text="Act as my Joint Planning Group staff assistant. I am the Lead Planner executing AFDP 5-0, Step 7. Rule 1: Use strict Five-Paragraph Order (SMEAC) format. Rule 2: Do NOT invent units, timelines, or capabilities. Acknowledge.">
+                      “Act as my Joint Planning Group staff assistant. I am the Lead Planner executing AFDP 5-0, Step 7. Rule 1: Use strict Five-Paragraph Order (SMEAC) format. Rule 2: Do NOT invent units, timelines, or capabilities. Acknowledge.”
+                    </p>
+                  </td>
+                  <td>Operational Constraints</td>
+                  <td>
+                    <div class="form-group table-field">
+                      <label class="sr-only" for="f_s7_p1_response">Step 1 input response</label>
+                      <textarea id="f_s7_p1_response" data-field="s7_p1_response" rows="5" placeholder="Paste AI output"></textarea>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group table-field">
+                      <label class="sr-only" for="f_s7_p1_revision">Step 1 final revision</label>
+                      <textarea id="f_s7_p1_revision" data-field="s7_p1_revision" rows="5" placeholder="Enter your corrected revision"></textarea>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="prompt-step-title">Step 2</div>
+                    <div class="prompt-step-sub">Core Execution</div>
+                  </td>
+                  <td>
+                    <p class="prompt-note">
+                      Attach the PDF of your entries from Steps 1–6 in the AI chat (download button at the end of Step 6).
+                    </p>
+                    <div class="prompt-head">
+                      <strong>Prompt to AI:</strong>
+                      <button type="button" class="btn-copy-prompt" data-copy-prompt aria-label="Copy Step 2 prompt">Copy</button>
+                    </div>
+                    <p class="prompt-quote" data-prompt-text="Here is the CC's Intent and Approved COA narrative as well as the risk/tasks from Wargaming. Draft paragraph 3 (Execution). If tactical details are missing, list them as 'Gaps for Planner'.">
+                      “Here is the CC’s Intent and Approved COA narrative as well as the risk/tasks from Wargaming. Draft paragraph 3 (Execution). If tactical details are missing, list them as ‘Gaps for Planner’.”
+                    </p>
+                  </td>
+                  <td>Step 6: COA Approval &amp; Step 4: Wargaming</td>
+                  <td>
+                    <div class="form-group table-field">
+                      <label class="sr-only" for="f_s7_p2_response">Step 2 input response</label>
+                      <textarea id="f_s7_p2_response" data-field="s7_p2_response" rows="5" placeholder="Paste AI output"></textarea>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group table-field">
+                      <label class="sr-only" for="f_s7_p2_revision">Step 2 final revision</label>
+                      <textarea id="f_s7_p2_revision" data-field="s7_p2_revision" rows="5" placeholder="Enter your corrected revision"></textarea>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="prompt-step-title">Step 3</div>
+                    <div class="prompt-step-sub">Compile</div>
+                  </td>
+                  <td>
+                    <div class="prompt-head">
+                      <strong>Prompt to AI:</strong>
+                      <button type="button" class="btn-copy-prompt" data-copy-prompt aria-label="Copy Step 3 prompt">Copy</button>
+                    </div>
+                    <p class="prompt-quote" data-prompt-text="Draft paragraphs 4 and 5. Compile all five paragraphs into a single OPORD. Highlight any text in [BRACKETS] where you made assumptions.">
+                      “Draft paragraphs 4 and 5. Compile all five paragraphs into a single OPORD. Highlight any text in [BRACKETS] where you made assumptions.”
+                    </p>
+                  </td>
+                  <td>Step 3/4: Sustainment &amp; Comm Planning</td>
+                  <td>
+                    <div class="form-group table-field">
+                      <label class="sr-only" for="f_s7_p3_response">Step 3 input response</label>
+                      <textarea id="f_s7_p3_response" data-field="s7_p3_response" rows="5" placeholder="Paste AI output"></textarea>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group table-field">
+                      <label class="sr-only" for="f_s7_p3_revision">Step 3 final revision</label>
+                      <textarea id="f_s7_p3_revision" data-field="s7_p3_revision" rows="5" placeholder="Enter your corrected revision"></textarea>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="prompt-step-title">Step 4</div>
+                    <div class="prompt-step-sub">AI Feedback Loop</div>
+                  </td>
+                  <td>
+                    <div class="prompt-head">
+                      <strong>Prompt to AI:</strong>
+                      <button type="button" class="btn-copy-prompt" data-copy-prompt aria-label="Copy Step 4 prompt">Copy</button>
+                    </div>
+                    <p class="prompt-quote" data-prompt-text="Now, act as a Doctrine Red Team. Critique your own draft OPORD. Provide a 3-bullet feedback summary identifying where this order is vague, passive, or fails to meet AFDP 5-0 standards.">
+                      “Now, act as a Doctrine Red Team. Critique your own draft OPORD. Provide a 3-bullet feedback summary identifying where this order is vague, passive, or fails to meet AFDP 5-0 standards.”
+                    </p>
+                  </td>
+                  <td>Self-Correction / Identifying Errors</td>
+                  <td>
+                    <div class="form-group table-field">
+                      <label class="sr-only" for="f_s7_p4_response">Step 4 input response</label>
+                      <textarea id="f_s7_p4_response" data-field="s7_p4_response" rows="5" placeholder="Paste AI output"></textarea>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group table-field">
+                      <label class="sr-only" for="f_s7_p4_revision">Step 4 final revision</label>
+                      <textarea id="f_s7_p4_revision" data-field="s7_p4_revision" rows="5" placeholder="Enter your corrected revision"></textarea>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Required Student Deliverables</h3>
+          <p>
+            You must compile and submit an Assessment Portfolio containing the following four components:
+          </p>
+          <ul class="doc-list">
+            <li>
+              <strong>1. The Transcript:</strong> The raw, unedited text of your complete conversation with the AI assistant, explicitly including the AI’s self-critique generated during Step 4.
+            </li>
+            <li>
+              <strong>2. The 5 Para Order:</strong> The AI’s final output with edits and/or corrections you found during your review of the AI’s output. You MUST correct the structural and doctrinal errors identified by the AI in Step 4 of this assignment, rewrite any generic Commander’s Intent, and delete any hallucinated details.
+            </li>
+            <li>
+              <strong>3. The Reflection:</strong> A written response addressing the following prompt (text box provided in the AFPP Workbook Step 7 page): “Identify at least one specific data point the AI hallucinated or misinterpreted from your AFPP Workbook. If you had none, how does this demonstrate the danger of automation bias?”
+              <div class="form-group">
+                <label for="f_s7_reflection">Written response</label>
+                <textarea id="f_s7_reflection" data-field="s7_reflection" rows="6" placeholder="Write your reflection response here."></textarea>
+              </div>
+            </li>
+            <li>
+              <strong>4. AFPP Workbook:</strong> Steps 1–7 showing all your work. The button to download this product can be found in Step 7 of your workbook (below).
+            </li>
+          </ul>
+
+          <div class="submission-callout" role="note">
+            <h3>Ready to <span class="canvas-submit-word">submit</span> Assignment #3?</h3>
+            <p>
+              Download a PDF of <strong>your full workbook answers (Steps 1–7)</strong> for your Assessment Portfolio, then submit your portfolio in Canvas under:
+            </p>
+            <p class="submission-assignment-name">AFPP Workbook Assignment #3 – AI Assisted Five Para Order and Final Submission</p>
+            <div class="step-download-actions step-download-actions--inline">
+              <button type="button" class="btn btn-primary" data-download-full>
+                Download Answers (Steps 1–7)
+              </button>
+            </div>
+            <label class="submission-verify">
+              <input
+                type="checkbox"
+                id="f_a3_verified"
+                data-field="a3_verified"
+                value="1"
+              >
+              <span>Click here if you have submitted Assignment #3.</span>
+            </label>
+          </div>
+        </section>
+
+        <section class="step-panel hidden" data-step="9">
+          <h2>Download &amp; Submit in Canvas</h2>
+          <p class="step-intro">
+            When this workbook reaches <strong>100% Complete</strong>, Canvas is notified that the SCORM activity is
+            complete (score 100). Still download your PDF and upload it to the Canvas assignment if your instructor
+            requires a file submission for grading.
+          </p>
+
+          <div class="final-actions">
+            <h3>Final Actions</h3>
+            <ol class="final-actions-steps">
+              <li>Confirm the top bar shows <strong>100% Complete</strong> (this marks the SCORM activity complete in Canvas).</li>
+              <li>Download a PDF of your complete workbook answers (Steps 1–7).</li>
+              <li>If required, upload the PDF to the Canvas assignment for instructor grading.</li>
+            </ol>
+            <div class="final-actions-btns">
+              <button id="btnDownloadPdf" type="button" class="btn btn-primary btn-lg">Download PDF</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="step-panel hidden" data-step="10">
           <h2>Graded Example 1 (The Perfect One)</h2>
 
           <p><strong>Problem:</strong> Declining participation and engagement in squadron professional development (PD) sessions</p>
@@ -1080,7 +2405,7 @@
           </div>
         </section>
 
-        <section class="step-panel hidden" data-step="8">
+        <section class="step-panel hidden" data-step="11">
           <h2>Graded Example 2 (Some errors)</h2>
           <p><strong>Problem:</strong> High turnover among junior personnel in a support squadron</p>
 
@@ -1244,7 +2569,7 @@
           <p><strong>Final Score:</strong> 29 / 32 (High Proficient / Low Outstanding)</p>
         </section>
 
-        <section class="step-panel hidden" data-step="9">
+        <section class="step-panel hidden" data-step="12">
           <h2>Common Mistakes for Coaching / Feedback</h2>
           <h3>Mistake 1: Jumping to Solutions Too Early</h3>
           <p><strong>Fix:</strong> “What problem are you solving—and how do you know that’s the problem?”</p>
@@ -1261,47 +2586,41 @@
           <h3>Mistake 7: Disconnect Between Phases</h3>
           <p><strong>Fix:</strong> “Which root cause does this solve?”</p>
         </section>
-
-        <section class="step-panel hidden" data-step="10">
-          <h2>Submit to Gradebook &amp; Download PDF</h2>
-          <p class="step-intro">
-            When you’re ready, submit your workbook to the LMS gradebook and/or download a PDF copy of your answers for your records.
-          </p>
-
-          <div class="final-actions">
-            <h3>Final Actions</h3>
-            <p>
-              Submitting will record your current completion score in the gradebook. You can still download a PDF at any time.
-            </p>
-            <div class="final-actions-btns">
-              <button id="btnSubmitWorkbook" class="btn btn-submit btn-lg">Submit to Gradebook</button>
-              <button id="btnDownloadPdf" class="btn btn-primary btn-lg">Download PDF</button>
-            </div>
-          </div>
-        </section>
       </article>
 
     </main>
   </div>
 
-  <!-- Submit Confirmation Modal -->
+  <!-- Download Confirmation Modal -->
   <div id="submitModal" class="modal-overlay">
     <div class="modal-card">
       <div class="modal-icon">&#10003;</div>
-      <h2>Workbook Submitted</h2>
-      <p>Your AFPP Workbook has been submitted to the gradebook.</p>
-      <div class="modal-score">Score: <strong id="modalScore">0%</strong></div>
-      <p class="modal-hint">You may now close this window or download your workbook as a PDF.</p>
+      <h2>PDF Downloaded</h2>
+      <p>Your complete workbook PDF has been downloaded.</p>
+      <p class="modal-hint">Next: upload this PDF to the Canvas assignment to complete and submit your work for grading.</p>
       <button id="btnModalClose" class="btn btn-primary">OK</button>
+    </div>
+  </div>
+
+  <!-- Sidebar navigation prompt -->
+  <div id="navPromptModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="navPromptTitle">
+    <div class="modal-card modal-card--prompt">
+      <div class="modal-icon modal-icon--info" aria-hidden="true">&#8594;</div>
+      <h2 id="navPromptTitle">Use Continue to move ahead</h2>
+      <p id="navPromptMessage">
+        Please click <strong>Continue</strong> at the bottom of the page to go to the next section.
+        The sidebar is for going back to sections you already opened.
+      </p>
+      <button id="btnNavPromptOk" type="button" class="btn btn-primary">Got it</button>
     </div>
   </div>
 
   <!-- Scripts (order matters) -->
   <script src="js/lz-string.min.js"></script>
   <script src="js/jspdf.umd.min.js"></script>
-  <script src="js/scorm-api.js"></script>
-  <script src="js/workbook.js"></script>
-  <script src="js/pdf-export.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/scorm-api.js?v=20260804a"></script>
+  <script src="js/workbook.js?v=20260804a"></script>
+  <script src="js/pdf-export.js?v=20260804a"></script>
+  <script src="js/app.js?v=20260804a"></script>
 </body>
 </html>
