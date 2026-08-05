@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Air Force Planning Process Student Workbook</title>
-  <link rel="stylesheet" href="css/style.css?v=20260804a">
+  <link rel="stylesheet" href="css/style.css?v=20260805b">
 </head>
 <body>
 
@@ -468,17 +468,26 @@
             <p>For each event you listed, break it down:</p>
             <ul class="doc-list">
               <li><strong>Source:</strong> Who or what could cause this harm? (e.g., another person, a technical issue, a scheduling conflict, a simple mistake).</li>
-              <li><strong>Likelihood:</strong> How likely is this event to happen? (Low, Medium, High)</li>
-              <li><strong>Impact:</strong> If it happens, how bad will the consequences be? (Low, Medium, High)</li>
+              <li><strong>Probability:</strong> How likely is this event to happen? (Very Unlikely, Unlikely, Likely, Very Likely)</li>
+              <li><strong>Consequence:</strong> If it happens, how bad will the consequences be? (Minor harm, Modest harm, Major harm, Extreme harm)</li>
             </ul>
 
-            <figure class="doc-figure">
-              <img
-                class="doc-image"
-                src="static/pillar%202%20step%202.png"
-                alt="Pillar 2 risk assessment reference: probability scale (very unlikely to very likely)"
-              />
-            </figure>
+            <div class="pillar2-chart-row" role="group" aria-label="Probability and Consequence reference charts">
+              <figure class="doc-figure pillar2-chart">
+                <img
+                  class="doc-image"
+                  src="static/Probabilityof_Event.png"
+                  alt="Probability of Event (P): Very Likely, Likely, Unlikely, Very Unlikely"
+                />
+              </figure>
+              <figure class="doc-figure pillar2-chart">
+                <img
+                  class="doc-image"
+                  src="static/Consequenceof_Event.png"
+                  alt="Consequence of Event (C): Extreme, Major, Modest, Minor harm to the thing of value"
+                />
+              </figure>
+            </div>
 
             <p><strong>Example:</strong></p>
             <table class="doc-table">
@@ -486,16 +495,16 @@
                 <tr>
                   <th>Harmful Event</th>
                   <th>Source of Risk</th>
-                  <th>Likelihood (L/M/H)</th>
-                  <th>Impact (L/M/H)</th>
+                  <th>Probability</th>
+                  <th>Consequence</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>Example: I miss my project deadline.</td>
                   <td>My own poor time management.</td>
-                  <td>High</td>
-                  <td>High</td>
+                  <td>Likely</td>
+                  <td>Major harm</td>
                 </tr>
               </tbody>
             </table>
@@ -506,8 +515,8 @@
                 <tr>
                   <th>Harmful Event</th>
                   <th>Source of Risk</th>
-                  <th>Likelihood (L/M/H)</th>
-                  <th>Impact (L/M/H)</th>
+                  <th>Probability</th>
+                  <th>Consequence</th>
                 </tr>
               </thead>
               <tbody>
@@ -521,21 +530,23 @@
                     <textarea id="f_s2_risk_src1" data-field="s2_risk_src1" rows="2" placeholder="Source of risk"></textarea>
                   </td>
                   <td>
-                    <label class="sr-only" for="f_s2_risk_lik1">Likelihood 1</label>
+                    <label class="sr-only" for="f_s2_risk_lik1">Probability 1</label>
                     <select id="f_s2_risk_lik1" data-field="s2_risk_lik1">
-                      <option value="">—</option>
-                      <option value="Low">Low</option>
-                      <option value="Medium">Medium</option>
-                      <option value="High">High</option>
+                                            <option value="">—</option>
+                      <option value="Very Unlikely">Very Unlikely</option>
+                      <option value="Unlikely">Unlikely</option>
+                      <option value="Likely">Likely</option>
+                      <option value="Very Likely">Very Likely</option>
                     </select>
                   </td>
                   <td>
-                    <label class="sr-only" for="f_s2_risk_imp1">Impact 1</label>
+                    <label class="sr-only" for="f_s2_risk_imp1">Consequence 1</label>
                     <select id="f_s2_risk_imp1" data-field="s2_risk_imp1">
-                      <option value="">—</option>
-                      <option value="Low">Low</option>
-                      <option value="Medium">Medium</option>
-                      <option value="High">High</option>
+                                            <option value="">—</option>
+                      <option value="Minor harm">Minor harm</option>
+                      <option value="Modest harm">Modest harm</option>
+                      <option value="Major harm">Major harm</option>
+                      <option value="Extreme harm">Extreme harm</option>
                     </select>
                   </td>
                 </tr>
@@ -549,21 +560,23 @@
                     <textarea id="f_s2_risk_src2" data-field="s2_risk_src2" rows="2" placeholder="Source of risk (optional)"></textarea>
                   </td>
                   <td>
-                    <label class="sr-only" for="f_s2_risk_lik2">Likelihood 2</label>
+                    <label class="sr-only" for="f_s2_risk_lik2">Probability 2</label>
                     <select id="f_s2_risk_lik2" data-field="s2_risk_lik2">
-                      <option value="">—</option>
-                      <option value="Low">Low</option>
-                      <option value="Medium">Medium</option>
-                      <option value="High">High</option>
+                                            <option value="">—</option>
+                      <option value="Very Unlikely">Very Unlikely</option>
+                      <option value="Unlikely">Unlikely</option>
+                      <option value="Likely">Likely</option>
+                      <option value="Very Likely">Very Likely</option>
                     </select>
                   </td>
                   <td>
-                    <label class="sr-only" for="f_s2_risk_imp2">Impact 2</label>
+                    <label class="sr-only" for="f_s2_risk_imp2">Consequence 2</label>
                     <select id="f_s2_risk_imp2" data-field="s2_risk_imp2">
-                      <option value="">—</option>
-                      <option value="Low">Low</option>
-                      <option value="Medium">Medium</option>
-                      <option value="High">High</option>
+                                            <option value="">—</option>
+                      <option value="Minor harm">Minor harm</option>
+                      <option value="Modest harm">Modest harm</option>
+                      <option value="Major harm">Major harm</option>
+                      <option value="Extreme harm">Extreme harm</option>
                     </select>
                   </td>
                 </tr>
@@ -577,21 +590,23 @@
                     <textarea id="f_s2_risk_src3" data-field="s2_risk_src3" rows="2" placeholder="Source of risk (optional)"></textarea>
                   </td>
                   <td>
-                    <label class="sr-only" for="f_s2_risk_lik3">Likelihood 3</label>
+                    <label class="sr-only" for="f_s2_risk_lik3">Probability 3</label>
                     <select id="f_s2_risk_lik3" data-field="s2_risk_lik3">
-                      <option value="">—</option>
-                      <option value="Low">Low</option>
-                      <option value="Medium">Medium</option>
-                      <option value="High">High</option>
+                                            <option value="">—</option>
+                      <option value="Very Unlikely">Very Unlikely</option>
+                      <option value="Unlikely">Unlikely</option>
+                      <option value="Likely">Likely</option>
+                      <option value="Very Likely">Very Likely</option>
                     </select>
                   </td>
                   <td>
-                    <label class="sr-only" for="f_s2_risk_imp3">Impact 3</label>
+                    <label class="sr-only" for="f_s2_risk_imp3">Consequence 3</label>
                     <select id="f_s2_risk_imp3" data-field="s2_risk_imp3">
-                      <option value="">—</option>
-                      <option value="Low">Low</option>
-                      <option value="Medium">Medium</option>
-                      <option value="High">High</option>
+                                            <option value="">—</option>
+                      <option value="Minor harm">Minor harm</option>
+                      <option value="Modest harm">Modest harm</option>
+                      <option value="Major harm">Major harm</option>
+                      <option value="Extreme harm">Extreme harm</option>
                     </select>
                   </td>
                 </tr>
@@ -613,8 +628,8 @@
             <h3>1. Plot Your Risks</h3>
             <p>Using your answers from Step 2, place your top 1–3 risks on the chart below.</p>
             <ul class="doc-list">
-              <li>A High Likelihood / High Impact event is a HIGH risk.</li>
-              <li>A Low Likelihood / Low Impact event is a LOW risk.</li>
+              <li>A Very Likely / Extreme Consequence event is a HIGH risk.</li>
+              <li>A Very Unlikely / Minor Consequence event is a LOW risk.</li>
             </ul>
             <p><em>(Chart will be added later.)</em></p>
 
@@ -644,19 +659,21 @@
                   <td>
                     <label class="sr-only" for="f_s2_risk_p3_prob1">Probability 1</label>
                     <select id="f_s2_risk_p3_prob1" data-field="s2_risk_p3_prob1">
-                      <option value="">—</option>
-                      <option value="Low">Low</option>
-                      <option value="Medium">Medium</option>
-                      <option value="High">High</option>
+                                            <option value="">—</option>
+                      <option value="Very Unlikely">Very Unlikely</option>
+                      <option value="Unlikely">Unlikely</option>
+                      <option value="Likely">Likely</option>
+                      <option value="Very Likely">Very Likely</option>
                     </select>
                   </td>
                   <td>
                     <label class="sr-only" for="f_s2_risk_p3_con1">Consequence 1</label>
                     <select id="f_s2_risk_p3_con1" data-field="s2_risk_p3_con1">
-                      <option value="">—</option>
-                      <option value="Low">Low</option>
-                      <option value="Medium">Medium</option>
-                      <option value="High">High</option>
+                                            <option value="">—</option>
+                      <option value="Minor">Minor</option>
+                      <option value="Modest">Modest</option>
+                      <option value="Major">Major</option>
+                      <option value="Extreme">Extreme</option>
                     </select>
                   </td>
                   <td>
@@ -678,19 +695,21 @@
                   <td>
                     <label class="sr-only" for="f_s2_risk_p3_prob2">Probability 2</label>
                     <select id="f_s2_risk_p3_prob2" data-field="s2_risk_p3_prob2">
-                      <option value="">—</option>
-                      <option value="Low">Low</option>
-                      <option value="Medium">Medium</option>
-                      <option value="High">High</option>
+                                            <option value="">—</option>
+                      <option value="Very Unlikely">Very Unlikely</option>
+                      <option value="Unlikely">Unlikely</option>
+                      <option value="Likely">Likely</option>
+                      <option value="Very Likely">Very Likely</option>
                     </select>
                   </td>
                   <td>
                     <label class="sr-only" for="f_s2_risk_p3_con2">Consequence 2</label>
                     <select id="f_s2_risk_p3_con2" data-field="s2_risk_p3_con2">
-                      <option value="">—</option>
-                      <option value="Low">Low</option>
-                      <option value="Medium">Medium</option>
-                      <option value="High">High</option>
+                                            <option value="">—</option>
+                      <option value="Minor">Minor</option>
+                      <option value="Modest">Modest</option>
+                      <option value="Major">Major</option>
+                      <option value="Extreme">Extreme</option>
                     </select>
                   </td>
                   <td>
@@ -712,19 +731,21 @@
                   <td>
                     <label class="sr-only" for="f_s2_risk_p3_prob3">Probability 3</label>
                     <select id="f_s2_risk_p3_prob3" data-field="s2_risk_p3_prob3">
-                      <option value="">—</option>
-                      <option value="Low">Low</option>
-                      <option value="Medium">Medium</option>
-                      <option value="High">High</option>
+                                            <option value="">—</option>
+                      <option value="Very Unlikely">Very Unlikely</option>
+                      <option value="Unlikely">Unlikely</option>
+                      <option value="Likely">Likely</option>
+                      <option value="Very Likely">Very Likely</option>
                     </select>
                   </td>
                   <td>
                     <label class="sr-only" for="f_s2_risk_p3_con3">Consequence 3</label>
                     <select id="f_s2_risk_p3_con3" data-field="s2_risk_p3_con3">
-                      <option value="">—</option>
-                      <option value="Low">Low</option>
-                      <option value="Medium">Medium</option>
-                      <option value="High">High</option>
+                                            <option value="">—</option>
+                      <option value="Minor">Minor</option>
+                      <option value="Modest">Modest</option>
+                      <option value="Major">Major</option>
+                      <option value="Extreme">Extreme</option>
                     </select>
                   </td>
                   <td>
@@ -2003,7 +2024,7 @@
 
           <h3>Part 1: Student Instructions &amp; Prompt Log</h3>
           <p>
-            <strong>Objective:</strong> Extract the finalized data from your AFPP Workbook (Step 1 through 6) to direct your AI Staff Assistant in drafting a doctrinal Five-Paragraph Order (SMEAC), and utilize an AI feedback loop to identify structural weaknesses.
+            <strong>Objective:</strong> Extract the finalized data from your AFPP Workbook (Step 1 through 6) to direct your AI Staff Assistant in drafting a doctrinal Five-Paragraph Order (SMEFC), and utilize an AI feedback loop to identify structural weaknesses.
           </p>
           <p>
             <strong>Instructions:</strong> Open your authorized AI interface. Follow the sequence below. You must extract the specific data from your workbook, paste it into the brackets [ ], and save your chat transcript.
@@ -2043,8 +2064,8 @@
                       <strong>Prompt AI:</strong>
                       <button type="button" class="btn-copy-prompt" data-copy-prompt aria-label="Copy Step 1 prompt">Copy</button>
                     </div>
-                    <p class="prompt-quote" data-prompt-text="Act as my Joint Planning Group staff assistant. I am the Lead Planner executing AFDP 5-0, Step 7. Rule 1: Use strict Five-Paragraph Order (SMEAC) format. Rule 2: Do NOT invent units, timelines, or capabilities. Acknowledge.">
-                      “Act as my Joint Planning Group staff assistant. I am the Lead Planner executing AFDP 5-0, Step 7. Rule 1: Use strict Five-Paragraph Order (SMEAC) format. Rule 2: Do NOT invent units, timelines, or capabilities. Acknowledge.”
+                    <p class="prompt-quote" data-prompt-text="Act as my Joint Planning Group staff assistant. I am the Lead Planner executing AFDP 5-0, Step 7. Rule 1: Use strict Five-Paragraph Order (SMEAC) format. Rule 2: Do NOT invent units, timelines, or capabilities. Acknowledge. Keep response less than 6000 characters.">
+                      “Act as my Joint Planning Group staff assistant. I am the Lead Planner executing AFDP 5-0, Step 7. Rule 1: Use strict Five-Paragraph Order (SMEAC) format. Rule 2: Do NOT invent units, timelines, or capabilities. Acknowledge. Keep response less than 6000 characters.”
                     </p>
                   </td>
                   <td>Operational Constraints</td>
@@ -2074,8 +2095,8 @@
                       <strong>Prompt to AI:</strong>
                       <button type="button" class="btn-copy-prompt" data-copy-prompt aria-label="Copy Step 2 prompt">Copy</button>
                     </div>
-                    <p class="prompt-quote" data-prompt-text="Here is the CC's Intent and Approved COA narrative as well as the risk/tasks from Wargaming. Draft paragraph 3 (Execution). If tactical details are missing, list them as 'Gaps for Planner'.">
-                      “Here is the CC’s Intent and Approved COA narrative as well as the risk/tasks from Wargaming. Draft paragraph 3 (Execution). If tactical details are missing, list them as ‘Gaps for Planner’.”
+                    <p class="prompt-quote" data-prompt-text="Here is the CC's Intent and Approved COA narrative as well as the risk/tasks from Wargaming. Draft paragraph 3 (Execution). If tactical details are missing, list them as 'Gaps for Planner'. Keep response less than 6000 characters.">
+                      “Here is the CC’s Intent and Approved COA narrative as well as the risk/tasks from Wargaming. Draft paragraph 3 (Execution). If tactical details are missing, list them as ‘Gaps for Planner’. Keep response less than 6000 characters.”
                     </p>
                   </td>
                   <td>Step 6: COA Approval &amp; Step 4: Wargaming</td>
@@ -2102,8 +2123,8 @@
                       <strong>Prompt to AI:</strong>
                       <button type="button" class="btn-copy-prompt" data-copy-prompt aria-label="Copy Step 3 prompt">Copy</button>
                     </div>
-                    <p class="prompt-quote" data-prompt-text="Draft paragraphs 4 and 5. Compile all five paragraphs into a single OPORD. Highlight any text in [BRACKETS] where you made assumptions.">
-                      “Draft paragraphs 4 and 5. Compile all five paragraphs into a single OPORD. Highlight any text in [BRACKETS] where you made assumptions.”
+                    <p class="prompt-quote" data-prompt-text="Draft paragraphs 4 and 5. Compile all five paragraphs into a single OPORD. Highlight any text in [BRACKETS] where you made assumptions. Keep response less than 6000 characters.">
+                      “Draft paragraphs 4 and 5. Compile all five paragraphs into a single OPORD. Highlight any text in [BRACKETS] where you made assumptions. Keep response less than 6000 characters.”
                     </p>
                   </td>
                   <td>Step 3/4: Sustainment &amp; Comm Planning</td>
@@ -2130,8 +2151,8 @@
                       <strong>Prompt to AI:</strong>
                       <button type="button" class="btn-copy-prompt" data-copy-prompt aria-label="Copy Step 4 prompt">Copy</button>
                     </div>
-                    <p class="prompt-quote" data-prompt-text="Now, act as a Doctrine Red Team. Critique your own draft OPORD. Provide a 3-bullet feedback summary identifying where this order is vague, passive, or fails to meet AFDP 5-0 standards.">
-                      “Now, act as a Doctrine Red Team. Critique your own draft OPORD. Provide a 3-bullet feedback summary identifying where this order is vague, passive, or fails to meet AFDP 5-0 standards.”
+                    <p class="prompt-quote" data-prompt-text="Now, act as a Doctrine Red Team. Critique your own draft OPORD. Provide a 3-bullet feedback summary identifying where this order is vague, passive, or fails to meet AFDP 5-0 standards. Keep response less than 6000 characters.">
+                      “Now, act as a Doctrine Red Team. Critique your own draft OPORD. Provide a 3-bullet feedback summary identifying where this order is vague, passive, or fails to meet AFDP 5-0 standards. Keep response less than 6000 characters.”
                     </p>
                   </td>
                   <td>Self-Correction / Identifying Errors</td>
@@ -2618,9 +2639,9 @@
   <!-- Scripts (order matters) -->
   <script src="js/lz-string.min.js"></script>
   <script src="js/jspdf.umd.min.js"></script>
-  <script src="js/scorm-api.js?v=20260804a"></script>
-  <script src="js/workbook.js?v=20260804a"></script>
-  <script src="js/pdf-export.js?v=20260804a"></script>
-  <script src="js/app.js?v=20260804a"></script>
+  <script src="js/scorm-api.js?v=20260805b"></script>
+  <script src="js/workbook.js?v=20260805b"></script>
+  <script src="js/pdf-export.js?v=20260805b"></script>
+  <script src="js/app.js?v=20260805b"></script>
 </body>
 </html>

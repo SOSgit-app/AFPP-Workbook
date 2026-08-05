@@ -1406,6 +1406,25 @@ tr.coa-pm-optional.hidden {
   margin: 12px 0 16px;
 }
 
+.pillar2-chart-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: stretch;
+  margin: 12px 0 16px;
+}
+
+.pillar2-chart-row .pillar2-chart {
+  flex: 1 1 240px;
+  margin: 0;
+  min-width: 0;
+}
+
+.pillar2-chart-row .doc-image {
+  width: 100%;
+  height: auto;
+}
+
 .doc-figure-sm {
   max-width: 380px;
 }
@@ -1857,6 +1876,33 @@ details.accordion > .accordion-summary::before {
 
 details.accordion[open] > .accordion-summary::before {
   transform: rotate(90deg);
+}
+
+/* Progress check: shows on the right when the module has any entered content */
+.accordion-progress-check {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  background: #1f6b3a;
+  border: 1.5px solid #1f6b3a;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity .15s ease, transform .15s ease;
+  pointer-events: none;
+}
+
+details.accordion.has-entered-content > .accordion-summary .accordion-progress-check {
+  opacity: 1;
+  transform: scale(1);
 }
 
 details.accordion > .accordion-body {

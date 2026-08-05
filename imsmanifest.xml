@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<manifest identifier="AFPP_Workbook_SOS" version="1.4"
+<manifest identifier="AFPP_Workbook_SOS" version="1.6"
   xmlns="http://www.imsglobal.org/xsd/imscp_v1p1"
   xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3"
   xmlns:adlseq="http://www.adlnet.org/xsd/adlseq_v1p3"
@@ -44,6 +44,8 @@
       <file href="js/lz-string.min.js"/>
       <file href="js/jspdf.umd.min.js"/>
       <file href="static/pillar 2 step 2.png"/>
+      <file href="static/Probabilityof_Event.png"/>
+      <file href="static/Consequenceof_Event.png"/>
       <file href="static/pillar 3 step 2.png"/>
       <file href="static/9 develop COA evaluation criteria.png"/>
       <file href="static/Step4graphic.png"/>

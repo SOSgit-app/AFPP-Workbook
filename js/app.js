@@ -236,6 +236,7 @@
       var summary = document.createElement('summary');
       summary.className = 'accordion-summary';
       summary.innerHTML = heading.innerHTML;
+      appendAccordionProgressCheck(summary);
 
       heading.parentNode.removeChild(heading);
 
@@ -265,6 +266,7 @@
       var summary = document.createElement('summary');
       summary.className = 'accordion-summary accordion-summary-substep';
       summary.innerHTML = h.innerHTML;
+      appendAccordionProgressCheck(summary);
 
       h.parentNode.insertBefore(details, h);
       details.appendChild(summary);
@@ -296,6 +298,60 @@
       }
 
       details.appendChild(body);
+    }
+  }
+
+  function appendAccordionProgressCheck(summary) {
+    if (!summary || summary.querySelector('.accordion-progress-check')) return;
+    var check = document.createElement('span');
+    check.className = 'accordion-progress-check';
+    check.setAttribute('aria-hidden', 'true');
+    check.title = 'Has entered content';
+    check.textContent = '\u2713';
+    summary.appendChild(check);
+  }
+
+  function getAccordionBody(details) {
+    if (!details) return null;
+    for (var i = 0; i < details.children.length; i++) {
+      if (details.children[i].classList && details.children[i].classList.contains('accordion-body')) {
+        return details.children[i];
+      }
+    }
+    return null;
+  }
+
+  function accordionHasEnteredContent(details) {
+    var body = getAccordionBody(details);
+    if (!body) return false;
+    var fields = body.querySelectorAll('[data-field]');
+    for (var i = 0; i < fields.length; i++) {
+      var el = fields[i];
+      // Only count fields owned by this accordion (not nested child accordions).
+      var owner = el.closest ? el.closest('details.accordion') : null;
+      if (owner !== details) continue;
+      if (el.type === 'checkbox') {
+        if (el.checked) return true;
+      } else if (String(el.value || '').trim() !== '') {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /** Show a checkmark on accordion headers that already have student input. */
+  function updateAccordionProgressChecks() {
+    var all = document.querySelectorAll('details.accordion');
+    for (var i = 0; i < all.length; i++) {
+      var details = all[i];
+      var summary = details.querySelector(':scope > .accordion-summary') || details.querySelector('.accordion-summary');
+      if (summary) appendAccordionProgressCheck(summary);
+      var has = accordionHasEnteredContent(details);
+      details.classList.toggle('has-entered-content', has);
+      if (summary) {
+        if (has) summary.setAttribute('data-progress', 'started');
+        else summary.removeAttribute('data-progress');
+      }
     }
   }
 
@@ -642,6 +698,7 @@
     updateAllPmSelectStyles();
     restoreOptionalRiskRows();
     syncCriteriaToMatrix();
+    updateAccordionProgressChecks();
   }
 
   function autosizeRiskTextarea(el) {
@@ -871,6 +928,7 @@
     if (tableId === 'criteria') syncCriteriaToMatrix();
     updateCompletionUI();
     updateSidebarChecks();
+    updateAccordionProgressChecks();
     updateContinueButtons();
     autoSave();
   }
@@ -1445,8 +1503,8 @@
         navPromptMessage.textContent = message;
       } else {
         navPromptMessage.innerHTML =
-          'Please click <strong>Continue</strong> at the bottom of the page to go to the next section. ' +
-          'The sidebar is for going back to sections you already opened.';
+          'Please click <strong>Continue</strong> at the bottom of the page to unlock the next section. ' +
+          'The sidebar lets you jump to any section you have already opened.';
       }
     }
     navPromptModal.classList.add('visible');
@@ -1522,17 +1580,10 @@
         if (isNaN(s)) return;
         // Navigation rules:
         // - Optional sections (graded examples, common mistakes) are always available.
-        // - You can always go BACK via the sidebar.
-        // - To move FORWARD, use Continue (sidebar ahead-clicks get a prompt).
-        // - Ctrl+Shift+U unlocks all sections for free navigation (testing).
-        if (!navUnlocked && !isOptionalStep(s) && s > currentStep) {
-          showNavPrompt();
-          return;
-        }
+        // - Already-unlocked sections can be opened from the sidebar in either direction.
+        // - Sections beyond maxUnlockedStep require Continue (or Ctrl+Shift+U unlock).
         if (!navUnlocked && !isOptionalStep(s) && s > maxUnlockedStep) {
-          showNavPrompt(
-            'Finish or review this section first, then click Continue at the bottom of the page to move ahead.'
-          );
+          showNavPrompt();
           return;
         }
         showStep(s);
@@ -1644,6 +1695,7 @@
         collectCurrentStepData();
         updateCompletionUI();
         updateSidebarChecks();
+        updateAccordionProgressChecks();
         updateContinueButtons();
         autoSave();
       });
@@ -1663,6 +1715,7 @@
         collectCurrentStepData();
         updateCompletionUI();
         updateSidebarChecks();
+        updateAccordionProgressChecks();
         updateContinueButtons();
         autoSave();
       });
