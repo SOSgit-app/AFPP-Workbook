@@ -310,6 +310,139 @@ var PdfExport = (function () {
     }
   }
 
+  function formatCertDate(d) {
+    try {
+      return d.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    } catch (e) {
+      return d.toISOString().slice(0, 10);
+    }
+  }
+
+  /**
+   * Landscape certificate of completion (first page of the full workbook PDF).
+   */
+  function drawCertificatePage(workbook) {
+    var name = String(workbook.getField('cert_name') || '').trim() || 'Student';
+    var classId = String(workbook.getField('cert_class_id') || '').trim() || '—';
+    var flight = String(workbook.getField('cert_flight') || '').trim() || '—';
+    var dateStr = formatCertDate(new Date());
+
+    var W = 297; // A4 landscape mm
+    var H = 210;
+    var cx = W / 2;
+
+    // Background
+    doc.setFillColor(252, 250, 245);
+    doc.rect(0, 0, W, H, 'F');
+
+    // Outer navy border
+    doc.setDrawColor(11, 37, 69);
+    doc.setLineWidth(1.6);
+    doc.rect(10, 10, W - 20, H - 20);
+
+    // Inner gold border
+    doc.setDrawColor(197, 150, 26);
+    doc.setLineWidth(0.7);
+    doc.rect(14, 14, W - 28, H - 28);
+
+    // Accent corner marks
+    doc.setDrawColor(197, 150, 26);
+    doc.setLineWidth(1.2);
+    var cLen = 12;
+    // TL
+    doc.line(18, 18, 18 + cLen, 18);
+    doc.line(18, 18, 18, 18 + cLen);
+    // TR
+    doc.line(W - 18, 18, W - 18 - cLen, 18);
+    doc.line(W - 18, 18, W - 18, 18 + cLen);
+    // BL
+    doc.line(18, H - 18, 18 + cLen, H - 18);
+    doc.line(18, H - 18, 18, H - 18 - cLen);
+    // BR
+    doc.line(W - 18, H - 18, W - 18 - cLen, H - 18);
+    doc.line(W - 18, H - 18, W - 18, H - 18 - cLen);
+
+    var y = 36;
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(12);
+    doc.setTextColor(11, 37, 69);
+    doc.text('SQUADRON OFFICER SCHOOL', cx, y, { align: 'center' });
+    y += 7;
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.setTextColor(90, 99, 119);
+    doc.text('Air University  ·  United States Air Force', cx, y, { align: 'center' });
+    y += 12;
+
+    doc.setDrawColor(197, 150, 26);
+    doc.setLineWidth(0.5);
+    doc.line(cx - 40, y, cx + 40, y);
+    y += 14;
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(26);
+    doc.setTextColor(11, 37, 69);
+    doc.text('Certificate of Completion', cx, y, { align: 'center' });
+    y += 12;
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(11);
+    doc.setTextColor(50, 55, 65);
+    doc.text('This certifies that', cx, y, { align: 'center' });
+    y += 14;
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(22);
+    doc.setTextColor(19, 64, 116);
+    var nameLines = doc.splitTextToSize(name, W - 60);
+    doc.text(nameLines, cx, y, { align: 'center' });
+    y += Math.max(12, nameLines.length * 9) + 4;
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(11);
+    doc.setTextColor(50, 55, 65);
+    doc.text('has successfully completed the', cx, y, { align: 'center' });
+    y += 9;
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(13);
+    doc.setTextColor(11, 37, 69);
+    doc.text('Air Force Planning Process Student Workbook', cx, y, { align: 'center' });
+    y += 16;
+
+    // Meta row: Class / Flight / Date
+    var metaY = y;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(120, 125, 135);
+    doc.text('CLASS ID', cx - 70, metaY, { align: 'center' });
+    doc.text('FLIGHT', cx, metaY, { align: 'center' });
+    doc.text('DATE', cx + 70, metaY, { align: 'center' });
+    metaY += 6;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(11);
+    doc.setTextColor(11, 37, 69);
+    doc.text(classId, cx - 70, metaY, { align: 'center' });
+    doc.text(flight, cx, metaY, { align: 'center' });
+    doc.text(dateStr, cx + 70, metaY, { align: 'center' });
+
+    y = H - 34;
+    doc.setDrawColor(197, 150, 26);
+    doc.setLineWidth(0.4);
+    doc.line(cx - 35, y, cx + 35, y);
+    y += 6;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(90, 99, 119);
+    doc.text('AFPP Student Workbook  ·  Squadron Officer School', cx, y, { align: 'center' });
+  }
+
   /**
    * @param {object} workbook Workbook model
    * @param {object} [options]
@@ -317,6 +450,7 @@ var PdfExport = (function () {
    * @param {number} [options.maxStepId] Inclusive last step id (default: all)
    * @param {string} [options.filename] Download filename
    * @param {string} [options.subtitle] Optional subtitle under the cover title
+   * @param {boolean} [options.includeCertificate] Prepend SOS certificate page
    */
   function generate(workbook, options) {
     options = options || {};
@@ -327,7 +461,15 @@ var PdfExport = (function () {
     }
 
     var jsPDFClass = (window.jspdf && window.jspdf.jsPDF) || jspdf.jsPDF;
-    doc = new jsPDFClass({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    var includeCertificate = !!options.includeCertificate;
+
+    if (includeCertificate) {
+      doc = new jsPDFClass({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+      drawCertificatePage(workbook);
+      doc.addPage('a4', 'portrait');
+    } else {
+      doc = new jsPDFClass({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    }
     yPos = MARGIN_TOP;
 
     // ---- Cover / Header ----
@@ -351,6 +493,7 @@ var PdfExport = (function () {
 
     var minId = typeof options.minStepId === 'number' ? options.minStepId : null;
     var maxId = typeof options.maxStepId === 'number' ? options.maxStepId : null;
+    var CERT_KEYS = { cert_name: 1, cert_class_id: 1, cert_flight: 1 };
 
     var steps = workbook.getSteps();
     for (var s = 0; s < steps.length; s++) {
@@ -358,12 +501,15 @@ var PdfExport = (function () {
       if (!step || !step.fields || step.fields.length === 0) continue;
       if (minId !== null && step.id < minId) continue;
       if (maxId !== null && step.id > maxId) continue;
+      // Certificate details appear on page 1 — skip repeating them in the answers section.
+      if (step.id === 9) continue;
       addSectionHeader(step.title);
       if (step.id === 6) {
         addCoaMatrixStep(workbook);
       } else {
         for (var f = 0; f < step.fields.length; f++) {
           var field = step.fields[f];
+          if (CERT_KEYS[field.key]) continue;
           var value = workbook.getField(field.key);
           if (field.key === 'a1_verified') {
             value = (value === '1' || value === 'true')
@@ -386,15 +532,18 @@ var PdfExport = (function () {
       addSeparator();
     }
 
-    // ---- Footer on each page ----
+    // ---- Footer on each page (skip decorative certificate page) ----
     var totalPages = doc.internal.getNumberOfPages();
-    for (var p = 1; p <= totalPages; p++) {
+    var startFooter = includeCertificate ? 2 : 1;
+    for (var p = startFooter; p <= totalPages; p++) {
       doc.setPage(p);
       doc.setFontSize(7);
       doc.setFont('helvetica', 'normal');
       doc.setTextColor(150, 150, 150);
+      var labelPage = includeCertificate ? (p - 1) : p;
+      var labelTotal = includeCertificate ? (totalPages - 1) : totalPages;
       doc.text(
-        'AFPP Student Workbook — Squadron Officer School — Page ' + p + ' of ' + totalPages,
+        'AFPP Student Workbook — Squadron Officer School — Page ' + labelPage + ' of ' + labelTotal,
         PAGE_WIDTH / 2, 290,
         { align: 'center' }
       );

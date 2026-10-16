@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Air Force Planning Process Student Workbook</title>
-  <link rel="stylesheet" href="css/style.css?v=20260923a">
+  <link rel="stylesheet" href="css/style.css?v=20261016a">
 </head>
 <body>
 
@@ -2223,20 +2223,49 @@
         <section class="step-panel hidden" data-step="9">
           <h2>Download &amp; Submit in Canvas</h2>
           <p class="step-intro">
-            When this workbook reaches <strong>100% Complete</strong>, Canvas is notified that the SCORM activity is
-            complete (score 100). Still download your PDF and upload it to the Canvas assignment if your instructor
-            requires a file submission for grading.
+            Finish your workbook responses, then enter your certificate details below. When the top bar shows
+            <strong>100% Complete</strong>, Canvas is notified that the SCORM activity is complete (score 100).
+            Your downloaded PDF starts with a Squadron Officer School certificate of completion, followed by your
+            workbook answers. Upload that PDF to the Canvas assignment if your instructor requires a file submission.
           </p>
+
+          <div class="cert-details-card">
+            <h3>Certificate of Completion</h3>
+            <p class="cert-details-lead">
+              Enter your name, class ID, and flight number. These appear on the certificate (first page of your PDF).
+              The download button unlocks after all three fields are filled and the workbook is complete.
+            </p>
+            <div class="cert-details-grid">
+              <div class="form-group">
+                <label for="f_cert_name">Full name</label>
+                <input id="f_cert_name" type="text" data-field="cert_name" autocomplete="name" placeholder="e.g., Capt Jordan Lee" />
+              </div>
+              <div class="form-group">
+                <label for="f_cert_class_id">Class ID</label>
+                <input id="f_cert_class_id" type="text" data-field="cert_class_id" autocomplete="off" placeholder="e.g., SOS-26B" />
+              </div>
+              <div class="form-group">
+                <label for="f_cert_flight">Flight number</label>
+                <input id="f_cert_flight" type="text" data-field="cert_flight" autocomplete="off" placeholder="e.g., Flight 3" />
+              </div>
+            </div>
+            <p id="certDetailsHint" class="cert-details-hint" aria-live="polite">
+              Complete all workbook sections, then fill every field above to enable download.
+            </p>
+          </div>
 
           <div class="final-actions">
             <h3>Final Actions</h3>
             <ol class="final-actions-steps">
+              <li>Fill in your certificate details above (name, class ID, flight).</li>
               <li>Confirm the top bar shows <strong>100% Complete</strong> (this marks the SCORM activity complete in Canvas).</li>
-              <li>Download a PDF of your complete workbook answers (Steps 1–7).</li>
+              <li>Download your PDF (certificate + Steps 1–7 answers).</li>
               <li>If required, upload the PDF to the Canvas assignment for instructor grading.</li>
             </ol>
             <div class="final-actions-btns">
-              <button id="btnDownloadPdf" type="button" class="btn btn-primary btn-lg">Download PDF</button>
+              <button id="btnDownloadPdf" type="button" class="btn btn-primary btn-lg" disabled aria-disabled="true">
+                Download PDF (Certificate + Answers)
+              </button>
             </div>
           </div>
         </section>
@@ -2618,7 +2647,7 @@
     <div class="modal-card">
       <div class="modal-icon">&#10003;</div>
       <h2>PDF Downloaded</h2>
-      <p>Your complete workbook PDF has been downloaded.</p>
+      <p>Your PDF has been downloaded. Page 1 is your Squadron Officer School certificate; the following pages are your workbook answers.</p>
       <p class="modal-hint">Next: upload this PDF to the Canvas assignment to complete and submit your work for grading.</p>
       <button id="btnModalClose" class="btn btn-primary">OK</button>
     </div>
@@ -2640,9 +2669,9 @@
   <!-- Scripts (order matters) -->
   <script src="js/lz-string.min.js"></script>
   <script src="js/jspdf.umd.min.js"></script>
-  <script src="js/scorm-api.js?v=20260923a"></script>
-  <script src="js/workbook.js?v=20260923a"></script>
-  <script src="js/pdf-export.js?v=20260923a"></script>
-  <script src="js/app.js?v=20260923a"></script>
+  <script src="js/scorm-api.js?v=20261016a"></script>
+  <script src="js/workbook.js?v=20261016a"></script>
+  <script src="js/pdf-export.js?v=20261016a"></script>
+  <script src="js/app.js?v=20261016a"></script>
 </body>
 </html>

@@ -577,6 +577,52 @@
     return raw;
   }
 
+  function certDetailsFilled() {
+    var name = String(Workbook.getField('cert_name') || '').trim();
+    var classId = String(Workbook.getField('cert_class_id') || '').trim();
+    var flight = String(Workbook.getField('cert_flight') || '').trim();
+    return !!(name && classId && flight);
+  }
+
+  function workbookContentCompleteExceptCert() {
+    // Treat certificate fields as the final unlock step — content must be done first.
+    var steps = Workbook.getSteps();
+    for (var s = 0; s < steps.length; s++) {
+      var step = steps[s];
+      if (!step || step.optional) continue;
+      if (step.id === 9) continue; // Download & Submit / certificate details
+      if (!Workbook.isStepComplete(s)) return false;
+    }
+    return true;
+  }
+
+  function updateFinalDownloadButton() {
+    var btn = btnDownloadPdf;
+    var hint = document.getElementById('certDetailsHint');
+    var contentOk = workbookContentCompleteExceptCert();
+    var certOk = certDetailsFilled();
+    var ready = contentOk && certOk;
+
+    if (btn) {
+      btn.disabled = !ready;
+      btn.setAttribute('aria-disabled', ready ? 'false' : 'true');
+      btn.classList.toggle('is-disabled', !ready);
+    }
+
+    if (hint) {
+      if (ready) {
+        hint.textContent = 'Ready — your PDF will open with a Squadron Officer School certificate, then your workbook answers.';
+        hint.classList.add('is-ready');
+      } else if (!contentOk) {
+        hint.textContent = 'Finish all required workbook sections first. Then return here to enter certificate details.';
+        hint.classList.remove('is-ready');
+      } else {
+        hint.textContent = 'Enter your full name, class ID, and flight number to unlock the download.';
+        hint.classList.remove('is-ready');
+      }
+    }
+  }
+
   function updateCompletionUI() {
     var pct = getDisplayedCompletionPercent();
     if (completionBar) completionBar.style.width = pct + '%';
@@ -594,6 +640,7 @@
         verified: true
       });
     }
+    updateFinalDownloadButton();
   }
 
   function updateSidebarChecks() {
@@ -1585,6 +1632,17 @@
   function downloadPdf() {
     collectAllStepData();
     saveProgress();
+    updateFinalDownloadButton();
+
+    if (!workbookContentCompleteExceptCert()) {
+      alert('Please complete all required workbook sections before downloading.');
+      return;
+    }
+    if (!certDetailsFilled()) {
+      alert('Please enter your full name, class ID, and flight number on the Download & Submit page before downloading.');
+      showStep(9);
+      return;
+    }
     if (typeof PdfExport === 'undefined' || !PdfExport || typeof PdfExport.generate !== 'function') {
       alert('PDF export is not available. Please refresh and try again.');
       return;
@@ -1593,7 +1651,8 @@
       minStepId: 1,
       maxStepId: 8,
       subtitle: 'Complete Workbook Responses (Introduction–Step 7)',
-      filename: 'AFPP_Student_Workbook_Answers.pdf'
+      filename: 'AFPP_Student_Workbook_Certificate_and_Answers.pdf',
+      includeCertificate: true
     });
     // Mark the SCORM activity complete for Canvas gradebook.
     ScormAPI.setComplete(100);

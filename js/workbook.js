@@ -163,7 +163,11 @@ var Workbook = (function () {
     {
       id: 9,
       title: 'Download & Submit',
-      fields: []
+      fields: [
+        { key: 'cert_name', label: 'Full name (for certificate)', required: true },
+        { key: 'cert_class_id', label: 'Class ID (for certificate)', required: true },
+        { key: 'cert_flight', label: 'Flight number (for certificate)', required: true }
+      ]
     },
     {
       id: 10,
