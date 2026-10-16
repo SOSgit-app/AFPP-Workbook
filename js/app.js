@@ -9,11 +9,13 @@
 
   var currentStep = 0;
   var saveTimeout = null;
+  var lastAutoBackupSig = '';
   var reviewedSteps = {};
   var maxUnlockedStep = 0;
   var navUnlocked = false;
   var fieldsHydrated = false;
   var scormCompletionReported = false;
+  var AUTOSAVE_DELAY_MS = 400;
 
   // ---- DOM references ----
   var sidebar = document.getElementById('sidebar');
@@ -306,7 +308,7 @@
     var check = document.createElement('span');
     check.className = 'accordion-progress-check';
     check.setAttribute('aria-hidden', 'true');
-    check.title = 'Has entered content';
+    check.title = 'All fields in this section are filled';
     check.textContent = '\u2713';
     summary.appendChild(check);
   }
@@ -321,35 +323,57 @@
     return null;
   }
 
-  function accordionHasEnteredContent(details) {
+  /** True if the field is visible to the student (not in a hidden optional row, etc.). */
+  function isFieldVisibleForProgress(el, stopAt) {
+    var node = el;
+    while (node && node !== stopAt && node !== document) {
+      if (node.classList && node.classList.contains('hidden')) return false;
+      if (node.hidden) return false;
+      if (node.getAttribute && node.getAttribute('hidden') !== null) return false;
+      node = node.parentElement;
+    }
+    return true;
+  }
+
+  /**
+   * Section checkmark only when EVERY visible field in this accordion is filled.
+   * Hidden optional rows do not count. Matches what students expect before Continue.
+   */
+  function accordionSectionIsComplete(details) {
     var body = getAccordionBody(details);
     if (!body) return false;
     var fields = body.querySelectorAll('[data-field]');
+    var counted = 0;
     for (var i = 0; i < fields.length; i++) {
       var el = fields[i];
       // Only count fields owned by this accordion (not nested child accordions).
       var owner = el.closest ? el.closest('details.accordion') : null;
       if (owner !== details) continue;
+      if (!isFieldVisibleForProgress(el, body)) continue;
+      // Skip disabled/read-only controls (e.g. synced weight cells).
+      if (el.disabled || el.readOnly) continue;
+
+      counted++;
       if (el.type === 'checkbox') {
-        if (el.checked) return true;
-      } else if (String(el.value || '').trim() !== '') {
-        return true;
+        if (!el.checked) return false;
+      } else if (String(el.value || '').trim() === '') {
+        return false;
       }
     }
-    return false;
+    return counted > 0;
   }
 
-  /** Show a checkmark on accordion headers that already have student input. */
+  /** Show a checkmark on accordion headers only when the section is fully filled. */
   function updateAccordionProgressChecks() {
     var all = document.querySelectorAll('details.accordion');
     for (var i = 0; i < all.length; i++) {
       var details = all[i];
       var summary = details.querySelector(':scope > .accordion-summary') || details.querySelector('.accordion-summary');
       if (summary) appendAccordionProgressCheck(summary);
-      var has = accordionHasEnteredContent(details);
-      details.classList.toggle('has-entered-content', has);
+      var complete = accordionSectionIsComplete(details);
+      details.classList.toggle('has-entered-content', complete);
       if (summary) {
-        if (has) summary.setAttribute('data-progress', 'started');
+        if (complete) summary.setAttribute('data-progress', 'complete');
         else summary.removeAttribute('data-progress');
       }
     }
@@ -1005,8 +1029,9 @@
     updateCoaMatrix();
   }
 
-  function flashSaveIndicator(message, isWarning) {
+  function flashSaveIndicator(message, isWarning, holdMs) {
     var text = message || 'Saved';
+    var duration = typeof holdMs === 'number' ? holdMs : (isWarning ? 3500 : 1500);
     var targets = [saveIndicator, floatingSaveIndicator];
     for (var i = 0; i < targets.length; i++) {
       var el = targets[i];
@@ -1024,7 +1049,7 @@
         ind.classList.remove('visible', 'save-indicator-warning');
         ind.classList.add('hidden');
       }
-    }, isWarning ? 3500 : 1500);
+    }, duration);
   }
 
   function buildProgressPayload() {
@@ -1169,11 +1194,25 @@
     return { payload: inner };
   }
 
-  function downloadBackupFile() {
+  /**
+   * Download a sealed AFPP-backup-*.json file.
+   * opts.skipIfUnchanged — skip if payload matches the last downloaded backup
+   * opts.notify — show on-screen “Backup downloaded” message when a file is written
+   * Returns true if a file was downloaded, false otherwise.
+   */
+  function downloadBackupFile(opts) {
+    opts = opts || {};
+    var skipIfUnchanged = !!opts.skipIfUnchanged;
+    var notify = !!opts.notify;
+    var silentErrors = !!opts.silentErrors;
     try {
       var sealed = sealBackupForDownload(buildProgressPayload());
       if (sealed.error) {
-        alert(sealed.error);
+        if (!silentErrors) alert(sealed.error);
+        return false;
+      }
+      var sig = sealed.file && sealed.file._sig ? String(sealed.file._sig) : '';
+      if (skipIfUnchanged && sig && sig === lastAutoBackupSig) {
         return false;
       }
       var json = JSON.stringify(sealed.file, null, 2);
@@ -1196,14 +1235,42 @@
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
+      if (sig) lastAutoBackupSig = sig;
       setTimeout(function () {
         URL.revokeObjectURL(url);
       }, 1000);
+      if (notify) {
+        flashSaveIndicator('Backup file downloaded', false, 3500);
+      }
       return true;
     } catch (e) {
       console.warn('Backup download failed', e);
       return false;
     }
+  }
+
+  function isTextEntryField(el) {
+    if (!el || !el.getAttribute || !el.getAttribute('data-field')) return false;
+    var tag = el.tagName;
+    if (tag === 'TEXTAREA') return true;
+    if (tag === 'INPUT') {
+      var t = String(el.type || 'text').toLowerCase();
+      return t === 'text' || t === 'number' || t === 'search' || t === 'url' || t === 'email';
+    }
+    return false;
+  }
+
+  /** After leaving a text box they edited: save to Canvas and download a backup with a visible notice. */
+  function onTextEntryFinished(el) {
+    if (!fieldsHydrated || !isTextEntryField(el) || !el._afppTyped) return;
+    el._afppTyped = false;
+    collectCurrentStepData();
+    saveProgress();
+    downloadBackupFile({
+      skipIfUnchanged: true,
+      notify: true,
+      silentErrors: true
+    });
   }
 
   function restoreFromBackupObject(obj) {
@@ -1567,9 +1634,11 @@
 
   function autoSave() {
     clearTimeout(saveTimeout);
+    // Canvas suspend_data shortly after typing pauses.
+    // Backup file download happens on blur (clicking outside the text box), not here.
     saveTimeout = setTimeout(function () {
       saveProgress();
-    }, 400);
+    }, AUTOSAVE_DELAY_MS);
   }
 
   function bindEvents() {
@@ -1687,6 +1756,7 @@
         if (limit && this.value && this.value.length > limit) {
           this.value = this.value.slice(0, limit);
         }
+        if (isTextEntryField(this)) this._afppTyped = true;
         updateCharCounter(this);
         updatePmSelectStyle(this);
         autosizeRiskTextarea(this);
@@ -1719,6 +1789,11 @@
         updateContinueButtons();
         autoSave();
       });
+      if (isTextEntryField(allInputs[j])) {
+        allInputs[j].addEventListener('blur', function () {
+          onTextEntryFinished(this);
+        });
+      }
     }
     autosizeRiskTextareas();
 
