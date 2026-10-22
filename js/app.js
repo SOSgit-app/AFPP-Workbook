@@ -1212,18 +1212,27 @@
     }
 
     var myId = currentLearnerId();
-    if (ScormAPI.isAvailable() && !myId) {
-      return { error: 'Canvas did not provide your student ID, so restore is blocked. Re-open the assignment and try again.' };
-    }
-    if (!myId) myId = 'standalone';
-
+    var inLms = ScormAPI.isAvailable();
     var fileId = String(obj._learnerId || '').trim();
-    if (!fileId || fileId !== myId) {
-      return {
-        error:
-          'This backup belongs to another student and cannot be restored.\n\n' +
-          'Each backup only works for the Canvas account that downloaded it.'
-      };
+
+    // Canvas / LMS: keep learner binding so students can't restore each other's files.
+    // GitHub Pages / offline: no Canvas ID — allow any valid sealed backup (Canvas or standalone).
+    if (inLms) {
+      if (!myId) {
+        return {
+          error:
+            'Canvas did not provide your student ID, so restore is blocked. Re-open the assignment and try again.'
+        };
+      }
+      if (!fileId || fileId !== myId) {
+        return {
+          error:
+            'This backup belongs to another student and cannot be restored.\n\n' +
+            'Each backup only works for the Canvas account that downloaded it.'
+        };
+      }
+    } else if (!fileId) {
+      fileId = 'standalone';
     }
 
     if (obj._sig !== backupSignature(fileId, obj._sealed)) {
@@ -1742,7 +1751,6 @@
         if (!file) return;
         var ok = confirm(
           'Restore answers from this backup file?\n\n' +
-          'This only works for a backup downloaded from YOUR Canvas account.\n' +
           'It will replace what is currently on screen.'
         );
         if (!ok) {

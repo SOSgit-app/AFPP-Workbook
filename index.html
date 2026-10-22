@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Air Force Planning Process Student Workbook</title>
-  <link rel="stylesheet" href="css/style.css?v=20261016a">
+  <link rel="stylesheet" href="css/style.css?v=20261022a">
 </head>
 <body>
 
@@ -21,7 +21,7 @@
           <div id="completionBar" class="completion-fill" style="width:0%"></div>
         </div>
       </div>
-      <button id="btnRestoreBackup" class="btn btn-secondary" type="button" title="Restore a backup file downloaded from YOUR Canvas account only">
+      <button id="btnRestoreBackup" class="btn btn-secondary" type="button" title="Restore a previously downloaded AFPP-backup-.json file">
         Restore Backup
       </button>
       <input id="backupFileInput" type="file" accept=".json,application/json" hidden>
@@ -104,14 +104,14 @@
             <section class="save-guide-restore">
               <h3>If your progress resets</h3>
               <ol>
-                <li>Re-open this assignment in Canvas with the same student account.</li>
+                <li>Re-open this workbook (same browser link or Canvas assignment).</li>
                 <li>In the <strong>top-right dark blue header</strong>, click <strong>Restore Backup</strong> (next to <strong>Save &amp; Exit</strong>).</li>
-                <li>Choose your <code>.json</code> backup file and confirm.</li>
-                <li>Click <strong>Save</strong> (bottom right) until the top bar says <strong>Canvas save OK</strong>.</li>
+                <li>Choose your <code>AFPP-backup-….json</code> file and confirm.</li>
+                <li>Click <strong>Save</strong> (bottom right). In Canvas, wait until the top bar says <strong>Canvas save OK</strong>.</li>
                 <li>Click <strong>Save &amp; Exit</strong> before leaving to download a fresh backup.</li>
               </ol>
               <p class="save-guide-note">
-                Backups only work for the Canvas account that downloaded them. Another student’s file cannot be restored on your account.
+                On this standalone site you can restore any valid AFPP backup file. In Canvas, backups stay tied to your own student account.
               </p>
             </section>
           </div>
@@ -2669,9 +2669,9 @@
   <!-- Scripts (order matters) -->
   <script src="js/lz-string.min.js"></script>
   <script src="js/jspdf.umd.min.js"></script>
-  <script src="js/scorm-api.js?v=20261016a"></script>
-  <script src="js/workbook.js?v=20261016a"></script>
-  <script src="js/pdf-export.js?v=20261016a"></script>
-  <script src="js/app.js?v=20261016a"></script>
+  <script src="js/scorm-api.js?v=20261022a"></script>
+  <script src="js/workbook.js?v=20261022a"></script>
+  <script src="js/pdf-export.js?v=20261022a"></script>
+  <script src="js/app.js?v=20261022a"></script>
 </body>
 </html>
