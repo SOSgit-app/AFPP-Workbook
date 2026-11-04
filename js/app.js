@@ -1112,8 +1112,8 @@
     };
   }
 
-  // Backup files are learner-bound so one student cannot restore another's answers.
-  // This deters casual sharing; it is not cryptographic security against DevTools edits.
+  // Backup files stay sealed for integrity. Learner ID is recorded when available
+  // but restore no longer requires a matching Canvas student ID.
   var BACKUP_SEAL = 'AFPP-SOS-WB-SEAL-v2';
 
   function fnv1aHash(str) {
@@ -1176,12 +1176,7 @@
   }
 
   function sealBackupForDownload(innerPayload) {
-    var learnerId = currentLearnerId();
-    if (ScormAPI.isAvailable() && !learnerId) {
-      return { error: 'Canvas did not provide a student ID, so a secure backup cannot be created yet. Try Save again in a moment.' };
-    }
-    // Offline preview only: still seal, but mark as standalone (not transferable into Canvas).
-    if (!learnerId) learnerId = 'standalone';
+    var learnerId = currentLearnerId() || 'standalone';
 
     var sealedBody = encodeBackupBody(innerPayload || buildProgressPayload());
     return {
@@ -1207,39 +1202,18 @@
       return {
         error:
           'This backup format is no longer accepted.\n\n' +
-          'Create a new backup with Save in your own Canvas session, then use that file.'
+          'Create a new backup with Save, then use that file.'
       };
     }
 
-    var myId = currentLearnerId();
-    var inLms = ScormAPI.isAvailable();
-    var fileId = String(obj._learnerId || '').trim();
-
-    // Canvas / LMS: keep learner binding so students can't restore each other's files.
-    // GitHub Pages / offline: no Canvas ID — allow any valid sealed backup (Canvas or standalone).
-    if (inLms) {
-      if (!myId) {
-        return {
-          error:
-            'Canvas did not provide your student ID, so restore is blocked. Re-open the assignment and try again.'
-        };
-      }
-      if (!fileId || fileId !== myId) {
-        return {
-          error:
-            'This backup belongs to another student and cannot be restored.\n\n' +
-            'Each backup only works for the Canvas account that downloaded it.'
-        };
-      }
-    } else if (!fileId) {
-      fileId = 'standalone';
-    }
+    // Allow any valid sealed backup in Canvas and offline (no learner-ID match required).
+    var fileId = String(obj._learnerId || '').trim() || 'standalone';
 
     if (obj._sig !== backupSignature(fileId, obj._sealed)) {
       return {
         error:
           'This backup file failed the integrity check (it may have been edited).\n\n' +
-          'Download a fresh backup with Save from your own account.'
+          'Download a fresh backup with Save from your session.'
       };
     }
 
